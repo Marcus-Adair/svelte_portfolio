@@ -7,7 +7,7 @@
 
 </script>
 
-<footer class="flex flex-row justify-between items-center px-6">
+<footer class="flex flex-col sm:flex-row justify-between items-center px-14 gap-6">
     <ol class="flex flex-row gap-4 justify-start text-sm">
       <li>
         <a href="/" class={cn(
