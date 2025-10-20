@@ -1,11 +1,10 @@
 <script lang="ts">
 	import '../app.css';
-    import { ModeWatcher, toggleMode } from "mode-watcher";
+    import { ModeWatcher } from "mode-watcher";
 	import favicon from '$lib/assets/favicon.ico';
 	import FloatingNavbar from '$lib/components/floatingNavbar.svelte';
-	import Switch from '$lib/components/ui/switch.svelte';
-	import { Moon, Sun } from 'lucide-svelte';
 	import Footer from '$lib/components/footer.svelte';
+	import ThemeToggle from '$lib/components/themeToggle.svelte';
 
 	let { children } = $props();
 </script>
@@ -13,8 +12,6 @@
 <svelte:head>
 	<link rel="icon" href={favicon} />
 </svelte:head>
-
-
 
 
 <ModeWatcher />
@@ -28,11 +25,10 @@
 			<FloatingNavbar />
 		</div>
 
-		<div class="hidden md:flex flex-row items-center justify-self-end gap-2">
-			<Moon size={20} />
-			<Switch onclick={() => toggleMode()} class="cursor-pointer" />
-			<Sun size={20} />
+		<div class="hidden md:flex justify-self-end">
+			<ThemeToggle/>
 		</div>
+		
 	</header>
 
 	<main class="flex-1  mt-4 px-6 sm:px-28">

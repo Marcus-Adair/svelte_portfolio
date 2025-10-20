@@ -7,12 +7,12 @@
 
 
 <nav  class="flex flex-row justify-center items-center">
-    <ol class="flex flex-row items-center gap-8 md:gap-12 border rounded-4xl justify-center  py-2 px-4 transition-all bg-card shadow-sm">
+    <ol class="flex flex-row items-center gap-8 md:gap-12 border rounded-full justify-center  py-2 px-4 transition-all bg-card shadow-sm">
         <li>
-            <a href="/" class={cn(
-                "transition-all duration-300 ease-out hover:text-primary/80 font-light",
+            <a href="/" title="Home" class={cn(
+                "transition-all duration-300 ease-out hover:text-primary/80",
                 page.url.pathname === "/"
-                ? "text-primary font-semibold scale-105"
+                ? "text-primary"
                 : "text-muted-foreground"
             )}
             >
@@ -22,10 +22,10 @@
             </a>
         </li>
         <li>
-            <a href="/about" class={cn(
-                    "transition-all duration-300 ease-out hover:text-primary/80 font-light",
+            <a href="/about" title="About" class={cn(
+                    "transition-all duration-300 ease-out hover:text-primary/80",
                     page.url.pathname.includes("about")
-                    ? "text-primary font-semibold scale-105"
+                    ? "text-primary"
                     : "text-muted-foreground"
                 )}            
             >
@@ -36,10 +36,10 @@
         </li>
 
         <li>
-            <a href="/skills" class={cn(
-                "transition-all duration-300 ease-out hover:text-primary/80 font-light",
+            <a href="/skills" title="Skills" class={cn(
+                "transition-all duration-300 ease-out hover:text-primary/80",
                 page.url.pathname.includes("skills")
-                ? "text-primary font-semibold scale-105"
+                ? "text-primary"
                 : "text-muted-foreground"
             )}            
             >               
@@ -50,10 +50,10 @@
         </li>
 
         <li>
-            <a href="/projects" class={cn(
-                "transition-all duration-300 ease-out hover:text-primary/80 font-light",
+            <a href="/projects" title="Projects" class={cn(
+                "transition-all duration-300 ease-out hover:text-primary/80",
                 page.url.pathname.includes("projects")
-                ? "text-primary font-semibold scale-105"
+                ? "text-primary"
                 : "text-muted-foreground"
             )}            
             >                  

@@ -1,24 +1,61 @@
+<script>
+	import Button from "$lib/components/ui/button.svelte";
+	import Card from "$lib/components/ui/card/card.svelte";
+	import Separator from "$lib/components/ui/separator.svelte";
+	import { GITHUB_URL, LINKED_IN_URL } from "$lib/config";
+	import { CalendarDays, Github, LinkedinIcon, Mail } from "lucide-svelte";
 
-<div>
-    <h1 class="text-4xl font-bold">Hi, I'm Marcus Adair</h1>
+</script>
+<svelte:head>
+  <title>About - Marcus Adair</title>
+</svelte:head>
 
-    <p>My name is Marcus Adair and I like coding, coffee, and chaotic playlists that somehow make sense. I spend way too much time staring at screens and thinking about how to optimize everything.</p>
+<div class="flex flex-col gap-6">
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies varius, velit erat sagittis erat, at vehicula lacus metus nec nulla. Donec vitae nulla vel magna tincidunt convallis.</p>
+  <h1 class="text-2xl md:text-5xl font-bold mr-44 mt-8">Hi, I'm Marcus Adair.</h1>
 
-    <p>Quisque a felis at libero dictum venenatis. Curabitur tristique ex a ligula congue, ut lacinia nisi ultricies. Suspendisse potenti. Aliquam erat volutpat.</p>
 
-    <p>Praesent vel arcu id nisi vulputate tempus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer laoreet, nibh nec efficitur scelerisque, libero nisl fermentum arcu, ut suscipit urna nunc nec purus.</p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
 
-    <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce nec justo in nisi finibus feugiat. Sed euismod ante et purus sodales, a hendrerit orci efficitur.</p>
+    <!-- Left Col -->
+    <Card class="text-muted-foreground p-6">
+      <span>I am .... TODO: put a bunch of stuff here to describe me </span>
+    </Card>
 
-    <p>Sed consequat, magna eget venenatis tincidunt, purus nisl aliquet ligula, id interdum nulla ipsum non turpis. Vivamus tristique, sem ut facilisis lacinia, nulla arcu bibendum arcu, nec dapibus justo velit vel lorem.</p>
+    <!-- Right Col -->
+    <div class="flex flex-col gap-6 text-left text-muted-foreground">
+      <div class="flex flex-row gap-4 items-center hover:text-ring cursor-pointer transition-colors" 
+        onclick={() => window.open(GITHUB_URL)} 
+        onkeydown={() => window.open(GITHUB_URL)} 
+        role="button" tabindex={1}>
+        <Github class="size-6"/>
+        <span>Follow on GitHub</span>
+      </div>
+  
+      <div class="flex flex-row gap-4 items-center hover:text-ring cursor-pointer transition-colors" 
+            onclick={() => window.open(LINKED_IN_URL)} 
+            onkeydown={() => window.open(LINKED_IN_URL)} 
+            role="button" tabindex={1}>
+        <LinkedinIcon class="size-6"/>
+        <span>Connect on LinkedIn</span>
+      </div>
+      
+      <Separator />
+      
+      <div class="flex flex-row gap-4 items-center hover:text-ring cursor-pointer transition-colors" 
+            role="button" tabindex={1}>
+        <CalendarDays class="size-6"/>
+        <span>Schedule a Meeting</span>
+      </div>
+  
+      <div class="flex flex-row gap-4 items-center hover:text-ring cursor-pointer transition-colors" 
+            onclick={() => window.open('mailto:marcus.a.adair@gmail.com')} 
+            onkeydown={() => window.open('mailto:marcus.a.adair@gmail.com')} 
+            role="button" tabindex={1}>
+        <Mail class="size-6"/>
+        <span>marcus.a.adair@gmail.com</span>
+      </div>
+    </div>
 
-    <p>Mauris porta ligula id tellus luctus, id malesuada ligula pharetra. Nullam blandit semper odio, in iaculis ligula facilisis in. Aliquam erat volutpat. Cras a dictum magna, vel pretium lorem.</p>
-
-    <p>Curabitur ac ex in nisi cursus ultrices. Sed eget nisl non sapien malesuada facilisis. Ut et risus ut libero fringilla gravida. Nunc consequat dui nec purus suscipit, nec dictum elit dapibus.</p>
-
-    <p>Donec semper, magna vitae sollicitudin cursus, lorem justo sodales nibh, nec ultricies justo orci in nisl. Proin sit amet elit eu urna ultricies dictum. Aliquam erat volutpat.</p>
-
-    <p>Phasellus et lorem vitae justo feugiat lacinia. Praesent fringilla purus at sapien malesuada, vel sollicitudin justo elementum. Sed sit amet dolor sit amet odio vulputate placerat.</p>
+  </div>
 </div>

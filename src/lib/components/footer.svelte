@@ -10,7 +10,7 @@
 <footer class="flex flex-col sm:flex-row justify-between items-center px-14 gap-6">
     <ol class="flex flex-row gap-4 justify-start text-sm">
       <li>
-        <a href="/" class={cn(
+        <a href="/" title="Home" class={cn(
           "transition-all duration-300 ease-out hover:text-primary/80 font-light",
           page.url.pathname === "/"
             ? "text-primary font-semibold"
@@ -21,7 +21,7 @@
       </li>
   
       <li>
-        <a href="/about" class={cn(
+        <a href="/about" title="About" class={cn(
           "transition-all duration-300 ease-out hover:text-primary/80 font-light",
           page.url.pathname.includes("about")
             ? "text-primary font-semibold"
@@ -32,7 +32,7 @@
       </li>
   
       <li>
-        <a href="/skills" class={cn(
+        <a href="/skills" title="Skills" class={cn(
           "transition-all duration-300 ease-out hover:text-primary/80 font-light",
           page.url.pathname.includes("skills")
             ? "text-primary font-semibold"
@@ -43,7 +43,7 @@
       </li>
   
       <li>
-        <a href="/projects" class={cn(
+        <a href="/projects" title="Projects" class={cn(
           "transition-all duration-300 ease-out hover:text-primary/80 font-light",
           page.url.pathname.includes("projects")
             ? "text-primary font-semibold"

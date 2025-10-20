@@ -1,20 +1,28 @@
 <script lang="ts">
     import headshot from '$lib/assets/marcus_headshot_small.jpeg';
+	import AccordionContent from '$lib/components/ui/accordion/accordion-content.svelte';
+	import AccordionItem from '$lib/components/ui/accordion/accordion-item.svelte';
+	import AccordionTrigger from '$lib/components/ui/accordion/accordion-trigger.svelte';
+	import Accordion from '$lib/components/ui/accordion/accordion.svelte';
 	import Button from '$lib/components/ui/button.svelte';
 	import Card from '$lib/components/ui/card/card.svelte';
 	import Separator from '$lib/components/ui/separator.svelte';
-	import { CalendarDays, ChevronDown, ChevronUp, Download, Github, History, LinkedinIcon } from 'lucide-svelte';
+	import { EMAIL_URL, GITHUB_URL, LINKED_IN_URL } from '$lib/config';
 
-    let historyOpen = $state(true)
+	import { CalendarDays,  Download, Github, History, LinkedinIcon, Mail } from 'lucide-svelte';
 </script>
 
-<div class="flex flex-col gap-6">
-    <img src={headshot} alt="" class="w-26 h-26 rounded-full object-cover border-3 border-accent-foreground" />
+<svelte:head>
+  <title>Home - Marcus Adair</title>
+</svelte:head>
 
-    <h1 class="text-2xl md:text-5xl font-bold">Software engineer, computer scientist, and creative.</h1>
+<div class="flex flex-col gap-6">
+    <img src={headshot} alt="" class="w-24 h-24 rounded-full object-cover border-3 border-accent-foreground" />
+
+    <h1 class="text-2xl md:text-5xl font-bold mr-44">Software engineer, computer scientist, and creative.</h1>
 
     <Card class="text-muted-foreground p-6">
-        <span class="text-lg">Hello!</span>
+        <span class="text-lg text-card-foreground">Hello!</span>
 
         <span>I'm Marcus, a software engineer from Lehi, Utah. I work at Safestreets, a nationwide ADT equipment sales/installation company, building TypeScript-based web and mobile applications to support business operations.</span>
     
@@ -31,25 +39,37 @@
     
     <Separator/>
 
-    <div class="flex flex-row justify-between">
-        <div class="flex flex-row gap-4">
-            <Button size="icon-lg" variant="ghost" onclick={() => window.open("https://www.linkedin.com/in/marcus-adair-a46aa917a/")}>
-                <LinkedinIcon class="size-8 text-muted-foreground"/>
-            </Button>
-
-            <Button size="icon-lg" variant="ghost" onclick={() => window.open("https://github.com/Marcus-Adair")}>
-                <Github class="size-8 text-muted-foreground"/>
-            </Button>
-
-
-            <Button size="icon-lg" variant="ghost">
-                <CalendarDays class="size-8 text-muted-foreground"/>
-            </Button>        
+    <div class="flex flex-row justify-between items-end">
+    <!-- Right Col -->
+    <div class="flex flex-row gap-6 text-muted-foreground ">
+        <div class="hover:text-ring cursor-pointer transition-colors" 
+              onclick={() => window.open(LINKED_IN_URL)} 
+              onkeydown={() => window.open(LINKED_IN_URL)} 
+              role="button" tabindex={1}>
+          <LinkedinIcon class="size-8"/>
         </div>
 
+        <div class="hover:text-ring cursor-pointer transition-colors" 
+          onclick={() => window.open(GITHUB_URL)} 
+          onkeydown={() => window.open(GITHUB_URL)} 
+          role="button" tabindex={1}>
+          <Github class="size-8"/>
+        </div>
+                
+        <div class="hover:text-ring cursor-pointer transition-colors" 
+              role="button" tabindex={1}>
+          <CalendarDays class="size-8"/>
+        </div>
+    
+        <div class="hover:text-ring cursor-pointer transition-colors" 
+              onclick={() => window.open('mailto:marcus.a.adair@gmail.com')} 
+              onkeydown={() => window.open('mailto:marcus.a.adair@gmail.com')} 
+              role="button" tabindex={1}>
+          <Mail class="size-8"/>
+        </div>
+      </div>
 
-
-        <Button variant="outline" size="lg">
+        <Button variant="outline" size="lg"  title="My Resume">
            Download Resume
            <Download></Download>
         </Button>    
@@ -57,63 +77,51 @@
 
 
 
-
     <div class="flex flex-row justify-end mt-8">
         <Card class="w-[550px] p-6">
-            <div class="flex flex-row items-center justify-between cursor-pointer"
-                onclick={() => historyOpen = !historyOpen}
-                onkeydown={() => historyOpen = !historyOpen}
-                tabindex={1}
-                role="menu"
-            >
-                <div class="flex flex-row items-center gap-2 ">
-                    <History/>
-                    <span>History</span>                  
-                </div>
-
-                {#if historyOpen}
-                    <ChevronUp/>
-                {:else}
-                    <ChevronDown/>
-                {/if}
+            <div class="flex flex-row items-center gap-2 ">
+                <History/>
+                <span>History</span>                  
             </div>
 
-            {#if historyOpen}
-                <Separator/>
+            <Separator/>
 
-                <div class="flex flex-col gap-12">
-                    
-                    {@render HistoryItem("SafeStreets", "Junior Sofware Engineer", "May 2025 - Present")}
+        
+            <div class="flex flex-col gap-2">
+                {@render HistoryItem("SafeStreets", "Working as a Junior Sofware Engineer", "May 2025 - Present")}
 
-                    {@render HistoryItem("Graduate with MS in Computer Science", "", "May 2025")}
+                {@render HistoryItem("Graduate with Masters", "Earn MS in Computer Science - 3.7/4.0 GPA", "May 2025")}
 
-                    {@render HistoryItem("Internship at the University of Oregon", "Full-stack developer", "May 2024 - Aug. 2024")}
+                {@render HistoryItem("University of Oregon", "Internship as a Full-stack Developer", "May 2024 - Aug. 2024")}
 
-                    {@render HistoryItem("Enter graduate school & become grad. researcher", "", "Aug. 2023")}
+                {@render HistoryItem("Begin Graduate School", "Enrolled at the University of Utah", "Aug. 2023")}
 
-                    {@render HistoryItem("Graduate with BS in Computer Science", "", "May 2023")}
+                {@render HistoryItem("Graduate with Bachelors", "Earn BS in Computer Science - 3.7/4.0 GPA", "May 2023")}
 
-                    {@render HistoryItem("Hired at SCI Institute", "Undergraduate Research Assistant", "May 2022")}
+                {@render HistoryItem("SCI Institute at the U of U", "Hired as an Undergraduate Research Assistant", "May 2022")}
 
-                    {@render HistoryItem("Graduate highschool and begin studying computer science at the U of U", "Undergraduate Research Assistant", "2017")}
-                </div>
-            {/if}
+                {@render HistoryItem("Work various part-time jobs while studying", "Telesales Rep. & Fast-food Worker", "2017 - May 2022")}
+
+                {@render HistoryItem("Begin studying computer science at the U of U", "Student", "2017")}
+            </div>
         </Card>
+
         
     </div>
 </div>
-<!-- <p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p> -->
-
-
 
 {#snippet HistoryItem(title: string, subtitle: string, timeStr: string)}
-<div class="grid grid-cols-2 gap-4">
-    <div class="flex flex-col gap-1 justify-self-start">
-        <span class="font-medium">{title}</span>
-        <span class="font-light text-muted-foreground">{subtitle}</span>
-    </div>
 
-    <span class="text-muted-foreground justify-self-end">{timeStr}</span>
-</div>
+<Accordion type="single" class="w-full" value={title}>
+    <AccordionItem value={title}>
+        <AccordionTrigger class="font-bold">{title}</AccordionTrigger>
+        <AccordionContent class="flex flex-col gap-2">
+            <span class="text-muted-foreground">{timeStr}</span>
+            <span >{subtitle}</span>
+            <Separator/>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
     
+
 {/snippet}
