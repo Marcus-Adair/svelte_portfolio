@@ -2,6 +2,8 @@
 	import Card from "$lib/components/ui/card/card.svelte";
 	import Separator from "$lib/components/ui/separator.svelte";
 	import { GITHUB_URL, LINKED_IN_URL } from "$lib/config";
+	import { HOVER_EXPAND_TAILWIND_ANIMATION } from "$lib/consts/style";
+	import { cn } from "$lib/utils";
 	import { CalendarDays, Check, Copy, Github, LinkedinIcon, Mail } from "lucide-svelte";
 
   let changingIcon = $state(false);
@@ -47,13 +49,9 @@
 
 
   <!-- Right Col -->
-  <div class="flex flex-col gap-6 sm:text-left text-center items-center md:items-start text-muted-foreground ">
+  <div class="flex flex-col gap-6 sm:text-left text-center items-center md:items-start text-muted-foreground mt-24">
 
-    <!-- <MessageMe/> -->
-
-
-
-    <div class="flex flex-row gap-4 items-center hover:text-ring cursor-pointer transition-colors mt-28" 
+    <div class={cn("flex flex-row gap-4 items-center hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
           role="button" tabindex={1}
           title="Schedule a Meeting"
     >
@@ -62,7 +60,7 @@
     </div>
 
     <div class="flex flex-row items-center gap-4">
-      <div class="flex flex-row gap-4 items-center hover:text-ring cursor-pointer transition-colors" 
+      <div class={cn("flex flex-row gap-4 items-center hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
             onclick={() => window.open('mailto:marcus.a.adair@gmail.com')} 
             onkeydown={() => window.open('mailto:marcus.a.adair@gmail.com')} 
             role="button" tabindex={1}
@@ -82,7 +80,7 @@
 
     <Separator />
 
-    <div class="flex flex-row gap-4 items-center hover:text-ring cursor-pointer transition-colors" 
+    <div class={cn("flex flex-row gap-4 items-center hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
           onclick={() => window.open(LINKED_IN_URL)} 
           onkeydown={() => window.open(LINKED_IN_URL)} 
           role="button" tabindex={1}
@@ -92,7 +90,7 @@
       <span>LinkedIn</span>
     </div>
 
-    <div class="flex flex-row gap-4 items-center hover:text-ring cursor-pointer transition-colors" 
+    <div class={cn("flex flex-row gap-4 items-center hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
       onclick={() => window.open(GITHUB_URL)} 
       onkeydown={() => window.open(GITHUB_URL)} 
       role="button" tabindex={1}
@@ -104,7 +102,7 @@
 
     <Separator />
 
-    <span class="text-foreground font-medium">Connect with me on socials. I'll help build your website/app!</span>
+    <span class="text-foreground">Connect with me on socials. I'll help build your website/app!</span>
 
   </div>
 </div>

@@ -3,6 +3,8 @@
 	import CardContent from "$lib/components/ui/card/card-content.svelte";
 	import Card from "$lib/components/ui/card/card.svelte";
 	import Separator from "$lib/components/ui/separator.svelte";
+	import { HOVER_EXPAND_TAILWIND_ANIMATION } from "$lib/consts/style";
+	import { cn } from "$lib/utils";
 	import { formatDate } from "$lib/utils/dates";
 	import { ChevronRight } from "lucide-svelte";
 
@@ -16,7 +18,7 @@
     let { title, date, about, href }: Props = $props();
 </script>
 
-<Card class="max-w-[600px] cursor-pointer hover:bg-accent dark:hover:bg-accent/50" title="See post" onclick={() => goto(href)}>
+<Card class={cn("max-w-[600px] cursor-pointer hover:bg-accent dark:hover:bg-accent/50", HOVER_EXPAND_TAILWIND_ANIMATION)} title="See post" onclick={() => goto(href)}>
 	<CardContent class="flex flex-row items-center gap-10">
         <div class="flex-1 flex flex-col gap-2">
             <div class="flex flex-row items-center gap-4 h-4">
@@ -25,7 +27,7 @@
 
             </div>
 
-            <span class="text-lg">{title}</span>
+            <span class="text-xl font-[Space_Grotesk]">{title}</span>
 
             <Separator />
 

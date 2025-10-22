@@ -18,17 +18,14 @@
 
 <svelte:head>
   <title>Blog - Marcus Adair</title>
-
-
-  
 </svelte:head>
 
 
-<div class="flex flex-col gap-6 ">
-  <h1 class="text-4xl md:text-5xl font-bold mr-44 font-[Space_Grotesk]">The Marcus Adair Blog.</h1>
+<div class="flex flex-col gap-6">
+  <h1 class="text-4xl md:text-5xl font-bold mr-44 font-[Space_Grotesk] mt-4">The Marcus Adair Blog.</h1>
 
   <div class="flex flex-row items center gap-4 h-5 font-[Space_Grotesk]">
-    <span>- I turn coffee (and other tasty drinks/snacks) into algorithms</span>
+    <span>- I turn coffee into algorithms</span>
     <Separator orientation="vertical"/>
     <img src={coffee} alt="" class="size-12 -translate-y-5.25 -translate-x-1" />
   </div>

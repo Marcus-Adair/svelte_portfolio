@@ -1,5 +1,6 @@
 <script lang="ts">
     import { page } from "$app/state";
+	import { HOVER_EXPAND_TAILWIND_ANIMATION } from "$lib/consts/style";
 	import { pageOptions } from "$lib/types/pageOptions";
 	import { cn } from "$lib/utils";
 	import {  Blocks, BookOpen, Code, House, Newspaper } from "lucide-svelte";
@@ -16,11 +17,13 @@
                 : "text-muted-foreground"
             )}
             >
-                <div class="flex flex-row gap-2 items-center"><House size={18}/>
+                <div class={cn("flex flex-row gap-2 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}>
+                    <House size={18}/>
                     <span>{pageOptions.home}</span>
                 </div>
             </a>
         </li>
+        
         <li>
             <a href="/about" title="About" class={cn(
                     "transition-all duration-300 ease-out hover:text-primary/80",
@@ -29,7 +32,8 @@
                     : "text-muted-foreground"
                 )}            
             >
-                <div class="flex flex-row gap-2 items-center"><BookOpen size={18}/>
+                <div class={cn("flex flex-row gap-2 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}>
+                    <BookOpen size={18}/>
                     <span>{pageOptions.about}</span>
                 </div>
             </a>
@@ -43,13 +47,12 @@
                 : "text-muted-foreground"
             )}            
             >                  
-                <div class="flex flex-row gap-2 items-center"><Blocks size={18}/>
+                <div class={cn("flex flex-row gap-2 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}>
+                    <Blocks size={18}/>
                     <span>{pageOptions.projects}</span>
                 </div>
             </a>
         </li>
-
-
 
         <li>
             <a href="/blog" title="Blog" class={cn(
@@ -59,12 +62,11 @@
                 : "text-muted-foreground"
             )}            
             >                  
-                <div class="flex flex-row gap-2 items-center"><Newspaper size={18}/>
+                <div class={cn("flex flex-row gap-2 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}>
+                    <Newspaper size={18}/>
                     <span>{pageOptions.blog}</span>
                 </div>
             </a>
         </li>
-
-
     </ol>
 </nav>

@@ -16,7 +16,7 @@
 
 <ModeWatcher />
 <div class="flex flex-col min-h-screen py-4">
-	<header class="grid grid-cols-3 items-center mb-8 mt-2 px-10">
+	<header class="grid grid-cols-3 items-center mt-2 px-10">
 		<div class="justify-self-start">
 			<!-- Put a left-aligned thing here if want one-->
 		</div>
@@ -31,7 +31,7 @@
 		
 	</header>
 
-	<main class="flex-1  mt-4 px-6 sm:px-36">
+	<main class="flex-1 px-6 sm:px-36 mt-10">
 		{@render children?.()}
 	</main>
 

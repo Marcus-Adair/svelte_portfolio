@@ -16,7 +16,7 @@
     <PostHeader date={DATE} postNum={1} title="Hello World!!"/>
     
     <Paragraph>
-        Hello World! ... or so as they say. My name is Marcus. This is the first post in what is my attempt at a blog. 
+        Hello World! ... or so they say. My name is Marcus. This is the first post in what is my attempt at a blog. 
         Hopefully this isn't the only post that actually end up being made. Hopefully this site actually ends up getting launched ... because 
         I am developing a brand new portfolio website! In the past I have used prebuilt templates to build sites, but now I have the skills
         to build something from scratch that is event better, even grander, and something that is more in my style.
@@ -33,7 +33,7 @@
     <Paragraph>Here's an example.</Paragraph>
 
     <!-- Terminal Writing -->
-    <div class="py-4 mx-20">
+    <div class="py-4 lg:mx-20">
         <div class="bg-[#2f2f2f] text-white px-4 py-3 border border-slate-600 rounded-tl-md rounded-tr-md">
             <span class="text-lg">svelte</span>
         </div>
@@ -74,6 +74,6 @@
 
     <Paragraph>Thanks again for reading this if you are! Cheers!</Paragraph>
 
-    <span class="text-right text-4xl font-[Space_Grotesk] mr-18"> - Marcus,</span>
-    <span class="text-right text-lg font-[Space_Grotesk] mr-18">Oct. 20th and 21st, 2025</span>
+    <span class="text-right text-4xl font-[Space_Grotesk] mr-14"> - Marcus,</span>
+    <span class="text-right text-lg font-[Space_Grotesk] mr-14">Oct. 20th and 21st, 2025</span>
 </div>

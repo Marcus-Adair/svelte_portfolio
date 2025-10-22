@@ -10,6 +10,8 @@
 	import Separator from '$lib/components/ui/separator.svelte';
 	import { EMAIL_URL, GITHUB_URL, LINKED_IN_URL } from '$lib/config';
 	import { CalendarDays,  Download, Github, History, LinkedinIcon, Mail } from 'lucide-svelte';
+	import { cn } from '$lib/utils';
+	import { HOVER_EXPAND_TAILWIND_ANIMATION } from '$lib/consts/style';
 </script>
 
 <svelte:head>
@@ -26,7 +28,6 @@
     </div>
 
     
-
     <Accordion type="single" class="w-full flex flex-row justify-end sm:mt-8 " value="intro">
         <Card class="text-card-foreground px-6 py-2 w-full">
        
@@ -62,12 +63,12 @@
         </Card>
     </Accordion>
         
-    <Separator/>
+    <Separator class="mt-2"/>
 
     <div class="flex flex-row justify-between items-end">
     <!-- Right Col -->
     <div class="flex flex-row gap-6 text-muted-foreground ">
-        <div class="hover:text-ring cursor-pointer transition-colors"
+        <div class={cn("hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
               onclick={() => window.open(LINKED_IN_URL)} 
               onkeydown={() => window.open(LINKED_IN_URL)} 
               role="button" tabindex={1}
@@ -76,7 +77,7 @@
           <LinkedinIcon class="size-8"/>
         </div>
 
-        <div class="hover:text-ring cursor-pointer transition-colors" 
+        <div class={cn("hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
           onclick={() => window.open(GITHUB_URL)} 
           onkeydown={() => window.open(GITHUB_URL)} 
           role="button" tabindex={1}
@@ -85,14 +86,14 @@
           <Github class="size-8"/>
         </div>
                 
-        <div class="hover:text-ring cursor-pointer transition-colors" 
+        <div class={cn("hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
               role="button" tabindex={1}
               title="Calendar"
         >
           <CalendarDays class="size-8"/>
         </div>
     
-        <div class="hover:text-ring cursor-pointer transition-colors" 
+        <div class={cn("hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
               onclick={() => window.open('mailto:marcus.a.adair@gmail.com')} 
               onkeydown={() => window.open('mailto:marcus.a.adair@gmail.com')} 
               role="button" tabindex={1}
