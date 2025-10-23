@@ -30,21 +30,36 @@
       </div>
 
 
-    <Card class="text-card-foreground p-6">
-      <span>I am .... TODO: i'm from utah, born and raised </span>
+    <Card class={cn("text-card-foreground p-6", HOVER_EXPAND_TAILWIND_ANIMATION)}>
+      <span>I was born and raised in Utah. After living in Sugar House, SLC until I was about 2 years old, my family moved to Davis County - there I went to elementary school through highschool, graduating from Viewmont Highschool in 2017. </span>
     </Card>
 
-    <Card class="text-card-foreground p-6">
-      <span>I am .... TODO: academic stuff fron the niversity of tuah </span>
+    <Card class={cn("text-card-foreground p-6", HOVER_EXPAND_TAILWIND_ANIMATION)}>
+      <span>I then began studying Computer Science at the University of Utah (U of U) in Fall 2017. During the first few years of school I worked as fast food worker and a telesales rep. After a brief 2 semesters off during COVID. I returned to school and then shortly start working at the Scientific Computing and Imaging (SCI) Instite at the U of U.</span>
     </Card>
 
-    <Card class="text-card-foreground p-6">
-      <span>I am .... TODO: I like snowboarding, ... other stuff</span>
-
+    <Card class={cn("text-card-foreground p-6", HOVER_EXPAND_TAILWIND_ANIMATION)}>
+      <span>Doing research at SCI was great, and I learned alot. During my undergrad. I developed a high throughput workflow to accelerate earthquake simulations, collaborated with scientists from Oregon and Spain, went on a work trip to the University of Oregon, and wrote a paper that was eventually published by the ACM.</span>
     </Card>
+
+    <Card class={cn("text-card-foreground p-6", HOVER_EXPAND_TAILWIND_ANIMATION)}>
+      <span>I graduated with my BS in Computer Science in Spring 2023. I continued to do research over the summer and then entered grad. school, becoming a grad. research assistant at SCI. During the first year I explored using machine learning to synthesize volcanic geodata.</span>
+    </Card>
+
+    <Card class={cn("text-card-foreground p-6", HOVER_EXPAND_TAILWIND_ANIMATION)}>
+      <span>In Summer 2024 I did an internship at the University of Oregon, where I began development on On Demand Fakequakes, an iteration on my previous work. I turned this into my masters project, worked on it for a year, and developed a full-stack app with a Python front-end and back-end, an AWS workflow with Python infrastructure-as-code. The project was targeted towards NASA scientists and other geoscientists and was a pleasure to work on.</span>
+    </Card>
+
+    <Card class={cn("text-card-foreground p-6", HOVER_EXPAND_TAILWIND_ANIMATION)}>
+      In May 2025 I graduated with my MS in Computer Science and I now work at SafeStreets as a software engineer. I am helping build TypeScript and Svelte applications for managing inventory, sales, installations, etc. for the company. Its been amazing so far and I've already grown so much as a developer! I'm excited to continue my journey of learning!
+    </Card>
+
+    <Card class={cn("text-card-foreground p-6", HOVER_EXPAND_TAILWIND_ANIMATION)}>
+      Besides software-related things, I am a proud Utahn and Finnish man. My mother is from Finland and I am lucky to be a Finnish citizen myself; I've taken many trips there and it is amazing. I love the Utah nature, I love snowboarding, hiking, and more. I also have an interest in electronic music production, DJing, comic books, video games, and more! I have a black cat named Wiz, who I love. I have an amazing girlfriend Kinley, who I love. And I love to develop software and pay attention to the small things!
+    </Card>
+
+
   </div>
-
-
 
 
 
