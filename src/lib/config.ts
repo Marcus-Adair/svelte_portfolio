@@ -1,0 +1,3 @@
+export const GITHUB_URL = "https://github.com/Marcus-Adair"
+export const LINKED_IN_URL = "https://www.linkedin.com/in/marcus-adair-a46aa917a/"
+export const EMAIL_URL = "mailto:marcus.a.adair@gmail.com"

@@ -44,6 +44,7 @@
 		"vite": "^7.1.7"
 	},
 	"dependencies": {
+		"embla-carousel-svelte": "^8.6.0",
 		"lucide-svelte": "^0.546.0",
 		"mode-watcher": "^1.1.0"
 	}

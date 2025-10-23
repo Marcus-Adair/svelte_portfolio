@@ -1,11 +1,10 @@
 <script lang="ts">
 	import '../app.css';
-    import { ModeWatcher, toggleMode } from "mode-watcher";
-	import favicon from '$lib/assets/favicon.svg';
+    import { ModeWatcher } from "mode-watcher";
+	import favicon from '$lib/assets/favicon.ico';
 	import FloatingNavbar from '$lib/components/floatingNavbar.svelte';
-	import Switch from '$lib/components/ui/switch.svelte';
-	import { Moon, Sun } from 'lucide-svelte';
 	import Footer from '$lib/components/footer.svelte';
+	import ThemeToggle from '$lib/components/themeToggle.svelte';
 
 	let { children } = $props();
 </script>
@@ -15,33 +14,29 @@
 </svelte:head>
 
 
-
-
 <ModeWatcher />
 <div class="flex flex-col min-h-screen py-4">
-	<header class="grid grid-cols-3 items-center mb-8 px-10">
+	<header class="grid grid-cols-3 items-center mt-2 px-10">
 		<div class="justify-self-start">
-			<!-- TODO put something here -->
+			<!-- Put a left-aligned thing here if want one-->
 		</div>
 
-		<div class="justify-self-center sticky top-0 z-50">
+		<div class="justify-self-center">
 			<FloatingNavbar />
 		</div>
 
-		<div class="hidden md:flex flex-row items-center justify-self-end gap-2">
-			<Moon size={20} />
-			<Switch onclick={() => toggleMode()} />
-			<Sun size={20} />
+		<div class="hidden md:flex justify-self-end">
+			<ThemeToggle/>
 		</div>
+		
 	</header>
 
-	<main class="flex-1 px-8">
+	<main class="flex-1 px-6 sm:px-36 mt-10">
 		{@render children?.()}
 	</main>
 
 
-	<div class="border-t border-t-muted mt-8 pt-8 pb-4">
+	<div class="border-t border-t-muted mt-20 pt-8 pb-4">
 		<Footer/>
 	</div>
-	
 </div>
