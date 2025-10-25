@@ -23,7 +23,7 @@
     <img
         src={imgSrc}
         alt={title}
-        class="w-72 lg:w-96 h-auto rounded-md"
+        class="w-36 sm:w-72 lg:w-96 h-auto rounded-md"
     />
 
     <div class="flex-1 flex flex-col gap-2 mt-4 ml-2">

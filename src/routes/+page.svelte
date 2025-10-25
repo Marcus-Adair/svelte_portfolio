@@ -8,10 +8,11 @@
 	import Button from '$lib/components/ui/button.svelte';
 	import Card from '$lib/components/ui/card/card.svelte';
 	import Separator from '$lib/components/ui/separator.svelte';
-	import { EMAIL_URL, GITHUB_URL, LINKED_IN_URL } from '$lib/config';
+	import { CAL_EMAIL, EMAIL_URL, GITHUB_URL, LINKED_IN_URL } from '$lib/config';
 	import { CalendarDays,  Download, Github, History, LinkedinIcon, Mail } from 'lucide-svelte';
 	import { cn } from '$lib/utils';
 	import { HOVER_EXPAND_TAILWIND_ANIMATION } from '$lib/consts/style';
+    // import safestreets_logo from "$lib/assets/safestreets_logo.png"
 </script>
 
 <svelte:head>
@@ -22,11 +23,9 @@
     <img src={headshot} alt="" class="w-24 h-24 rounded-full object-cover" />
 
     <div class="flex flex-row">
-        <h1 class="text-4xl md:text-5xl font-bold mr-44 font-[Space_Grotesk]">Software engineer, computer scientist, and creative.</h1>
-
-        <img src={coffee} alt="" class="w-24 h-24 " />
+        <h1 class="text-4xl md:text-5xl font-bold lg:mr-44 font-[Space_Grotesk]">Software Engineer, Computer Scientist, and Creative.</h1>
+        <img src={coffee} alt="coffee_image" class="w-24 h-24 " />
     </div>
-
     
     <Accordion type="single" class="w-full flex flex-row justify-end sm:mt-8 " value="intro">
         <Card class="text-card-foreground px-6 py-2 w-full">
@@ -40,22 +39,20 @@
                     <div>
                         <span>I am Marcus Adair, a software engineer based in Lehi, Utah. I work at  </span>
                         <span class="font-semibold cursor-pointer text-primary" role="button" tabindex={1} onclick={() => window.open("https://www.safestreets.com/")} onkeydown={() => window.open("https://www.safestreets.com/")}>Safestreets</span>
-                        <span>, a nationwide ADT equipment sales/installation company, building TypeScript-based web and mobile applications to support in-house business operations.</span>
+                        <span>- a nationwide ADT equipment sales/installation company, building TypeScript-based web and mobile applications supporting internal business operations.</span>
                     </div>
 
                     <div>
                         <span>I earned my BS in Computer Science from the </span>
                         <span class="font-semibold cursor-pointer text-primary" role="button" tabindex={1} onclick={() => window.open("https://www.utah.edu/")} onkeydown={() => window.open("https://www.utah.edu/")}>University of Utah</span>
-                        <span>  in Spring 2023, and my MS in Computer Science in Spring 2025.</span>
+                        <span>(U of U) in Spring 2023, and my MS in Computer Science in Spring 2025.</span>
                     </div>
                 
                     <div>
-                        <span>During the last year of my BS and throughout grad school, I worked as a research scientist at the </span>
-                        <span class="font-semibold cursor-pointer text-primary" role="button" tabindex={1} onclick={() => window.open("https://sci.utah.edu/")} onkeydown={() => window.open("https://sci.utah.edu/")}>Scientific Computing and Imaging (SCI) Institute</span>
+                        <span>During the last year of my BS and throughout grad. school, I worked as a research scientist at the </span>
+                        <span class="font-semibold cursor-pointer text-primary" role="button" tabindex={1} onclick={() => window.open("https://sci.utah.edu/")} onkeydown={() => window.open("https://sci.utah.edu/")}>Scientific Computing and Imaging Institute</span>
                         <span> at the U of U, focusing on scientific workflows and full-stack applications.</span>
                     </div>
-
-                    <span>I am passionate about building high-quality software!</span>
                 </AccordionContent>
 
        
@@ -74,7 +71,7 @@
               role="button" tabindex={1}
               title="LinkedIn"
         >
-          <LinkedinIcon class="size-8"/>
+          <LinkedinIcon class="size-7"/>
         </div>
 
         <div class={cn("hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
@@ -83,29 +80,31 @@
           role="button" tabindex={1}
           title="GitHub"
         >
-          <Github class="size-8"/>
+          <Github class="size-7"/>
         </div>
                 
         <div class={cn("hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
+              onclick={() => window.open(CAL_EMAIL)} 
+              onkeydown={() => window.open(CAL_EMAIL)} 
               role="button" tabindex={1}
               title="Calendar"
         >
-          <CalendarDays class="size-8"/>
+          <CalendarDays class="size-7"/>
         </div>
     
         <div class={cn("hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
-              onclick={() => window.open('mailto:marcus.a.adair@gmail.com')} 
-              onkeydown={() => window.open('mailto:marcus.a.adair@gmail.com')} 
+              onclick={() => window.open(EMAIL_URL)} 
+              onkeydown={() => window.open(EMAIL_URL)} 
               role="button" tabindex={1}
               title="Email"
         >
-          <Mail class="size-8"/>
+          <Mail class="size-7"/>
         </div>
       </div>
 
         <Button variant="outline" size="lg"  title="My Resume">
-           Download Resume
-           <Download></Download>
+           <span class="hidden sm:flex">Download Resume</span>
+           <Download/>
         </Button>    
     </div>
 
@@ -123,21 +122,21 @@
                     <AccordionContent class="flex flex-col gap-2">
                         <Separator/>
                         <div class="flex flex-col gap-2">
-                            {@render HistoryItem("SafeStreets", "Working as a Junior Sofware Engineer", "May 2025 - Present")}
+                            {@render HistoryItem("SafeStreets", "Junior Sofware Engineer", "May 2025 - Present")}
             
-                            {@render HistoryItem("Graduate with Masters", "Earn MS in Computer Science - 3.7/4.0 GPA", "May 2025")}
+                            {@render HistoryItem("Graduate with Masters", "MS in Computer Science - 3.7/4.0 GPA", "May 2025")}
             
                             {@render HistoryItem("University of Oregon", "Internship as a Full-stack Developer", "May 2024 - Aug. 2024")}
             
-                            {@render HistoryItem("Begin Graduate School", "Enrolled at the University of Utah", "Aug. 2023")}
+                            {@render HistoryItem("Begin graduate school at the U of U", "Graduate Research Assistant at the SCI Institute", "Aug. 2023")}
             
-                            {@render HistoryItem("Graduate with Bachelors", "Earn BS in Computer Science - 3.7/4.0 GPA", "May 2023")}
+                            {@render HistoryItem("Graduate with Bachelors", "BS in Computer Science - 3.7/4.0 GPA", "May 2023")}
             
-                            {@render HistoryItem("SCI Institute at the U of U", "Hired as an Undergraduate Research Assistant", "May 2022")}
+                            {@render HistoryItem("SCI Institute at the U of U", "Undergraduate Research Assistant", "May 2022")}
             
-                            {@render HistoryItem("Work various part-time jobs while studying", "Telesales Rep. & Fast-food Worker", "2017 - May 2022")}
+                            {@render HistoryItem("Work various jobs while studying", "Telesales Rep. & Fast-food Worker", "2017 - May 2022")}
             
-                            {@render HistoryItem("Begin studying computer science at the U of U", "Student", "2017")}
+                            {@render HistoryItem("Begin studying Computer Science at the U of U", "Student", "2017")}
                         </div>
                     </AccordionContent>
                 </AccordionItem>
@@ -145,7 +144,7 @@
         </Accordion>
 </div>
 
-{#snippet HistoryItem(title: string, subtitle: string, timeStr: string)}
+{#snippet HistoryItem(title: string, subtitle: string, timeStr: string, imagSrc?: any)}
 <Accordion type="single" class="w-full" value={title}>
     <AccordionItem value={title}>
         <AccordionTrigger class="font-bold">{title}</AccordionTrigger>

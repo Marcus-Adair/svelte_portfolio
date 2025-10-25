@@ -28,13 +28,13 @@
 			'On-Demand Fakequakes',
 			'https://ondemandfakequakes.org',
 			odfDashPic,
-			"For my Master's project, I developed On-Demand Fakequakes, a python-based full-stack web application (Python Plotly Dash, Flask) featuring a AWS Cloud workflow and a CI/CD pipeline using GitHub actions."
+			"For my MS project and while working at the SCI Institute, I developed On-Demand Fakequakes, a python-based full-stack web application (Python Plotly Dash, Flask) featuring an AWS Cloud workflow and a CI/CD pipeline using GitHub actions."
 		)}
 		{@render ProjectCard(
 			'ELM 2048',
 			'https://marcus-adair.github.io/ELM_2048/',
 			elm2048pic,
-			'For a Functional Programming graduate-level course in Spring 2024, I recreated the classic game 2048 using ELM, a functional programming language for creating UIs that compiles to JavaScript.'
+			'For a Functional Programming graduate-level course in Spring 2024, I recreated the classic game 2048 using ELM, a functional programming language (with similar syntax to Haskell) for creating UIs that compiles to JavaScript.'
 		)}
 		{@render ProjectCard(
 			'ALPS',
