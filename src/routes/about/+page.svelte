@@ -1,15 +1,16 @@
-<script>
+<script lang="ts">
 	import Card from "$lib/components/ui/card/card.svelte";
 	import Separator from "$lib/components/ui/separator.svelte";
-	import { GITHUB_URL, LINKED_IN_URL } from "$lib/config";
+	import { CAL_EMAIL, EMAIL, EMAIL_URL, GITHUB_URL, LINKED_IN_URL } from "$lib/config";
 	import { HOVER_EXPAND_TAILWIND_ANIMATION } from "$lib/consts/style";
 	import { cn } from "$lib/utils";
 	import { CalendarDays, Check, Copy, Github, LinkedinIcon, Mail } from "lucide-svelte";
 
   let changingIcon = $state(false);
-  function changeIconBriefly() {
+  function copyEmail() {
+    navigator.clipboard.writeText(EMAIL)
     changingIcon = true;
-    setTimeout(() => { changingIcon = false; }, 1800); // 2 seconds
+    setTimeout(() => { changingIcon = false; }, 1800);
   }
 
 </script>
@@ -20,13 +21,12 @@
 </svelte:head>
 
 
-<div class="grid grid-cols-1 md:grid-cols-[55%_45%] gap-8 md:gap-20">
+<div class="grid grid-cols-1 md:grid-cols-[55%_45%] gap-14">
 
   <!-- Left Col -->
     <div class="flex flex-col gap-6">
       <div class="flex flex-row gap-4 items-center">
         <h1 class="text-2xl md:text-5xl font-bold mt-4 font-[Space_Grotesk]">Hi, I'm Marcus Adair <span class="text-xl md:text-4xl wave">👋🏻</span></h1>
-        
       </div>
 
 
@@ -64,9 +64,11 @@
 
 
   <!-- Right Col -->
-  <div class="flex flex-col gap-6 sm:text-left text-center items-center md:items-start text-muted-foreground mt-24">
+  <div class="flex flex-col gap-6 sm:text-left text-center items-center md:items-start text-muted-foreground mt-26">
 
     <div class={cn("flex flex-row gap-4 items-center hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
+          onclick={() => window.open(CAL_EMAIL)} 
+          onkeydown={() => window.open(CAL_EMAIL)} 
           role="button" tabindex={1}
           title="Schedule a Meeting"
     >
@@ -76,15 +78,15 @@
 
     <div class="flex flex-row items-center gap-4">
       <div class={cn("flex flex-row gap-4 items-center hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
-            onclick={() => window.open('mailto:marcus.a.adair@gmail.com')} 
-            onkeydown={() => window.open('mailto:marcus.a.adair@gmail.com')} 
+            onclick={() => window.open(EMAIL_URL)} 
+            onkeydown={() => window.open(EMAIL_URL)} 
             role="button" tabindex={1}
             title="My Email"
       >
         <Mail class="size-6"/>
         <span>marcus.a.adair@gmail.com</span>
       </div>
-      <div class="transition-all" title="Copy" onclick={changeIconBriefly} onkeydown={changeIconBriefly} role="button" tabindex={1}>
+      <div class="transition-all" title="Copy" onclick={copyEmail} onkeydown={copyEmail} role="button" tabindex={1}>
         {#if changingIcon}
           <Check class="size-4 hover:text-ring" />
         {:else}
