@@ -4,23 +4,13 @@
 	import BlogCard from "./_components/blogCard.svelte";
   import helloWorldPic from "$lib/assets/hello_world.png"
 
-
-  //  const nowInSLC = new Date().toLocaleString("en-US", { timeZone: "America/Denver" });
-  // console.log(nowInSLC); // e.g. "10/20/2025, 11:43:00 PM"
-
-  // // Convert back to Date:
-  // const dateInSLC = new Date(nowInSLC);
-  // console.log(dateInSLC.toISOString());
-
+  // Date/time of the post
   const firstPostDate = new Date("2025-10-21T05:51:55.000Z")
-  
-
 </script>
 
 <svelte:head>
   <title>Blog - Marcus Adair</title>
 </svelte:head>
-
 
 <div class="flex flex-col gap-6">
   <h1 class="text-4xl md:text-5xl font-bold mr-44 font-[Space_Grotesk] mt-4">The Marcus Adair Blog.</h1>
@@ -40,10 +30,8 @@
     <Separator />
   </div>
 
-  <!-- TODO: add loop? -->
-
+  <!-- TODO: add loop when more posts added? -->
   <BlogCard title="Hello world!!" date={firstPostDate} about="My first ever blog post" href="/blog/hello-world" imgSrc={helloWorldPic}/>
-
 </div>
 
 

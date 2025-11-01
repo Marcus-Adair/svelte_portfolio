@@ -1,9 +1,4 @@
 <script lang="ts">
-	import { goto } from "$app/navigation";
-	import Button from "$lib/components/ui/button.svelte";
-    import Separator from "$lib/components/ui/separator.svelte";
-	import { formatDate } from "$lib/utils/dates";
-	import { ChevronLeft } from "lucide-svelte";
 	import Paragraph from "../_components/paragraph.svelte";
     import spidermanMeme  from "$lib/assets/spiderman_meme.png"
 	import PostHeader from "../_components/postHeader.svelte";

@@ -14,8 +14,6 @@
 	import DropdownMenuCheckboxItem from '$lib/components/ui/dropdown-menu/dropdown-menu-checkbox-item.svelte';
 	import { DropdownMenu } from 'bits-ui';
 	import DropdownMenuLabel from '$lib/components/ui/dropdown-menu/dropdown-menu-label.svelte';
-	import { goto } from '$app/navigation';
-
 	let { children } = $props();
 </script>
 
@@ -35,12 +33,8 @@
 			<FloatingNavbar />
 		</div>
 
-
-
 		<!-- Helps with grid-3 formatting on different sized screens -->
 		<div class="flex md:hidden justify-self-center"></div>
-
-
 
 		<div class="justify-self-end gap-2 flex flex-row items-center">
 			<!-- Mobile/small-screen navigation menu -->
@@ -57,20 +51,20 @@
 
 					<DropdownMenuSeparator class="w-56"/>
 
-					<DropdownMenuCheckboxItem class="cursor-pointer flex-1" onclick={() => goto("/")} navMenuItem>
-						Home
+					<DropdownMenuCheckboxItem class="cursor-pointer flex-1" navMenuItem>
+						<a href="/">Home</a>
 					</DropdownMenuCheckboxItem>
 
-					<DropdownMenuCheckboxItem class="cursor-pointer flex-1" onclick={() => goto("/about")} navMenuItem>
-						About
+					<DropdownMenuCheckboxItem class="cursor-pointer flex-1" navMenuItem>
+						<a href="/about">About</a>
 					</DropdownMenuCheckboxItem>
 
-					<DropdownMenuCheckboxItem class="cursor-pointer flex-1" onclick={() => goto("/projects")} navMenuItem>
-						Projects
+					<DropdownMenuCheckboxItem class="cursor-pointer flex-1" navMenuItem>
+						<a href="/projects">Projects</a>
 					</DropdownMenuCheckboxItem>
 
-					<DropdownMenuCheckboxItem class="cursor-pointer flex-1" onclick={() => goto("/blog")} navMenuItem>
-						Blog
+					<DropdownMenuCheckboxItem class="cursor-pointer flex-1" navMenuItem>
+						<a href="/blog">Blog</a>
 					</DropdownMenuCheckboxItem>
 				  </DropdownMenuGroup>
 				</DropdownMenuContent>
@@ -83,7 +77,6 @@
 	<main class="flex-1 px-6 sm:px-36 mt-10">
 		{@render children?.()}
 	</main>
-
 
 	<div class="border-t border-t-muted mt-20 pt-8 pb-4">
 		<Footer/>

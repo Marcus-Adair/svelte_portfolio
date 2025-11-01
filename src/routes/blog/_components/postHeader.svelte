@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { goto } from "$app/navigation";
 	import Button from "$lib/components/ui/button.svelte";
 	import Separator from "$lib/components/ui/separator.svelte";
 	import { formatDate } from "$lib/utils/dates";
@@ -11,11 +10,10 @@
         title: string,
     }
     const { date, postNum, title}: Props = $props();
-
 </script>
 
 <div class="flex flex-row gap-6 items-center">
-    <Button variant="ghost" size="icon-lg" onclick={() => goto("/blog")}>
+    <Button variant="ghost" size="icon-lg" href="/blog">
         <ChevronLeft class="size-8"/>
     </Button>
     <div class="flex flex-col gap-2 flex-1">
@@ -30,4 +28,5 @@
         </div>
     </div>
 </div>
+
 <Separator/>

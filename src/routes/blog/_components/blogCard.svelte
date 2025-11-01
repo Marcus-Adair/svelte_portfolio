@@ -1,12 +1,10 @@
 <script lang="ts">
-	import { goto } from "$app/navigation";
 	import Separator from "$lib/components/ui/separator.svelte";
 	import { HOVER_EXPAND_TAILWIND_ANIMATION } from "$lib/consts/style";
 	import { cn } from "$lib/utils";
 	import { formatDate } from "$lib/utils/dates";
 	import { ChevronRight } from "lucide-svelte";
-
-
+    
     interface Props {
         title: string;
         date: Date;
@@ -17,9 +15,7 @@
     let { title, date, about, href, imgSrc }: Props = $props();
 </script>
 
-<div class={cn("flex flex-row gap-4 cursor-pointer", HOVER_EXPAND_TAILWIND_ANIMATION)}
-    title="See post" onclick={() => goto(href)} onkeydown={() => goto(href)} role="button" tabindex={1}
->
+<a {href} class={cn("flex flex-row gap-4 cursor-pointer", HOVER_EXPAND_TAILWIND_ANIMATION)} title="See post">
     <img
         src={imgSrc}
         alt={title}
@@ -35,6 +31,6 @@
     <div class="flex items-center justify-center">
         <ChevronRight  />
     </div>
-</div>
+</a>
 
 <Separator/>   

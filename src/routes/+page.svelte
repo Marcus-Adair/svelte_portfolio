@@ -12,7 +12,7 @@
 	import { CalendarDays,  Download, Github, History, LinkedinIcon, Mail } from 'lucide-svelte';
 	import { cn } from '$lib/utils';
 	import { HOVER_EXPAND_TAILWIND_ANIMATION } from '$lib/consts/style';
-    // import safestreets_logo from "$lib/assets/safestreets_logo.png"
+    import  resume  from "$lib/assets/Marcus_Adair_Portfolio_Resume.pdf"
 </script>
 
 <svelte:head>
@@ -27,9 +27,8 @@
         <img src={coffee} alt="coffee_image" class="w-24 h-24 " />
     </div>
     
-    <Accordion type="single" class="w-full flex flex-row justify-end sm:mt-8 " value="intro">
+    <Accordion type="single" class="w-full flex flex-row justify-end sm:mt-8 " value="false">
         <Card class="text-card-foreground px-6 py-2 w-full">
-       
             <AccordionItem value="intro">
                 <AccordionTrigger>
                     <span class="text-lg text-primary">Hello world!</span>
@@ -54,8 +53,6 @@
                         <span> at the U of U, focusing on scientific workflows and full-stack applications.</span>
                     </div>
                 </AccordionContent>
-
-       
             </AccordionItem>
         </Card>
     </Accordion>
@@ -63,85 +60,82 @@
     <Separator class="mt-2"/>
 
     <div class="flex flex-row justify-between items-end">
-    <!-- Right Col -->
-    <div class="flex flex-row gap-6 text-muted-foreground ">
-        <div class={cn("hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
-              onclick={() => window.open(LINKED_IN_URL)} 
-              onkeydown={() => window.open(LINKED_IN_URL)} 
-              role="button" tabindex={1}
-              title="LinkedIn"
-        >
-          <LinkedinIcon class="size-7"/>
+        <div class="flex flex-row gap-6 text-muted-foreground ">
+            <div class={cn("hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
+                onclick={() => window.open(LINKED_IN_URL)} 
+                onkeydown={() => window.open(LINKED_IN_URL)} 
+                role="button" tabindex={1}
+                title="LinkedIn"
+            >
+            <LinkedinIcon class="size-7"/>
+            </div>
+
+            <div class={cn("hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
+                onclick={() => window.open(GITHUB_URL)} 
+                onkeydown={() => window.open(GITHUB_URL)} 
+                role="button" tabindex={1}
+                title="GitHub"
+            >
+            <Github class="size-7"/>
+            </div>
+                    
+            <div class={cn("hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
+                onclick={() => window.open(CAL_EMAIL)} 
+                onkeydown={() => window.open(CAL_EMAIL)} 
+                role="button" tabindex={1}
+                title="Calendar"
+            >
+            <CalendarDays class="size-7"/>
+            </div>
+        
+            <div class={cn("hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
+                onclick={() => window.open(EMAIL_URL)} 
+                onkeydown={() => window.open(EMAIL_URL)} 
+                role="button" tabindex={1}
+                title="Email"
+            >
+            <Mail class="size-7"/>
+            </div>
         </div>
 
-        <div class={cn("hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
-          onclick={() => window.open(GITHUB_URL)} 
-          onkeydown={() => window.open(GITHUB_URL)} 
-          role="button" tabindex={1}
-          title="GitHub"
-        >
-          <Github class="size-7"/>
-        </div>
-                
-        <div class={cn("hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
-              onclick={() => window.open(CAL_EMAIL)} 
-              onkeydown={() => window.open(CAL_EMAIL)} 
-              role="button" tabindex={1}
-              title="Calendar"
-        >
-          <CalendarDays class="size-7"/>
-        </div>
-    
-        <div class={cn("hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
-              onclick={() => window.open(EMAIL_URL)} 
-              onkeydown={() => window.open(EMAIL_URL)} 
-              role="button" tabindex={1}
-              title="Email"
-        >
-          <Mail class="size-7"/>
-        </div>
-      </div>
-
-        <Button variant="outline" size="lg"  title="My Resume">
-           <span class="hidden sm:flex">Download Resume</span>
-           <Download/>
+        <Button variant="outline" size="lg"  title="My Resume" href={resume} download="Marcus_Adair_Resume.pdf">
+            <span class="hidden sm:flex">Download Resume</span>
+            <Download/>
         </Button>    
     </div>
 
+    <Accordion type="single" class="w-full flex flex-row justify-end" value="false">
+        <Card class="w-[550px] px-6  py-2 ">
+            <AccordionItem value="history">
+                <AccordionTrigger class="font-bold">
+                    <div class="flex flex-row items-center gap-2 ">
+                        <History/>
+                        <span>History</span>                  
+                    </div>
+                </AccordionTrigger>
+                <AccordionContent class="flex flex-col gap-2">
+                    <Separator/>
+                    <div class="flex flex-col gap-2">
+                        {@render HistoryItem("SafeStreets", "Junior Sofware Engineer", "May 2025 - Present")}
 
+                        {@render HistoryItem("Graduate with Masters", "MS in Computer Science - 3.7/4.0 GPA", "May 2025")}
 
-        <Accordion type="single" class="w-full flex flex-row justify-end mt-8 " value="false">
-            <Card class="lg:w-[60%] w-[550px] px-6  py-2 ">
-                <AccordionItem value="history">
-                    <AccordionTrigger class="font-bold">
-                        <div class="flex flex-row items-center gap-2 ">
-                            <History/>
-                            <span>History</span>                  
-                        </div>
-                    </AccordionTrigger>
-                    <AccordionContent class="flex flex-col gap-2">
-                        <Separator/>
-                        <div class="flex flex-col gap-2">
-                            {@render HistoryItem("SafeStreets", "Junior Sofware Engineer", "May 2025 - Present")}
-            
-                            {@render HistoryItem("Graduate with Masters", "MS in Computer Science - 3.7/4.0 GPA", "May 2025")}
-            
-                            {@render HistoryItem("University of Oregon", "Internship as a Full-stack Developer", "May 2024 - Aug. 2024")}
-            
-                            {@render HistoryItem("Begin graduate school at the U of U", "Graduate Research Assistant at the SCI Institute", "Aug. 2023")}
-            
-                            {@render HistoryItem("Graduate with Bachelors", "BS in Computer Science - 3.7/4.0 GPA", "May 2023")}
-            
-                            {@render HistoryItem("SCI Institute at the U of U", "Undergraduate Research Assistant", "May 2022")}
-            
-                            {@render HistoryItem("Work various jobs while studying", "Telesales Rep. & Fast-food Worker", "2017 - May 2022")}
-            
-                            {@render HistoryItem("Begin studying Computer Science at the U of U", "Student", "2017")}
-                        </div>
-                    </AccordionContent>
-                </AccordionItem>
-            </Card>
-        </Accordion>
+                        {@render HistoryItem("University of Oregon", "Internship as a Full-stack Developer", "May 2024 - Aug. 2024")}
+
+                        {@render HistoryItem("Begin graduate school at the U of U", "Graduate Research Assistant at the SCI Institute", "Aug. 2023")}
+
+                        {@render HistoryItem("Graduate with Bachelors", "BS in Computer Science - 3.7/4.0 GPA", "May 2023")}
+
+                        {@render HistoryItem("SCI Institute at the U of U", "Undergraduate Research Assistant", "May 2022")}
+
+                        {@render HistoryItem("Work various jobs while studying", "Telesales Rep. & Fast-food Worker", "2017 - May 2022")}
+
+                        {@render HistoryItem("Begin studying Computer Science at the U of U", "Student", "2017")}
+                    </div>
+                </AccordionContent>
+            </AccordionItem>
+        </Card>
+    </Accordion>
 </div>
 
 {#snippet HistoryItem(title: string, subtitle: string, timeStr: string, imagSrc?: any)}
