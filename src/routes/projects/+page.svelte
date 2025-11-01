@@ -18,7 +18,7 @@
 	<h1 class="mr-44 text-4xl font-[Space_Grotesk] font-bold md:text-5xl">Projects</h1>
 
 	<div class="flex flex-col gap-2">
-		<span class="text-sm">Noteable projects I've worked on:</span>
+		<span class="text-sm text-muted-foreground">Noteable projects I've worked on:</span>
 		<Separator />
 	</div>
 
@@ -26,7 +26,7 @@
 		<!-- TODO: add this website -->
 		{@render ProjectCard(
 			'On-Demand Fakequakes',
-			'https://ondemandfakequakes.org',
+			'/projects/odf',
 			odfDashPic,
 			"For my MS project and while working at the SCI Institute, I developed On-Demand Fakequakes, a python-based full-stack web application (Python Plotly Dash, Flask) featuring an AWS Cloud workflow and a CI/CD pipeline using GitHub actions."
 		)}
@@ -59,7 +59,7 @@
 
 {#snippet ProjectCard(title: string, url: string, imgSrc: any, description?: string)}
 	<div>
-		<a href={url} target="_blank" rel="noreferrer" class="flex flex-col gap-2 text-center">
+		<a href={url} target={url.startsWith("/") ? "" : "_blank"} rel={url.startsWith("/") ? "" : "noreferrer"} class="flex flex-col gap-2 text-center">
 			<Card class={cn('p-1.5', HOVER_EXPAND_TAILWIND_ANIMATION)}>
 				<img
 					src={imgSrc}
