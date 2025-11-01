@@ -12,10 +12,12 @@
 		class: className,
 		children: childrenProp,
 		navMenuItem = false,
+		href,
 		...restProps
 	}: WithoutChildrenOrChild<DropdownMenuPrimitive.CheckboxItemProps> & {
 		children?: Snippet;
-		navMenuItem?: boolean,
+		navMenuItem?: boolean;
+		href?: string;
 	} = $props();
 </script>
 
@@ -34,14 +36,20 @@
 	{#snippet children({ checked, indeterminate })}
 
 		{#if !navMenuItem}
-			<span class="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
-				{#if indeterminate}
-					<MinusIcon class="size-4" />
-				{:else}
-					<CheckIcon class={cn("size-4", !checked && "text-transparent")} />
-				{/if}
-			</span>
+			<a href={href}>
+				<span class="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
+					{#if indeterminate}
+						<MinusIcon class="size-4" />
+					{:else}
+						<CheckIcon class={cn("size-4", !checked && "text-transparent")} />
+					{/if}
+				</span>
+				{@render childrenProp?.()}
+			</a>
+
+		{:else}
+			{@render childrenProp?.()}
 		{/if}
-		{@render childrenProp?.()}
+		
 	{/snippet}
 </DropdownMenuPrimitive.CheckboxItem>

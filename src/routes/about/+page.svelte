@@ -65,28 +65,26 @@
 
   
   <!-- Right Col -->
-  <div class="flex flex-col gap-6 sm:text-left text-center items-center md:items-start text-muted-foreground mt-24">
+  <div class="flex flex-col gap-6 md:text-left text-center items-center md:items-start text-muted-foreground md:mt-24">
 
-    <div class={cn("flex flex-row gap-4 items-center hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
-          onclick={() => window.open(CAL_EMAIL)} 
-          onkeydown={() => window.open(CAL_EMAIL)} 
-          role="button" tabindex={1}
-          title="Schedule a Meeting"
-    >
-      <CalendarDays class="size-6"/>
-      <span>Schedule a Meeting</span>
-    </div>
+    <a 
+      class={cn("hover:text-ring transition-colors flex flex-row gap-4 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}
+      href={CAL_EMAIL}
+      title="Schedule a Meeting">
+        <CalendarDays class="size-6"/>
+        <span>Schedule a Meeting</span>
+    </a>
 
     <div class="flex flex-row items-center gap-4">
-      <div class={cn("flex flex-row gap-4 items-center hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
-            onclick={() => window.open(EMAIL_URL)} 
-            onkeydown={() => window.open(EMAIL_URL)} 
-            role="button" tabindex={1}
-            title="My Email"
+      <a 
+        class={cn("hover:text-ring transition-colors flex flex-row gap-4 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}
+        href={EMAIL_URL}
+        title="My Email"
       >
         <Mail class="size-6"/>
         <span>marcus.a.adair@gmail.com</span>
-      </div>
+      </a>
+      
       <div class="transition-all" title="Copy" onclick={copyEmail} onkeydown={copyEmail} role="button" tabindex={1}>
         {#if changingIcon}
           <Check class="size-4 hover:text-ring" />
@@ -98,29 +96,25 @@
 
     <Separator />
 
-    <div class={cn("flex flex-row gap-4 items-center hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
-          onclick={() => window.open(LINKED_IN_URL)} 
-          onkeydown={() => window.open(LINKED_IN_URL)} 
-          role="button" tabindex={1}
-          title="LinkedIn"
+    <a
+      class={cn("hover:text-ring transition-colors flex flex-row gap-4 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}
+      href={LINKED_IN_URL}
+      title="LinkedIn"
     >
       <LinkedinIcon class="size-6"/>
       <span>LinkedIn</span>
-    </div>
+    </a>
 
-    <div class={cn("flex flex-row gap-4 items-center hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
-      onclick={() => window.open(GITHUB_URL)} 
-      onkeydown={() => window.open(GITHUB_URL)} 
-      role="button" tabindex={1}
+    <a
+      class={cn("hover:text-ring transition-colors flex flex-row gap-4 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}
+      href={GITHUB_URL}
       title="GitHub"
     >
       <Github class="size-6"/>
       <span>GitHub</span>
-    </div>
+    </a>
 
     <Separator />
-
-    <span class="text-muted-foreground">Connect with me on socials. I'll help build your website/app!</span>
 
     <div class="flex flex-col">
       <img src={snowboard_photo} alt="snowboard_photo" class={cn("rounded-md -rotate-2 mt-8", HOVER_EXPAND_TAILWIND_ANIMATION)}>
