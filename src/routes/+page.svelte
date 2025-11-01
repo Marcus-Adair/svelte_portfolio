@@ -27,7 +27,7 @@
         <img src={coffee} alt="coffee_image" class="w-24 h-24 " />
     </div>
     
-    <Accordion type="single" class="w-full flex flex-row justify-end sm:mt-8 " value="false">
+    <Accordion type="single" class="w-full flex flex-row justify-end sm:mt-8 " value="intro">
         <Card class="text-card-foreground px-6 py-2 w-full">
             <AccordionItem value="intro">
                 <AccordionTrigger>
@@ -61,41 +61,35 @@
 
     <div class="flex flex-row justify-between items-end">
         <div class="flex flex-row gap-6 text-muted-foreground ">
-            <div class={cn("hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
-                onclick={() => window.open(LINKED_IN_URL)} 
-                onkeydown={() => window.open(LINKED_IN_URL)} 
-                role="button" tabindex={1}
+            <a
+                class={cn("hover:text-ring transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
+                href={LINKED_IN_URL}
                 title="LinkedIn"
             >
             <LinkedinIcon class="size-7"/>
-            </div>
+            </a>
 
-            <div class={cn("hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
-                onclick={() => window.open(GITHUB_URL)} 
-                onkeydown={() => window.open(GITHUB_URL)} 
-                role="button" tabindex={1}
-                title="GitHub"
-            >
-            <Github class="size-7"/>
-            </div>
-                    
-            <div class={cn("hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
-                onclick={() => window.open(CAL_EMAIL)} 
-                onkeydown={() => window.open(CAL_EMAIL)} 
-                role="button" tabindex={1}
+                <a
+                    class={cn("hover:text-ring transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
+                    href={GITHUB_URL}
+                    title="GitHub"
+                >
+                <Github class="size-7"/>
+            </a>
+            <a
+                class={cn("hover:text-ring transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
+                href={CAL_EMAIL}
                 title="Calendar"
             >
-            <CalendarDays class="size-7"/>
-            </div>
-        
-            <div class={cn("hover:text-ring cursor-pointer transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
-                onclick={() => window.open(EMAIL_URL)} 
-                onkeydown={() => window.open(EMAIL_URL)} 
-                role="button" tabindex={1}
+                <CalendarDays class="size-7"/>
+            </a>
+            <a
+                class={cn("hover:text-ring transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
+                href={EMAIL_URL}
                 title="Email"
             >
-            <Mail class="size-7"/>
-            </div>
+                <Mail class="size-7"/>
+            </a>
         </div>
 
         <Button variant="outline" size="lg"  title="My Resume" href={resume} download="Marcus_Adair_Resume.pdf">

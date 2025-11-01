@@ -45,27 +45,40 @@
 						<ChevronDown/>
 					</Button>
 				</DropdownMenuTrigger>
-				<DropdownMenuContent class="w-56 flex md:hidden" align="end">
-				  <DropdownMenuGroup>
-					<DropdownMenuLabel class="text-lg">Navigation</DropdownMenuLabel>
+				<DropdownMenuContent class=" flex md:hidden" align="end">
+				  <DropdownMenuGroup class="mt-1">
+					<!-- <DropdownMenuLabel class="text-lg">Navigation</DropdownMenuLabel> -->
+					<span class="text-lg font-bold ml-4">Navigation</span>
+					<DropdownMenuSeparator class="w-58"/>
 
-					<DropdownMenuSeparator class="w-56"/>
+					<a class="cursor-pointer  flex text-lg rounded-sm py-2 hover:bg-accent hover:text-accent-foreground transition-all" href="/">
+						<span class="ml-4">Home</span>
+					</a>
 
-					<DropdownMenuCheckboxItem class="cursor-pointer flex-1" navMenuItem>
-						<a href="/">Home</a>
+					<a class="cursor-pointer  flex text-lg rounded-sm py-2 hover:bg-accent hover:text-accent-foreground transition-all" href="/about">
+						<span class="ml-4">Projects</span>
+					</a>
+
+					<a class="cursor-pointer  flex text-lg rounded-sm py-2 hover:bg-accent hover:text-accent-foreground transition-all" href="/projects">
+						<span class="ml-4">Home</span>
+					</a>
+
+					<a class="cursor-pointer  flex text-lg rounded-sm py-2 hover:bg-accent hover:text-accent-foreground transition-all" href="/blog">
+						<span class="ml-4">Blog</span>
+					</a>
+
+
+					<!-- <DropdownMenuCheckboxItem class="cursor-pointer flex-1" navMenuItem href="/about">
+						About
 					</DropdownMenuCheckboxItem>
 
-					<DropdownMenuCheckboxItem class="cursor-pointer flex-1" navMenuItem>
-						<a href="/about">About</a>
+					<DropdownMenuCheckboxItem class="cursor-pointer flex-1" navMenuItem href="/projects">
+						Projects
 					</DropdownMenuCheckboxItem>
 
-					<DropdownMenuCheckboxItem class="cursor-pointer flex-1" navMenuItem>
-						<a href="/projects">Projects</a>
-					</DropdownMenuCheckboxItem>
-
-					<DropdownMenuCheckboxItem class="cursor-pointer flex-1" navMenuItem>
-						<a href="/blog">Blog</a>
-					</DropdownMenuCheckboxItem>
+					<DropdownMenuCheckboxItem class="cursor-pointer flex-1" navMenuItem  href="/blog">
+						Blog
+					</DropdownMenuCheckboxItem> -->
 				  </DropdownMenuGroup>
 				</DropdownMenuContent>
 			  </DropdownMenu.Root>
@@ -74,7 +87,7 @@
 		</div>
 	</header>
 
-	<main class="flex-1 px-6 sm:px-36 mt-10">
+	<main class="flex-1 px-6 md:px-36 mt-10">
 		{@render children?.()}
 	</main>
 
