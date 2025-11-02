@@ -23,7 +23,7 @@
     <img src={headshot} alt="" class="w-24 h-24 rounded-full object-cover" />
 
     <div class="flex flex-row">
-        <h1 class="text-4xl md:text-5xl font-bold lg:mr-44 font-[Space_Grotesk]">Software Engineer, Computer Scientist, and Creative.</h1>
+        <h1 class="text-4xl md:text-5xl font-bold xl:mr-44 font-[Space_Grotesk]">Software Engineer, Computer Scientist, and Creative.</h1>
         <img src={coffee} alt="coffee_image" class="w-24 h-24 " />
     </div>
     
