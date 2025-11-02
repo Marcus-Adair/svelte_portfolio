@@ -38,16 +38,8 @@ You can also open the app in your browser automatically:
 npm run dev -- --open
 ```
 
-### Building for Production
+### Notes
 
-To create an optimized production build:
+I basically wrote this entire site by hand, using some shadcn-svelte components. I deployed through Cloudflare - very easy process.
 
-```sh
-npm run build
-```
-
-Preview the production build locally:
-
-```sh
-npm run preview
-```
+See the site at https://marcusadair.com

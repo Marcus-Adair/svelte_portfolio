@@ -8,26 +8,48 @@
 	import Button from '$lib/components/ui/button.svelte';
 	import Card from '$lib/components/ui/card/card.svelte';
 	import Separator from '$lib/components/ui/separator.svelte';
-	import { CAL_EMAIL, EMAIL_URL, GITHUB_URL, LINKED_IN_URL } from '$lib/config';
-	import { CalendarDays,  Download, Github, History, LinkedinIcon, Mail } from 'lucide-svelte';
+	import { CAL_EMAIL, EMAIL, EMAIL_URL, GITHUB_URL, LINKED_IN_URL } from '$lib/consts/config';
+	import { CalendarDays,  Check,  Copy,  Download, Github, History, LinkedinIcon, Mail } from 'lucide-svelte';
 	import { cn } from '$lib/utils';
 	import { HOVER_EXPAND_TAILWIND_ANIMATION } from '$lib/consts/style';
     import  resume  from "$lib/assets/Marcus_Adair_Portfolio_Resume.pdf"
+
+    let changingIcon = $state(false);
+
+    function copyEmail() {
+        navigator.clipboard.writeText(EMAIL)
+        changingIcon = true;
+        setTimeout(() => { changingIcon = false; }, 1800);
+    }
 </script>
 
 <svelte:head>
-  <title>Home - Marcus Adair</title>
+  <title>Home</title>
 </svelte:head>
 
 <div class="flex flex-col gap-6">
     <img src={headshot} alt="" class="w-24 h-24 rounded-full object-cover" />
 
-    <div class="flex flex-row">
-        <h1 class="text-4xl md:text-5xl font-bold xl:mr-44 font-[Space_Grotesk]">Software Engineer, Computer Scientist, and Creative.</h1>
-        <img src={coffee} alt="coffee_image" class="w-24 h-24 " />
+    <div class="flex flex-col gap-3">
+        <div class="flex flex-row">
+            <h1 class="text-4xl md:text-5xl font-bold xl:mr-44 font-[Space_Grotesk]">Software Engineer, Computer Scientist, and Creative.</h1>
+            <img src={coffee} alt="coffee_image" class="w-24 h-24 " />
+        </div>
+
+
+        <div class="flex flex-row gap-3 items-center text-muted-foreground">
+            <span>marcus.a.adair@gmail.com</span>
+            <div class="transition-all" title="Copy" onclick={copyEmail} onkeydown={copyEmail} role="button" tabindex={1}>
+                {#if changingIcon}
+                <Check class="size-3.5 hover:text-ring" />
+                {:else}
+                <Copy class="size-3.5 hover:text-ring cursor-pointer" />
+                {/if}
+            </div>
+        </div>
     </div>
     
-    <Accordion type="single" class="w-full flex flex-row justify-end sm:mt-8 " value="intro">
+    <Accordion type="single" class="w-full flex flex-row justify-end sm:mt-2 " value="intro">
         <Card class="text-card-foreground px-6 py-2 w-full">
             <AccordionItem value="intro">
                 <AccordionTrigger>
@@ -65,6 +87,8 @@
                 class={cn("hover:text-ring transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
                 href={LINKED_IN_URL}
                 title="LinkedIn"
+                target="_blank"
+                rel="noreferrer"
             >
             <LinkedinIcon class="size-7"/>
             </a>
@@ -73,6 +97,8 @@
                     class={cn("hover:text-ring transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
                     href={GITHUB_URL}
                     title="GitHub"
+                    target="_blank"
+                    rel="noreferrer"
                 >
                 <Github class="size-7"/>
             </a>
@@ -80,6 +106,8 @@
                 class={cn("hover:text-ring transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
                 href={CAL_EMAIL}
                 title="Calendar"
+                target="_blank"
+                rel="noreferrer"
             >
                 <CalendarDays class="size-7"/>
             </a>
@@ -87,6 +115,8 @@
                 class={cn("hover:text-ring transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
                 href={EMAIL_URL}
                 title="Email"
+                target="_blank"
+                rel="noreferrer"
             >
                 <Mail class="size-7"/>
             </a>
