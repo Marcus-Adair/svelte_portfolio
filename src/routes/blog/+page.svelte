@@ -13,7 +13,7 @@
 </svelte:head>
 
 <div class="flex flex-col gap-6">
-  <h1 class="text-4xl md:text-5xl font-bold mr-44 font-[Space_Grotesk] mt-4">The Marcus Adair Blog.</h1>
+  <h1 class="text-4xl md:text-5xl font-bold font-[Space_Grotesk] mt-4">The Marcus Adair Blog.</h1>
 
   <div class="flex flex-col gap-3.5">
     <div class="flex flex-row items center gap-4 h-5 font-[Space_Grotesk]">

@@ -11,9 +11,7 @@
 	import DropdownMenuContent from '$lib/components/ui/dropdown-menu/dropdown-menu-content.svelte';
 	import DropdownMenuGroup from '$lib/components/ui/dropdown-menu/dropdown-menu-group.svelte';
 	import DropdownMenuSeparator from '$lib/components/ui/dropdown-menu/dropdown-menu-separator.svelte';
-	import DropdownMenuCheckboxItem from '$lib/components/ui/dropdown-menu/dropdown-menu-checkbox-item.svelte';
 	import { DropdownMenu } from 'bits-ui';
-	import DropdownMenuLabel from '$lib/components/ui/dropdown-menu/dropdown-menu-label.svelte';
 	let { children } = $props();
 </script>
 
@@ -54,31 +52,19 @@
 					<a class="cursor-pointer  flex text-lg rounded-sm py-2 hover:bg-accent hover:text-accent-foreground transition-all" href="/">
 						<span class="ml-4">Home</span>
 					</a>
-
+					<DropdownMenuSeparator class="w-58"/>
 					<a class="cursor-pointer  flex text-lg rounded-sm py-2 hover:bg-accent hover:text-accent-foreground transition-all" href="/about">
+						<span class="ml-4">About</span>
+					</a>
+					<DropdownMenuSeparator class="w-58"/>
+					<a class="cursor-pointer  flex text-lg rounded-sm py-2 hover:bg-accent hover:text-accent-foreground transition-all" href="/projects">
 						<span class="ml-4">Projects</span>
 					</a>
-
-					<a class="cursor-pointer  flex text-lg rounded-sm py-2 hover:bg-accent hover:text-accent-foreground transition-all" href="/projects">
-						<span class="ml-4">Home</span>
-					</a>
-
+					<DropdownMenuSeparator class="w-58"/>
 					<a class="cursor-pointer  flex text-lg rounded-sm py-2 hover:bg-accent hover:text-accent-foreground transition-all" href="/blog">
 						<span class="ml-4">Blog</span>
 					</a>
 
-
-					<!-- <DropdownMenuCheckboxItem class="cursor-pointer flex-1" navMenuItem href="/about">
-						About
-					</DropdownMenuCheckboxItem>
-
-					<DropdownMenuCheckboxItem class="cursor-pointer flex-1" navMenuItem href="/projects">
-						Projects
-					</DropdownMenuCheckboxItem>
-
-					<DropdownMenuCheckboxItem class="cursor-pointer flex-1" navMenuItem  href="/blog">
-						Blog
-					</DropdownMenuCheckboxItem> -->
 				  </DropdownMenuGroup>
 				</DropdownMenuContent>
 			  </DropdownMenu.Root>
