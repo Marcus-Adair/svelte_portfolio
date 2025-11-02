@@ -14,6 +14,11 @@
 	import Card from '$lib/components/ui/card/card.svelte';
 </script>
 
+<svelte:head>
+  <title>Projects</title>
+</svelte:head>
+
+
 <div class="flex flex-col gap-6">
 	<h1 class="mr-44 text-4xl font-[Space_Grotesk] font-bold md:text-5xl">Projects</h1>
 

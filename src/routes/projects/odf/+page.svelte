@@ -7,6 +7,11 @@
     import cicdDiagram from "$lib/assets/ci_cd_diagram.png"
 </script>
 
+<svelte:head>
+  <title>Projects - ODF</title>
+</svelte:head>
+
+
 <div class="flex flex-col gap-6">
     <div class="flex flex-row gap-6 items-center">
         <Button variant="ghost" size="icon-lg" href="/projects">

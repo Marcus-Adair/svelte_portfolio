@@ -21,7 +21,7 @@
 
 
 <svelte:head>
-  <title>About - Marcus Adair</title>
+  <title>About</title>
 </svelte:head>
 
 
@@ -70,7 +70,10 @@
     <a 
       class={cn("hover:text-ring transition-colors flex flex-row gap-4 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}
       href={CAL_EMAIL}
-      title="Schedule a Meeting">
+      title="Schedule a Meeting"
+      target="_blank"
+      rel="noreferrer"
+    >
         <CalendarDays class="size-6"/>
         <span>Schedule a Meeting</span>
     </a>
@@ -80,6 +83,8 @@
         class={cn("hover:text-ring transition-colors flex flex-row gap-4 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}
         href={EMAIL_URL}
         title="My Email"
+        target="_blank"
+        rel="noreferrer"
       >
         <Mail class="size-6"/>
         <span>marcus.a.adair@gmail.com</span>
@@ -100,6 +105,8 @@
       class={cn("hover:text-ring transition-colors flex flex-row gap-4 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}
       href={LINKED_IN_URL}
       title="LinkedIn"
+      target="_blank"
+      rel="noreferrer"
     >
       <LinkedinIcon class="size-6"/>
       <span>LinkedIn</span>
@@ -109,6 +116,8 @@
       class={cn("hover:text-ring transition-colors flex flex-row gap-4 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}
       href={GITHUB_URL}
       title="GitHub"
+      target="_blank"
+      rel="noreferrer"
     >
       <Github class="size-6"/>
       <span>GitHub</span>

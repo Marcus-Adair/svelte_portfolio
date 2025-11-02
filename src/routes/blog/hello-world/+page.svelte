@@ -1,10 +1,14 @@
 <script lang="ts">
-	import Paragraph from "../_components/paragraph.svelte";
     import spidermanMeme  from "$lib/assets/spiderman_meme.png"
+	import Paragraph from "../_components/paragraph.svelte";
 	import PostHeader from "../_components/postHeader.svelte";
 
     const DATE = new Date("2025-10-21T05:51:55.000Z")
 </script>
+
+<svelte:head>
+  <title>Blog - Hello World!!</title>
+</svelte:head>
 
 
 <div class="flex flex-col gap-4">
@@ -69,6 +73,6 @@
 
     <Paragraph>Thanks again for reading this if you are! Cheers!</Paragraph>
 
-    <span class="text-right text-4xl font-[Space_Grotesk] mr-14"> - Marcus,</span>
-    <span class="text-right text-lg font-[Space_Grotesk] mr-14">Oct. 20th and 21st, 2025</span>
+    <span class="text-right text-4xl font-[Space_Grotesk] lg:mr-14 mt-2"> - Marcus,</span>
+    <span class="text-right text-lg font-[Space_Grotesk] lg:mr-14">Oct. 20th and 21st, 2025</span>
 </div>
