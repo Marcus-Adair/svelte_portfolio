@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Card from "$lib/components/ui/card/card.svelte";
 	import Separator from "$lib/components/ui/separator.svelte";
-	import { CAL_EMAIL, EMAIL, EMAIL_URL, GITHUB_URL, LINKED_IN_URL } from "$lib/config";
+	import { CAL_EMAIL, EMAIL, EMAIL_URL, GITHUB_URL, LINKED_IN_URL } from "$lib/consts/config";
 	import { HOVER_EXPAND_TAILWIND_ANIMATION } from "$lib/consts/style";
 	import { cn } from "$lib/utils";
 	import { CalendarDays, Check, Copy, Github, LinkedinIcon, Mail } from "lucide-svelte";

@@ -8,7 +8,7 @@
 	import Button from '$lib/components/ui/button.svelte';
 	import Card from '$lib/components/ui/card/card.svelte';
 	import Separator from '$lib/components/ui/separator.svelte';
-	import { CAL_EMAIL, EMAIL_URL, GITHUB_URL, LINKED_IN_URL } from '$lib/config';
+	import { CAL_EMAIL, EMAIL_URL, GITHUB_URL, LINKED_IN_URL } from '$lib/consts/config';
 	import { CalendarDays,  Download, Github, History, LinkedinIcon, Mail } from 'lucide-svelte';
 	import { cn } from '$lib/utils';
 	import { HOVER_EXPAND_TAILWIND_ANIMATION } from '$lib/consts/style';

@@ -5,13 +5,17 @@
 	import FloatingNavbar from '$lib/components/floatingNavbar.svelte';
 	import Footer from '$lib/components/footer.svelte';
 	import ThemeToggle from '$lib/components/themeToggle.svelte';
+	import { Dialog } from 'bits-ui';
+	import DialogTrigger from '$lib/components/ui/dialog/dialog-trigger.svelte';
+	import DialogContent from '$lib/components/ui/dialog/dialog-content.svelte';
+	import DialogHeader from '$lib/components/ui/dialog/dialog-header.svelte';
+	import DialogTitle from '$lib/components/ui/dialog/dialog-title.svelte';
+	import Separator from '$lib/components/ui/separator.svelte';
+	import NavLink from '$lib/components/navLink.svelte';
+	import { pageOptions } from '$lib/types/pageOptions';
 	import Button from '$lib/components/ui/button.svelte';
-	import { ChevronDown } from 'lucide-svelte';
-	import DropdownMenuTrigger from '$lib/components/ui/dropdown-menu/dropdown-menu-trigger.svelte';
-	import DropdownMenuContent from '$lib/components/ui/dropdown-menu/dropdown-menu-content.svelte';
-	import DropdownMenuGroup from '$lib/components/ui/dropdown-menu/dropdown-menu-group.svelte';
-	import DropdownMenuSeparator from '$lib/components/ui/dropdown-menu/dropdown-menu-separator.svelte';
-	import { DropdownMenu } from 'bits-ui';
+	import ChevronDown from '@lucide/svelte/icons/chevron-down';
+
 	let { children } = $props();
 </script>
 
@@ -35,39 +39,39 @@
 		<div class="flex md:hidden justify-self-center"></div>
 
 		<div class="justify-self-end gap-2 flex flex-row items-center">
-			<!-- Mobile/small-screen navigation menu -->
-			<DropdownMenu.Root>
-				<DropdownMenuTrigger>
+			<Dialog.Root>
+				<DialogTrigger>
+					
 					<Button variant="outline"  title="Navigation" class="py-5 flex md:hidden">
-						Menu
-						<ChevronDown/>
+						Nav
+						<ChevronDown />
 					</Button>
-				</DropdownMenuTrigger>
-				<DropdownMenuContent class=" flex md:hidden" align="end">
-				  <DropdownMenuGroup class="mt-1">
-					<!-- <DropdownMenuLabel class="text-lg">Navigation</DropdownMenuLabel> -->
-					<span class="text-lg font-bold ml-4">Navigation</span>
-					<DropdownMenuSeparator class="w-58"/>
+				
+				
+				
+				</DialogTrigger>
+				<DialogContent>
+					<DialogHeader>
+						<DialogTitle class="mb-1">Site Navigation</DialogTitle>
+					</DialogHeader>
 
-					<a class="cursor-pointer  flex text-lg rounded-sm py-2 hover:bg-accent hover:text-accent-foreground transition-all" href="/">
-						<span class="ml-4">Home</span>
-					</a>
-					<DropdownMenuSeparator class="w-58"/>
-					<a class="cursor-pointer  flex text-lg rounded-sm py-2 hover:bg-accent hover:text-accent-foreground transition-all" href="/about">
-						<span class="ml-4">About</span>
-					</a>
-					<DropdownMenuSeparator class="w-58"/>
-					<a class="cursor-pointer  flex text-lg rounded-sm py-2 hover:bg-accent hover:text-accent-foreground transition-all" href="/projects">
-						<span class="ml-4">Projects</span>
-					</a>
-					<DropdownMenuSeparator class="w-58"/>
-					<a class="cursor-pointer  flex text-lg rounded-sm py-2 hover:bg-accent hover:text-accent-foreground transition-all" href="/blog">
-						<span class="ml-4">Blog</span>
-					</a>
+					<div class="flex flex-col gap-3">
+						<NavLink href="/" title={pageOptions.home}/>
 
-				  </DropdownMenuGroup>
-				</DropdownMenuContent>
-			  </DropdownMenu.Root>
+						<Separator/>
+
+						<NavLink href="/about" title={pageOptions.about}/>
+
+						<Separator/>
+
+						<NavLink href="/projects" title={pageOptions.projects}/>
+
+						<Separator/>
+
+						<NavLink href="/blog" title={pageOptions.blog}/>
+					</div>
+				</DialogContent>
+			</Dialog.Root>
 
 			<ThemeToggle/>
 		</div>
