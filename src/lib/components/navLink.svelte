@@ -21,7 +21,7 @@
 <DialogClose>
     <a 
         {href}
-        class={cn("cursor-pointer flex flex-row justify-between items-center text-xl rounded-sm py-3 hover:bg-accent hover:text-primary-foreground transition-all", onPage && "bg-primary")}
+        class={cn("cursor-pointer flex flex-row justify-between items-center text-xl rounded-sm py-3 hover:bg-accent hover:text-accent-foreground transition-all", onPage && "bg-primary text-primary-foreground hover:text-accent-foreground")}
     >
         <span class="ml-4">{title}</span>
         <span class="mr-4"><ChevronRight/></span>
