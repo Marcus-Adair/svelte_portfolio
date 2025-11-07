@@ -48,13 +48,6 @@
 			alpsPic,
 			'I developed a Python CLI tool called ALPS (Automatic Least-Privilege Policy Suggestor) for a graduate Software & Systems Security course. ALPS parses AWS infrastructure code, identifies insecure IAM policies, and suggests alternatives.'
 		)}
-		<!-- {@render ProjectCard(
-			'Fakequakes DAGMan Workflow (FDW)',
-			'https://github.com/Marcus-Adair/Accelerating-Data-Intensive-Seismic-Research-Through-Parallel-Workflow-Optimization-and-Federated-CI',
-			fqsPaperPic,
-			'While serving as an undergraduate research assistant, I developed FDW, a high-throughput workflow utilizing Bash, Python, Singularity (containerization), and more. FDW significantly accelerated premier earthquake simulation software using the Open Science Grid. The work resulted in a paper accepted at an SC23 workshop and published by the ACM.'
-		)} -->
-
 		<div>
 			<a href="https://github.com/Marcus-Adair/Accelerating-Data-Intensive-Seismic-Research-Through-Parallel-Workflow-Optimization-and-Federated-CI" target="_blank" rel="noreferrer" class="flex flex-col gap-2 text-center">
 				<Card class={cn('p-1.5', HOVER_EXPAND_TAILWIND_ANIMATION)}>
@@ -77,8 +70,6 @@
 				</AccordionItem>
 			</Accordion>
 		</div>
-
-
 		{@render ProjectCard(
 			'Spatial Enrichment Data Engine (SEDE)',
 			'https://drive.google.com/drive/folders/1p6R3zL03XLPOm3x2jNea5T9apxR6reDN?usp=sharing',
