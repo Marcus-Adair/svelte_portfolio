@@ -35,15 +35,15 @@
 
 
     <Card class={cn("text-card-foreground p-6 mt-0.5", HOVER_EXPAND_TAILWIND_ANIMATION)}>
-      <span>I was born and raised in Utah. I grew up primarily in Davis County (north of Salt Lake City) where I went to K-12 and graduated from Viewmont Highschool in 2017. </span>
+      <span>I was born and raised in Utah. I grew up in Davis County (north of Salt Lake City) where I went to K-12 school and graduated from Viewmont Highschool in 2017. </span>
     </Card>
 
     <Card class={cn("text-card-foreground p-6", HOVER_EXPAND_TAILWIND_ANIMATION)}>
-      <span>I began studying Computer Science at the University of Utah (U of U) in Fall 2017. Before my senior year I started working as an undergraduate research assistant at the Scientific Computing and Imaging (SCI) Instite at the U of U.</span>
+      <span>I began studying Computer Science at the University of Utah (U of U) in Fall 2017. Before my senior year I started working as an undergraduate research assistant at the U of U's Scientific Computing and Imaging (SCI) Institute.</span>
     </Card>
 
     <Card class={cn("text-card-foreground p-6", HOVER_EXPAND_TAILWIND_ANIMATION)}>
-      <span>Doing research at SCI was life-changing, and I learned alot. In my undergrad. research I developed a high throughput workflow to accelerate earthquake simulations, collaborated with scientists from Oregon and Spain, went on a work trip to the University of Oregon, and wrote a paper that was eventually accepted by an SC23 workshop and <Link href="https://dl.acm.org/doi/10.1145/3624062.3624276">published by the ACM</Link>.</span>
+      <span>Doing research at SCI was life-changing, and I learned alot. In my undergraduate research I developed a high throughput workflow to accelerate earthquake simulations, collaborated with scientists from Oregon and other places - including a a work trip to the University of Oregon, and wrote a paper that was eventually accepted by an SC23 workshop and <Link href="https://dl.acm.org/doi/10.1145/3624062.3624276">published by the ACM</Link>.</span>
     </Card>
 
     <Card class={cn("text-card-foreground p-6", HOVER_EXPAND_TAILWIND_ANIMATION)}>
@@ -51,15 +51,15 @@
     </Card>
 
     <Card class={cn("text-card-foreground p-6", HOVER_EXPAND_TAILWIND_ANIMATION)}>
-      <span>In Summer 2024 I did an internship at the University of Oregon, where I began development on On-Demand Fakequakes, an iteration on previous work. I then turned this into my masters project, continued devopment on it for a year, and created a full-stack app with a Python front-end and back-end, an AWS workflow with Python Infrastructure-as-Code, and a CI/CD pipeline using GitHub Actions. The project was targeted towards NASA scientists and other geoscientists and was a pleasure to work on.</span>
+      <span>In Summer 2024 I did an internship at the University of Oregon, where I began development on On-Demand Fakequakes, an iteration on previous work. I then turned this into my master's project and work research, continued devopment on it for a year, and created a full-stack app with a Python-based front-end, an AWS workflow (with Infrastructure-as-Code built in Python), and a CI/CD pipeline using GitHub Actions to automate AWS resource deployments, front-end updates, docker image builds and more. The project was targeted towards NASA scientists and other geoscientists.</span>
     </Card>
 
     <Card class={cn("text-card-foreground p-6", HOVER_EXPAND_TAILWIND_ANIMATION)}>
-      In May 2025 I graduated with my MS in Computer Science, entered the industry, and I now work at SafeStreets as a software engineer. I am helping build TypeScript applications with React and Svelte for managing installation orders and appointments, inventory, and more for the company. Its been amazing so far and I've already grown so much as a developer!
+      In May 2025 I graduated with my MS in Computer Science, entered the industry, and I now work at SafeStreets as a software engineer. I am helping build TypeScript applications in the front-end with React and Svelte, and also working in the back-end with a Hono API and Drizzle database. The apps serve to manage security installation orders and appointments, inventory, and more for the business.
     </Card>
 
     <Card class={cn("text-card-foreground p-6", HOVER_EXPAND_TAILWIND_ANIMATION)}>
-      Besides software-related things, I am a proud Utahn and Finnish man. My mother is from Finland and I am lucky to be a Finnish citizen myself; I've taken many trips there and it is amazing. I love the Utah nature, I love snowboarding, hiking, and more. I also have an interest in electronic music production, DJing, comic books, video games, and more! I have a black cat named Wiz, who I love. I have an amazing girlfriend Kinley, who I love. And I am passionate about developing software!
+      Aside from software-related things, I enjoy snowboarding, hiking, the outdoors, film, electronic music production and DJing, video games, and more! I am passionate about developing software and continuing to learn!
     </Card>
   </div>
 
