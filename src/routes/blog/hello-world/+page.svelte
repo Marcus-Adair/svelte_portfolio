@@ -16,17 +16,16 @@
     
     <Paragraph>
         Hello World! ... or so they say. My name is Marcus. This is the first post in what is my attempt at a blog. 
-        Hopefully this isn't the only post that actually end up being made. Hopefully this site actually ends up getting launched ... because 
-        I am developing a brand new portfolio website! In the past I have used prebuilt templates to build sites, but now I have the skills
-        to build something from scratch that is event better, even grander, and something that is more in my style.
+        Hopefully this isn't the only post that actually end up being made. I am developing a brand new portfolio website! In the past I have used prebuilt templates to build sites, but now I have the skills
+        to build something from scratch that is even better.
     </Paragraph>
 
     <Paragraph>
-        With this project I have chose a front-end framework that I enjoy using - Svelte. It has been fun to dive into Svelte, which is a framework I wasn't aware of earlier this year. The technology behind Svelte is super
-        cool in that it uses a custom compiler to convert its own custom syntax into lightweight, optimized javascript that runs on the browser.
-        They're able to abstract a lot of complexities from React and define simple ways of doing common web dev patterns. For example, they provide
-        a greate await-then-catch block syntax that allows you await some data (which is a promise), provide a spinner while you're waiting, and then 
-        do something with that data when it is fetched or else render something when an error happens.
+        With this project I have chosen a front-end framework that I enjoy using - Svelte. It has been fun to dive into Svelte, which is a framework that I wasn't aware of earlier this year. The technology behind Svelte is super
+        cool in that it uses a custom compiler to convert custom Svelte syntax into optimized JavaScript that runs on the browser.
+        Svelte is able to abstract a lot of complexities from React and define simple ways of doing common web dev patterns. For example, a code pattern I enjoy is how it provides
+        a great await-then-catch block syntax that allows one to await a promise of data, render a spinner on the client while waiting, and then 
+        do something with that data when it is fetched or else handle an error.
     </Paragraph>
 
     <Paragraph>Here's an example.</Paragraph>
@@ -50,9 +49,8 @@
     </div>
 
     <Paragraph>
-        In the above example, <span class="font-mono italic">data.someValue</span> is a Promise that is returned from the server. While that Promise is being awaited, a Spinner is rendered.
-        When the Promise is resolved, <span class="font-mono italic">data.someValue</span> is rendered, or an error is caught and handled. In React, a developer has a ton of options for how they
-        could implement this and beginners may make mistakes, but Svelte provides an awesome best practice pattern through their syntax that is easy to follow, simple to implement, and powerful.
+        In React, a developer has a ton of options for how they might implement something like this - this because React is quite non-opinionated; I think this could cause beginners to make mistakes.
+        Svelte's opinions on how to cleanly do different things provides an awesome experience through their language that is easy to follow, simple to implement, and powerful.
     </Paragraph>
 
 
@@ -71,7 +69,7 @@
         to highlight some things that I think are cool and to show off a bit of my personality.
     </Paragraph>
 
-    <Paragraph>Thanks again for reading this if you are! Cheers!</Paragraph>
+    <Paragraph>Thanks again, cheers!</Paragraph>
 
     <span class="text-right text-4xl font-[Space_Grotesk] lg:mr-14 mt-2"> - Marcus,</span>
     <span class="text-right text-lg font-[Space_Grotesk] lg:mr-14">Oct. 20th and 21st, 2025</span>

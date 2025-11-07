@@ -60,7 +60,7 @@
                     <div>
                         <span>I am Marcus Adair, a software engineer based in Lehi, Utah. I work at  </span>
                         <span class="font-semibold cursor-pointer text-primary" role="button" tabindex={1} onclick={() => window.open("https://www.safestreets.com/")} onkeydown={() => window.open("https://www.safestreets.com/")}>Safestreets</span>
-                        <span>- a nationwide ADT equipment sales/installation company, building TypeScript-based web and mobile applications supporting internal business operations.</span>
+                        <span>- a nationwide ADT equipment installation/sales company, building TypeScript-based web and mobile applications to support internal business operations.</span>
                     </div>
 
                     <div>
