@@ -6,7 +6,6 @@
 	import {  Blocks, BookOpen, Code, House, Newspaper } from "lucide-svelte";
 </script> 
 
-
 <nav  class="flex flex-row justify-center items-center">
     <ol class="flex flex-row items-center gap-12 border rounded-md justify-center  py-3 px-6 transition-all bg-card shadow-sm">
         <li>

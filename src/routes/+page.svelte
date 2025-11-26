@@ -1,6 +1,6 @@
 <script lang="ts">
     import headshot from '$lib/assets/marcus_headshot_small.jpeg';
-    import coffee from '$lib/assets/hot-coffee.gif';
+    import coffee_gif from '$lib/assets/hot-coffee.gif';
     import AccordionContent from '$lib/components/ui/accordion/accordion-content.svelte';
 	import AccordionItem from '$lib/components/ui/accordion/accordion-item.svelte';
 	import AccordionTrigger from '$lib/components/ui/accordion/accordion-trigger.svelte';
@@ -13,13 +13,52 @@
 	import { cn } from '$lib/utils';
 	import { HOVER_EXPAND_TAILWIND_ANIMATION } from '$lib/consts/style';
     import  resume  from "$lib/assets/Marcus_Adair_Portfolio_Resume.pdf"
+    import gsap from "gsap";
+	import { onMount } from 'svelte';
 
     let changingIcon = $state(false);
-
     function copyEmail() {
         navigator.clipboard.writeText(EMAIL)
         changingIcon = true;
         setTimeout(() => { changingIcon = false; }, 1800);
+    }
+
+    let coffee: HTMLImageElement;
+    let h1: HTMLHeadingElement;
+    onMount(() => {
+        gsap.fromTo(
+            coffee,
+            { y: -325 }, 
+            { y: 0, duration: 1.1, ease: "bounce.out" }
+        );
+        gsap.fromTo(
+            h1,
+            { x: -300},
+            { x: 0, duration: 0.3, ease: "power1.out" }
+        );
+    });
+
+    function animateCoffee(){
+        if (Math.random() < 0.7) {
+            // Bounce
+            const tl = gsap.timeline();
+            tl.fromTo(
+                coffee,
+                { y: 0 },
+                { y: -200, duration: 0.3, ease: "power2.out" }
+            );
+            tl.to(coffee, { y: 0, duration: 0.75, ease: "bounce.out" });
+        } else {
+            // Spin
+            gsap.fromTo(
+            coffee,
+            { rotate: 0 },
+            {
+                rotate: 360,
+                duration: 0.42,
+            }
+        );
+        }
     }
 </script>
 
@@ -28,22 +67,24 @@
 </svelte:head>
 
 <div class="flex flex-col gap-6">
-    <img src={headshot} alt="" class="w-24 h-24 rounded-full object-cover" />
+    <img src={headshot} alt="coffee_gif" class="w-24 h-24 rounded-full object-cover" />
 
     <div class="flex flex-col gap-3">
         <div class="flex flex-row">
-            <h1 class="text-4xl md:text-5xl font-bold xl:mr-44 font-[Space_Grotesk]">Software Engineer, Computer Scientist, and Creative.</h1>
-            <img src={coffee} alt="coffee_image" class="w-24 h-24 " />
+            <h1 bind:this={h1} class="text-4xl md:text-5xl xl:mr-44">Software Engineer, Computer Scientist, and Creative.</h1>
+            <button onclick={animateCoffee} class="flex-none cursor-pointer">
+                <img bind:this={coffee} src={coffee_gif} alt="coffee_image" class="w-24 h-24" />
+            </button>
         </div>
 
 
         <div class="flex flex-row gap-3 items-center text-muted-foreground">
-            <span>marcus.a.adair@gmail.com</span>
-            <div class="transition-all" title="Copy" onclick={copyEmail} onkeydown={copyEmail} role="button" tabindex={1}>
+            <span class="nice-tracking">marcus.a.adair@gmail.com</span>
+            <div class="transition-all hover:text-ring" title="Copy" onclick={copyEmail} onkeydown={copyEmail} role="button" tabindex={1}>
                 {#if changingIcon}
-                <Check class="size-3.5 hover:text-ring" />
+                    <Check class="size-3.5" />
                 {:else}
-                <Copy class="size-3.5 hover:text-ring cursor-pointer" />
+                    <Copy class="size-3.5 cursor-pointer" />
                 {/if}
             </div>
         </div>
@@ -53,7 +94,7 @@
         <Card class="text-card-foreground px-6 py-2 w-full">
             <AccordionItem value="intro">
                 <AccordionTrigger>
-                    <span class="text-lg text-primary">Hello world!</span>
+                    <span class="text-lg text-primary tracking-wide">Hello world!</span>
                 </AccordionTrigger>
 
                 <AccordionContent class="flex flex-col gap-6">
@@ -81,7 +122,7 @@
         
     <Separator class="mt-2"/>
 
-    <div class="flex flex-row justify-between items-end">
+    <div class="flex flex-row justify-between items-end mb-8">
         <div class="flex flex-row gap-6 text-muted-foreground ">
             <a
                 class={cn("hover:text-ring transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
@@ -122,55 +163,9 @@
             </a>
         </div>
 
-        <Button variant="outline" size="lg"  title="My Resume" href={resume} download="Marcus_Adair_Resume.pdf">
+        <Button variant="outline" size="lg" title="My Resume" href={resume} download="Marcus_Adair_Resume.pdf">
             <span class="hidden sm:flex">Download Resume</span>
             <Download/>
         </Button>    
     </div>
-
-    <Accordion type="single" class="w-full flex flex-row justify-end" value="false">
-        <Card class="w-[550px] px-6  py-2 ">
-            <AccordionItem value="history">
-                <AccordionTrigger class="font-bold">
-                    <div class="flex flex-row items-center gap-2 ">
-                        <History/>
-                        <span>History</span>                  
-                    </div>
-                </AccordionTrigger>
-                <AccordionContent class="flex flex-col gap-2">
-                    <Separator/>
-                    <div class="flex flex-col gap-2">
-                        {@render HistoryItem("SafeStreets", "Junior Sofware Engineer", "May 2025 - Present")}
-
-                        {@render HistoryItem("Graduate with Masters", "MS in Computer Science - 3.7/4.0 GPA", "May 2025")}
-
-                        {@render HistoryItem("University of Oregon", "Internship as a Full-stack Developer", "May 2024 - Aug. 2024")}
-
-                        {@render HistoryItem("Begin graduate school at the U of U", "Graduate Research Assistant at the SCI Institute", "Aug. 2023")}
-
-                        {@render HistoryItem("Graduate with Bachelors", "BS in Computer Science - 3.7/4.0 GPA", "May 2023")}
-
-                        {@render HistoryItem("SCI Institute at the U of U", "Undergraduate Research Assistant", "May 2022")}
-
-                        {@render HistoryItem("Work various jobs while studying", "Telesales Rep. & Fast-food Worker", "2017 - May 2022")}
-
-                        {@render HistoryItem("Begin studying Computer Science at the U of U", "Student", "2017")}
-                    </div>
-                </AccordionContent>
-            </AccordionItem>
-        </Card>
-    </Accordion>
 </div>
-
-{#snippet HistoryItem(title: string, subtitle: string, timeStr: string, imagSrc?: any)}
-<Accordion type="single" class="w-full" value={title}>
-    <AccordionItem value={title}>
-        <AccordionTrigger class="font-bold">{title}</AccordionTrigger>
-        <AccordionContent class="flex flex-col gap-2">
-            <span class="text-muted-foreground">{timeStr}</span>
-            <span >{subtitle}</span>
-            <Separator/>
-        </AccordionContent>
-    </AccordionItem>
-</Accordion>
-{/snippet}

@@ -1,21 +1,21 @@
 <script lang="ts">
-	import Separator from "$lib/components/ui/separator.svelte";
 	import { HOVER_EXPAND_TAILWIND_ANIMATION } from "$lib/consts/style";
 	import { cn } from "$lib/utils";
 	import { formatDate } from "$lib/utils/dates";
 	import { ChevronRight } from "lucide-svelte";
+	import type { HTMLAnchorAttributes } from "svelte/elements";
     
-    interface Props {
+    type Props = {
         title: string;
         date: Date;
         about: string;
         href: string;
         imgSrc: any;
-    }
-    let { title, date, about, href, imgSrc }: Props = $props();
+    } & HTMLAnchorAttributes;
+    let { title, date, about, href, imgSrc, ...props }: Props = $props();
 </script>
 
-<a {href} class={cn("flex flex-row gap-4 cursor-pointer", HOVER_EXPAND_TAILWIND_ANIMATION)} title="See post">
+<a {href} class={cn("flex flex-row gap-4 cursor-pointer", HOVER_EXPAND_TAILWIND_ANIMATION, props.class)} title="See post" {...props}>
     <img
         src={imgSrc}
         alt={title}
@@ -32,5 +32,3 @@
         <ChevronRight  />
     </div>
 </a>
-
-<Separator/>   

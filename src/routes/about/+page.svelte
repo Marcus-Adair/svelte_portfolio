@@ -9,6 +9,8 @@
   import nasa_photo from "$lib/assets/nasa_photo.jpg"
   import masters_photo from "$lib/assets/masters_photo.jpg"
 	import Link from "$lib/components/link.svelte";
+  import gsap from "gsap";
+	import { onMount } from "svelte";
 
   let changingIcon = $state(false);
   
@@ -17,6 +19,14 @@
     changingIcon = true;
     setTimeout(() => { changingIcon = false; }, 1800);
   }
+
+  onMount(() => {
+    gsap.fromTo(
+        "h1",
+        { x: -300},
+        { x: 0, duration: 0.3, ease: "power1.out" }
+    );
+  });
 </script>
 
 
@@ -30,7 +40,7 @@
   <!-- Left Col -->
     <div class="flex flex-col gap-6">
       <div class="flex flex-row gap-4 items-center">
-        <h1 class="text-2xl md:text-5xl font-bold mt-4 font-[Space_Grotesk]">Hi, I'm Marcus Adair <span class="text-xl md:text-4xl wave">👋🏻</span></h1>
+        <h1 class="text-2xl md:text-5xl mt-4">Hi, I'm Marcus Adair <span class="text-xl md:text-4xl wave">👋🏻</span></h1>
       </div>
 
 

@@ -81,10 +81,5 @@
 		{@render children?.()}
 	</main>
 
-	<div class="border-t border-t-muted mt-20 pt-8 pb-4">
-		<Footer/>
-	</div>
+	<Footer/>
 </div>
-
-
-
