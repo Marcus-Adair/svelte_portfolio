@@ -40,6 +40,4 @@ npm run dev -- --open
 
 ### Notes
 
-I basically wrote this entire site by hand, using some shadcn-svelte components. I deployed through Cloudflare - very easy process.
-
 See the site at https://marcusadair.com

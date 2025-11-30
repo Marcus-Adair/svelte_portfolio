@@ -3,9 +3,8 @@
 	import { HOVER_EXPAND_TAILWIND_ANIMATION } from "$lib/consts/style";
 	import { pageOptions } from "$lib/types/pageOptions";
 	import { cn } from "$lib/utils";
-	import {  Blocks, BookOpen, Code, House, Newspaper } from "lucide-svelte";
+	import {  BookOpen, CodeXml, House, Newspaper } from "lucide-svelte";
 </script> 
-
 
 <nav  class="flex flex-row justify-center items-center">
     <ol class="flex flex-row items-center gap-12 border rounded-md justify-center  py-3 px-6 transition-all bg-card shadow-sm">
@@ -48,7 +47,7 @@
             )}            
             >                  
                 <div class={cn("flex flex-row gap-2 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}>
-                    <Blocks size={18}/>
+                    <CodeXml size={18}/>
                     <span>{pageOptions.projects}</span>
                 </div>
             </a>

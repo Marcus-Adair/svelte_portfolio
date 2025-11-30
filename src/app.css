@@ -165,11 +165,17 @@
 	--shadow-2xl: var(--shadow-2xl);
 }
 
+/* --------------------------------- */
+
 @layer base {
 	* {
 		@apply border-border outline-ring/50;
 	}
 	body {
-		@apply bg-background text-foreground;
+		@apply bg-background tracking-wide text-foreground;
+	}
+
+	h1 {
+		@apply font-[Space_Grotesk] font-bold tracking-wide;
 	}
 }

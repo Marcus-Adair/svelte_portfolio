@@ -6,7 +6,7 @@
   const currentYear: number = new Date().getFullYear();
 </script>
 
-<footer class="flex flex-col sm:flex-row justify-between items-center px-14 gap-6">
+<footer class="flex flex-col sm:flex-row justify-between items-center px-14 gap-6 border-t border-t-muted mt-20 pt-8 pb-4">
     <ol class="flex flex-row gap-4 justify-start text-sm">
       <li>
         <a href="/" title="Home" class={cn(
@@ -55,6 +55,6 @@
 
     </ol>
 
-    <span class="text-xs text-muted-foreground">© {currentYear} <a href="/" class="text-primary">Marcus Adair.</a> All rights reserved.</span>
+    <span class="text-xs text-muted-foreground">© {currentYear} <a href="/" class="text-primary hover:text-primary/80">Marcus Adair.</a> All rights reserved.</span>
   </footer>
   

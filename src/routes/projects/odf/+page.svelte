@@ -18,7 +18,7 @@
             <ChevronLeft class="size-8"/>
         </Button>
         <div class="flex flex-col gap-2 flex-1">
-            <h1 class="text-4xl font-[Space_Grotesk]">On-Demand Fakequakes</h1>
+            <h1 class="text-4xl font-normal">On-Demand Fakequakes</h1>
     
             <div class="flex flex-row items-center gap-2 h-4">
                 <Separator orientation="vertical" class="data-[orientation=vertical]:w-[3px]"/>
