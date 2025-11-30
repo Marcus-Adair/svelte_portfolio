@@ -9,7 +9,7 @@
 	import Card from '$lib/components/ui/card/card.svelte';
 	import Separator from '$lib/components/ui/separator.svelte';
 	import { CAL_EMAIL, EMAIL, EMAIL_URL, GITHUB_URL, LINKED_IN_URL } from '$lib/consts/config';
-	import { CalendarDays,  Check,  Copy,  Download, Github, History, LinkedinIcon, Mail } from 'lucide-svelte';
+	import { CalendarDays,  Check,  Copy,  Download, Github, LinkedinIcon, Mail } from 'lucide-svelte';
 	import { cn } from '$lib/utils';
 	import { HOVER_EXPAND_TAILWIND_ANIMATION } from '$lib/consts/style';
     import  resume  from "$lib/assets/Marcus_Adair_Portfolio_Resume.pdf"
@@ -67,7 +67,7 @@
 </svelte:head>
 
 <div class="flex flex-col gap-6">
-    <img src={headshot} alt="coffee_gif" class="w-24 h-24 rounded-full object-cover" />
+    <img src={headshot} alt="coffee_gif" class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover" />
 
     <div class="flex flex-col gap-3">
         <div class="flex flex-row">
@@ -79,7 +79,7 @@
 
 
         <div class="flex flex-row gap-3 items-center text-muted-foreground">
-            <span class="nice-tracking">marcus.a.adair@gmail.com</span>
+            <span class="text-sm tracking-wider font-light">marcus.a.adair@gmail.com</span>
             <div class="transition-all hover:text-ring" title="Copy" onclick={copyEmail} onkeydown={copyEmail} role="button" tabindex={1}>
                 {#if changingIcon}
                     <Check class="size-3.5" />

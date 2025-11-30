@@ -172,17 +172,10 @@
 		@apply border-border outline-ring/50;
 	}
 	body {
-		@apply bg-background text-foreground;
+		@apply bg-background tracking-wide text-foreground;
 	}
 
-	/* h1 {
-		font: Space_Grotesk
-	} */
 	h1 {
 		@apply font-[Space_Grotesk] font-bold tracking-wide;
-	}
-
-	.nice-tracking {
-		@apply font-light tracking-wide;
 	}
 }

@@ -11,6 +11,8 @@
 	import Link from "$lib/components/link.svelte";
   import gsap from "gsap";
 	import { onMount } from "svelte";
+	import AnimatedCard from "$lib/components/animatedCard.svelte";
+	import AnimatedImg from "$lib/components/animatedImg.svelte";
 
   let changingIcon = $state(false);
   
@@ -39,38 +41,38 @@
 
   <!-- Left Col -->
     <div class="flex flex-col gap-6">
-      <div class="flex flex-row gap-4 items-center">
+      <div class="flex flex-row gap-4 items-center mb-2">
         <h1 class="text-2xl md:text-5xl mt-4">Hi, I'm Marcus Adair <span class="text-xl md:text-4xl wave">👋🏻</span></h1>
       </div>
 
+      <AnimatedCard>
+        <span>I was born and raised in Utah. I grew up in Davis County (north of Salt Lake City) where I went to K-12 school and graduated from Viewmont Highschool in 2017. </span>
+      </AnimatedCard>
 
-    <Card class={cn("text-card-foreground p-6 mt-0.5", HOVER_EXPAND_TAILWIND_ANIMATION)}>
-      <span>I was born and raised in Utah. I grew up in Davis County (north of Salt Lake City) where I went to K-12 school and graduated from Viewmont Highschool in 2017. </span>
-    </Card>
 
-    <Card class={cn("text-card-foreground p-6", HOVER_EXPAND_TAILWIND_ANIMATION)}>
-      <span>I began studying Computer Science at the University of Utah (U of U) in Fall 2017. Before my senior year I started working as an undergraduate research assistant at the U of U's Scientific Computing and Imaging (SCI) Institute.</span>
-    </Card>
+      <AnimatedCard>
+        <span>I began studying Computer Science at the University of Utah (U of U) in Fall 2017. Before my senior year I started working as an undergraduate research assistant at the U of U's Scientific Computing and Imaging (SCI) Institute.</span>
+      </AnimatedCard>
 
-    <Card class={cn("text-card-foreground p-6", HOVER_EXPAND_TAILWIND_ANIMATION)}>
-      <span>Doing research at SCI was life-changing, and I learned alot. In my undergraduate research I developed a high throughput workflow to accelerate earthquake simulations, collaborated with scientists from Oregon and other places - including a a work trip to the University of Oregon, and wrote a paper that was eventually accepted by an SC23 workshop and <Link href="https://dl.acm.org/doi/10.1145/3624062.3624276">published by the ACM</Link>.</span>
-    </Card>
+      <AnimatedCard>
+        <span>Doing research at SCI was life-changing, and I learned alot. In my undergraduate research I developed a high throughput workflow to accelerate earthquake simulations, collaborated with scientists from Oregon and other places - including a a work trip to the University of Oregon, and wrote a paper that was eventually accepted by an SC23 workshop and <Link href="https://dl.acm.org/doi/10.1145/3624062.3624276">published by the ACM</Link>.</span>
+      </AnimatedCard>
 
-    <Card class={cn("text-card-foreground p-6", HOVER_EXPAND_TAILWIND_ANIMATION)}>
-      <span>I graduated with my BS in Computer Science in Spring 2023. I continued to do research over the summer and then entered graduate school at the U of U and becoming a graduate research assistant at SCI. During the first year I explored using machine learning to synthesize volcanic geodata.</span>
-    </Card>
+      <AnimatedCard>
+        <span>I graduated with my BS in Computer Science in Spring 2023. I continued to do research over the summer and then entered graduate school at the U of U and becoming a graduate research assistant at SCI. During the first year I explored using machine learning to synthesize volcanic geodata.</span>
+      </AnimatedCard>
 
-    <Card class={cn("text-card-foreground p-6", HOVER_EXPAND_TAILWIND_ANIMATION)}>
-      <span>In Summer 2024 I did an internship at the University of Oregon, where I began development on On-Demand Fakequakes, an iteration on previous work. I then turned this into my master's project and work research, continued devopment on it for a year, and created a full-stack app with a Python-based front-end, an AWS workflow (with Infrastructure-as-Code built in Python), and a CI/CD pipeline using GitHub Actions to automate AWS resource deployments, front-end updates, docker image builds and more. The project was targeted towards NASA scientists and other geoscientists.</span>
-    </Card>
+      <AnimatedCard>
+        <span>In Summer 2024 I did an internship at the University of Oregon, where I began development on On-Demand Fakequakes, an iteration on previous work. I then turned this into my master's project and work research, continued devopment on it for a year, and created a full-stack app with a Python-based front-end, an AWS workflow (with Infrastructure-as-Code built in Python), and a CI/CD pipeline using GitHub Actions to automate AWS resource deployments, front-end updates, docker image builds and more. The project was targeted towards NASA scientists and other geoscientists.</span>
+      </AnimatedCard>
 
-    <Card class={cn("text-card-foreground p-6", HOVER_EXPAND_TAILWIND_ANIMATION)}>
-      In May 2025 I graduated with my MS in Computer Science, entered the industry, and I now work at SafeStreets as a software engineer. I am helping build TypeScript applications in the front-end with React and Svelte, and also working in the back-end with a Hono API and Drizzle database. The apps serve to manage security installation orders and appointments, inventory, and more for the business.
-    </Card>
+      <AnimatedCard>
+        In May 2025 I graduated with my MS in Computer Science, entered the industry, and I now work at SafeStreets as a software engineer. I am helping build TypeScript applications in the front-end with React and Svelte, and also working in the back-end with a Hono API and Drizzle database. The apps serve to manage security installation orders and appointments, inventory, and more for the business.
+      </AnimatedCard>
 
-    <Card class={cn("text-card-foreground p-6", HOVER_EXPAND_TAILWIND_ANIMATION)}>
-      Aside from software-related things, I enjoy snowboarding, hiking, the outdoors, film, electronic music production and DJing, video games, and more! I am passionate about developing software and continuing to learn!
-    </Card>
+      <AnimatedCard>
+        Aside from software-related things, I enjoy snowboarding, hiking, the outdoors, film, electronic music production and DJing, video games, and more! I am passionate about developing software and continuing to learn!
+      </AnimatedCard>
   </div>
 
   
@@ -136,9 +138,9 @@
     <Separator />
 
     <div class="flex flex-col">
-      <img src={snowboard_photo} alt="snowboard_photo" class={cn("rounded-md -rotate-2 mt-8", HOVER_EXPAND_TAILWIND_ANIMATION)}>
-      <img src={masters_photo} alt="graduation_photo" class={cn("rounded-md rotate-2 mt-24", HOVER_EXPAND_TAILWIND_ANIMATION)}>
-      <img src={nasa_photo} alt="nasa_photo" class="rounded-md -rotate-2 scale-75 transition-transform duration-200 hover:scale-78">
+      <AnimatedImg src={snowboard_photo} alt="snowboard_photo" class="-rotate-2 mt-8" />
+      <AnimatedImg src={masters_photo} alt="grad_phot" class="rotate-2 mt-24" />
+      <AnimatedImg src={nasa_photo} alt="nasa_photo" class="-rotate-2 mt-16" />
   </div>
   </div>
 </div>
@@ -164,3 +166,4 @@
     transform-origin: 70% 70%;
   }
 </style>
+
