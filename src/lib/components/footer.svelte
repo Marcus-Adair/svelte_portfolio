@@ -55,6 +55,6 @@
 
     </ol>
 
-    <span class="text-xs text-muted-foreground">© {currentYear} <a href="/" class="text-primary hover:text-primary/80">Marcus Adair.</a> All rights reserved.</span>
+    <span class="text-xs text-muted-foreground">© {currentYear} <a href="/" class="text-primary hover:text-primary/80 underline-offset-2 hover:underline">Marcus Adair.</a> All rights reserved.</span>
   </footer>
   

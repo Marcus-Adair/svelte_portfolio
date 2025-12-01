@@ -1,16 +1,19 @@
 <script lang="ts">
+	import { cn } from "$lib/utils";
 	import type { Snippet } from "svelte";
+	import type { HTMLAnchorAttributes } from "svelte/elements";
 
-    interface Props {
+    type Props = {
         href: string;
         children: Snippet
-    }
-    let { href, children}: Props = $props();
+    } & HTMLAnchorAttributes
+    let { href, children, ...props}: Props = $props();
 </script>
 
 <a
+    {...props}
     {href}
-    class="text-primary"
+    class={cn("text-primary hover:underline underline-offset-2", props.class)}
     target={href.startsWith("/") ? "" : "_blank"}
     rel={href.startsWith("/") ? "" : "noreferrer"}
 >

@@ -22,9 +22,9 @@
         <div class="flex flex-row justify-between items-center">
             <div class="flex flex-row items-center gap-2 h-4">
                 <Separator orientation="vertical" class="data-[orientation=vertical]:w-[3px]"/>
-                <span class="text-sm text-muted-foreground">{formatDate(date)}</span>
+                <span class="text-sm text-muted-foreground tracking-wide">{formatDate(date)}</span>
             </div>
-            <span class="text-sm text-muted-foreground">#{postNum}</span>
+            <span class="text-sm text-muted-foreground tracking-wider">#{postNum}</span>
         </div>
     </div>
 </div>

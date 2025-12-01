@@ -77,9 +77,9 @@
         class="w-36 sm:w-72 lg:w-96 h-auto rounded-md"
     />
 
-    <div class="flex-1 flex flex-col gap-2 mt-4 ml-2">
-        <span class="text-lg font-[Space_Grotesk]">{title}</span>
-        <span class="font-light text-sm">{about}</span>
+    <div class="flex-1 flex flex-col gap-1 mt-4 ml-2">
+        <span class="text-xl font-[Space_Grotesk]">{title}</span>
+        <span class="font-light text-sm mt-4">{about}</span>
         <span class="text-xs text-muted-foreground">{formatDate(date)}</span>
     </div>
 
