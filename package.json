@@ -44,6 +44,7 @@
 		"vite": "^7.1.7"
 	},
 	"dependencies": {
+		"@fontsource-variable/exo-2": "^5.2.8",
 		"embla-carousel-svelte": "^8.6.0",
 		"gsap": "^3.13.0",
 		"lucide-svelte": "^0.546.0",

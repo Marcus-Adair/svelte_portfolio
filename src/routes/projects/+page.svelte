@@ -1,14 +1,15 @@
 <script lang="ts">
-	import Separator from '$lib/components/ui/separator.svelte';
 	import odfDashPic from '$lib/assets/ODF_dash_pic_2.png';
 	import elm2048pic from '$lib/assets/ELM_2048_pic.png';
 	import fqsPaperPic from '$lib/assets/ODF_git_paper_2.png';
 	import sedePic from '$lib/assets/SEDE_screenshot.png';
 	import alpsPic from '$lib/assets/alps_git_repo_screenshot.png';
+	import portfolioPic from '$lib/assets/portfolio_pic.png';
 	import Link from '$lib/components/link.svelte';
 	import ProjectCard from './components/projectCard.svelte';
 	import gsap from "gsap";
 	import { onMount } from 'svelte';
+	import AnimatedSeparator from '$lib/components/animatedSeparator.svelte';
 
 	onMount(() => {
 		gsap.fromTo(
@@ -28,16 +29,16 @@
 
 	<div class="flex flex-col gap-2">
 		<span class="text-sm text-muted-foreground animate-text-in tracking-widest font-light">Noteable projects I've worked on:</span>
-		<Separator />
+		<AnimatedSeparator />
 	</div>
 
 	<div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
 		<ProjectCard
-			title='Marcusadair.com'
-			url="https://marcusadair.com"
-			src={odfDashPic}
+			title='My Portfolio (marcusadair.com)'
+			url="https://github.com/Marcus-Adair/svelte_portfolio"
+			src={portfolioPic}
 			alt="portofilio_visual"
-			description="My evolving personal website and dev portfolio. This site serves to showcase my skils and experience and to also be a playground for me to program fun stuff.x"
+			description="My evolving personal website and dev portfolio. This site serves to showcase my skils and experience and to also be a playground for me to program fun stuff. Built with TypeScript, SvelteKit, Tailwind, GSAP, and more."
 		/>
 
 		<ProjectCard

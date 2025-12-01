@@ -7,7 +7,7 @@
 </script> 
 
 <nav  class="flex flex-row justify-center items-center">
-    <ol class="flex flex-row items-center gap-12 border rounded-md justify-center  py-3 px-6 transition-all bg-card shadow-sm">
+    <ol class="flex flex-row items-center gap-12 border rounded-md justify-center  py-3 px-6 transition-all bg-card">
         <li>
             <a href="/" title="Home" class={cn(
                 "transition-all duration-300 ease-out hover:text-primary/80",
