@@ -64,7 +64,7 @@
 </svelte:head>
 
 <div class="flex flex-col gap-6">
-  <h1 class="text-4xl md:text-5xl mt-4 swipe-in">The Marcus Adair Blog.</h1>
+  <h1 class="text-4xl md:text-5xl md:mt-4 swipe-in">The Marcus Adair Blog.</h1>
 
   <div class="flex flex-col gap-3.5">
     <div class="flex flex-row gap-4 h-5 font-[Space_Grotesk] swipe-in">

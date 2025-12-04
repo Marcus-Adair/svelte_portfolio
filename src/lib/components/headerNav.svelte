@@ -3,22 +3,28 @@
 	import { HOVER_EXPAND_TAILWIND_ANIMATION } from "$lib/consts/style";
 	import { pageOptions } from "$lib/types/pageOptions";
 	import { cn } from "$lib/utils";
-	import {  BookOpen, CodeXml, House, Newspaper } from "lucide-svelte";
+	import {  BookOpen, CodeXml, Laptop } from "lucide-svelte";
+	import Coffee from "./icons/Coffee.svelte";
+
+    interface Props {
+        navClass?: string;
+    }
+    let { navClass }:Props = $props();
 </script> 
 
-<nav  class="flex flex-row justify-center items-center">
-    <ol class="flex flex-row items-center gap-12 border rounded-md justify-center  py-3 px-6 transition-all bg-card">
+<nav  class={cn("flex flex-row justify-center", navClass)}>
+    <ol class="flex flex-row items-center gap-8 transition-all font-[Space_Grotesk] text-xl font-bold">
         <li>
             <a href="/" title="Home" class={cn(
                 "transition-all duration-300 ease-out hover:text-primary/80",
                 page.url.pathname === "/"
                 ? "text-primary"
-                : "text-muted-foreground"
+                : "text-header-foreground"
             )}
             >
                 <div class={cn("flex flex-row gap-2 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}>
-                    <House size={18}/>
-                    <span>{pageOptions.home}</span>
+                    <Coffee className="h-[24px]  w-auto -translate-y-[1px]"/>
+                    <span  class="whitespace-nowrap  relative overflow-hidden"><span>{pageOptions.home} </span><span class="absolute -bottom-[28px] left-0">{pageOptions.home} </span></span>
                 </div>
             </a>
         </li>
@@ -28,11 +34,11 @@
                     "transition-all duration-300 ease-out hover:text-primary/80",
                     page.url.pathname.includes("about")
                     ? "text-primary"
-                    : "text-muted-foreground"
+                    : "text-header-foreground"
                 )}            
             >
                 <div class={cn("flex flex-row gap-2 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}>
-                    <BookOpen size={18}/>
+                    <BookOpen size={19}/>
                     <span>{pageOptions.about}</span>
                 </div>
             </a>
@@ -43,11 +49,11 @@
                 "transition-all duration-300 ease-out hover:text-primary/80",
                 page.url.pathname.includes("projects")
                 ? "text-primary"
-                : "text-muted-foreground"
+                : "text-header-foreground"
             )}            
             >                  
                 <div class={cn("flex flex-row gap-2 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}>
-                    <CodeXml size={18}/>
+                    <CodeXml size={21}/>
                     <span>{pageOptions.projects}</span>
                 </div>
             </a>
@@ -58,11 +64,11 @@
                 "transition-all duration-300 ease-out hover:text-primary/80",
                 page.url.pathname.includes("blog")
                 ? "text-primary"
-                : "text-muted-foreground"
+                : "text-header-foreground"
             )}            
             >                  
                 <div class={cn("flex flex-row gap-2 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}>
-                    <Newspaper size={18}/>
+                    <Laptop size={21}/>
                     <span>{pageOptions.blog}</span>
                 </div>
             </a>

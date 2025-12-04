@@ -2,11 +2,12 @@
 	import { page } from "$app/state";
 	import { pageOptions } from "$lib/types/pageOptions";
 	import { cn } from "$lib/utils";
+	import Separator from "./ui/separator.svelte";
 
   const currentYear: number = new Date().getFullYear();
 </script>
 
-<footer class="flex flex-col sm:flex-row justify-between items-center px-14 gap-6 border-t border-t-muted mt-20 pt-8 pb-4">
+<footer class="flex flex-col sm:flex-row justify-between items-center px-14 gap-6 border-t border-t-border mt-20 pt-4 pb-4 bg-card/50">
     <ol class="flex flex-row gap-4 justify-start text-sm">
       <li>
         <a href="/" title="Home" class={cn(
@@ -54,6 +55,8 @@
       </li>
 
     </ol>
+
+    <Separator class="flex sm:hidden w-72! -mt-3"/>
 
     <span class="text-xs text-muted-foreground">© {currentYear} <a href="/" class="text-primary hover:text-primary/80 underline-offset-2 hover:underline">Marcus Adair.</a> All rights reserved.</span>
   </footer>

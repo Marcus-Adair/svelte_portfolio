@@ -4,3 +4,4 @@ export const pageOptions = {
     projects: "Projects",
     blog: "Blog"
 }
+export type PageOptionsKey =  keyof typeof pageOptions;

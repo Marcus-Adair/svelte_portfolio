@@ -4,7 +4,7 @@
 	import fqsPaperPic from '$lib/assets/ODF_git_paper_2.png';
 	import sedePic from '$lib/assets/SEDE_screenshot.png';
 	import alpsPic from '$lib/assets/alps_git_repo_screenshot.png';
-	import portfolioPic from '$lib/assets/portfolio_pic.png';
+	import portfolioPicV2 from '$lib/assets/portfolio_pic_v2.png';
 	import Link from '$lib/components/link.svelte';
 	import ProjectCard from './components/projectCard.svelte';
 	import gsap from "gsap";
@@ -28,7 +28,7 @@
 	<h1 class="mr-44 text-4xl md:text-5xl animate-text-in">Projects</h1>
 
 	<div class="flex flex-col gap-2">
-		<span class="text-sm text-muted-foreground animate-text-in tracking-widest font-light">Noteable projects I've worked on:</span>
+		<span class="text-sm text-muted-foreground animate-text-in tracking-widest font-light">Notable projects I've worked on:</span>
 		<AnimatedSeparator />
 	</div>
 
@@ -36,17 +36,17 @@
 		<ProjectCard
 			title='My Portfolio (marcusadair.com)'
 			url="https://github.com/Marcus-Adair/svelte_portfolio"
-			src={portfolioPic}
-			alt="portofilio_visual"
-			description="My evolving personal website and dev portfolio. This site serves to showcase my skils and experience and to also be a playground for me to program fun stuff. Built with TypeScript, SvelteKit, Tailwind, GSAP, and more."
+			src={portfolioPicV2}
+			alt="portfolio_visual"
+			description="My evolving personal website and dev portfolio. This site serves to showcase my skills and experience and to also be a playground for me to program fun stuff. Built with TypeScript, SvelteKit, Tailwind, GSAP, and more."
 		/>
 
 		<ProjectCard
-			title='On-Demand Fakequakes'
+			title='On-Demand FakeQuakes'
 			url='/projects/odf'
 			src={odfDashPic}
 			alt="odf_pic"
-			description="For my MS project, and while working at the SCI Institute, I developed On-Demand Fakequakes - a Python-based, full-stack web application (Python Plotly Dash, Flask) featuring an AWS Cloud workflow, a complex front-end map interface, a CI/CD pipeline using GitHub actions, and more."
+			description="For my MS project, and while working at the SCI Institute, I developed On-Demand FakeQuakes - a Python-based, full-stack web application (Python Plotly Dash, Flask) featuring an AWS Cloud workflow, a complex front-end map interface, a CI/CD pipeline using GitHub actions, and more."
 		/>
 
 		<ProjectCard
@@ -62,11 +62,11 @@
 			url='https://github.com/Marcus-Adair/alps_project'
 			src={alpsPic}
 			alt='alps_pic'
-			description='I developed a Python CLI tool called ALPS (Automatic Least-Privilege Policy Suggestor) for a graduate Software & Systems Security course. ALPS parses AWS infrastructure code, identifies insecure IAM policies, and suggests alternatives.'
+			description='I developed a Python CLI tool called ALPS (Automatic Least-Privilege Policy "Suggester") for a graduate Software & Systems Security course. ALPS parses AWS infrastructure code, identifies insecure IAM policies, and suggests alternatives.'
 		/>
 
 		<ProjectCard
-			title='Fakequakes DAGMan Workflow (FDW)'
+			title='FakeQuakes DAGMan Workflow (FDW)'
 			url="https://github.com/Marcus-Adair/Accelerating-Data-Intensive-Seismic-Research-Through-Parallel-Workflow-Optimization-and-Federated-CI"
 			src={fqsPaperPic}
 			alt='fdw_pic'

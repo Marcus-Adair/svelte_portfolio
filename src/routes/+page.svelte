@@ -16,6 +16,7 @@
 	import { onMount } from 'svelte';
 	import AnimatedSeparator from '$lib/components/animatedSeparator.svelte';
 	import Link from '$lib/components/link.svelte';
+	import Separator from '$lib/components/ui/separator.svelte';
 
     let changingIcon = $state(false);
     function copyEmail() {
@@ -102,6 +103,8 @@
             </div>
         </div>
 
+        <Separator/>
+
         <img src={headshot} alt="coffee_gif" class="w-auto h-32 md:h-40 rounded-full border border-border object-cover absolute top-8 right-0" />
     </div>
 
@@ -117,7 +120,7 @@
                 <AccordionContent class="flex flex-col gap-6">
                     <div>
                         <span>I am Marcus Adair, a software engineer based in Lehi, Utah. I work at  </span>
-                        <Link href="https://www.safestreets.com/">Safestreets</Link>
+                        <Link href="https://www.safestreets.com/">SafeStreets</Link>
                         <span>- a nationwide ADT equipment installation/sales company, building TypeScript-based web and mobile applications to support internal business operations.</span>
                     </div>
 

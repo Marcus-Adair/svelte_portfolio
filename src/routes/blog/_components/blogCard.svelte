@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { cn } from "$lib/utils";
 	import { formatDate } from "$lib/utils/dates";
-	import { ChevronRight } from "lucide-svelte";
+	import { ChevronRight, MousePointerClick } from "lucide-svelte";
 	import type { HTMLAnchorAttributes } from "svelte/elements";
     import gsap from "gsap";
 	import { onMount } from "svelte";
@@ -67,7 +67,6 @@
 			card.removeEventListener("mouseenter", scale);
 		};
 	});
-
 </script>
 
 <a bind:this={card} {id} {href} class={cn("flex flex-row gap-4 cursor-pointer p-2 rounded-md hover:bg-accent/30 transition-colors", props.class)} title="See post" {...props}>

@@ -2,6 +2,7 @@
     import spidermanMeme  from "$lib/assets/spiderman_meme.png"
 	import Paragraph from "../_components/paragraph.svelte";
 	import PostHeader from "../_components/postHeader.svelte";
+    import svelteLogo from "$lib/assets/32px-Svelte_Logo.png"
 
     const DATE = new Date("2025-10-21T05:51:55.000Z")
 </script>
@@ -32,8 +33,9 @@
 
     <!-- Terminal Writing -->
     <div class="py-4 lg:mx-20">
-        <div class="bg-[#2f2f2f] text-white px-4 py-3 border border-slate-600 rounded-tl-md rounded-tr-md">
-            <span class="text-lg">svelte</span>
+        <div class="bg-[#2f2f2f] text-white px-4 py-3 border border-slate-600 rounded-tl-md rounded-tr-md flex items-center gap-2">
+            <img src={svelteLogo} alt="svelte_logo" class="scale-70">
+            <span class="text-lg">Svelte</span>
         </div>
         <div class="bg-[#222222] text-white font-mono p-4 rounded-br-md rounded-bl-md border-slate-600 border-r border-l border-b">
             <span class="whitespace-pre-wrap leading-7">
