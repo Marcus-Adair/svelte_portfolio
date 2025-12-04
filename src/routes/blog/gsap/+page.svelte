@@ -3,8 +3,7 @@
 	import { onMount } from "svelte";
     import gsap from "gsap";
     import ScrambleTextPlugin from "gsap/ScrambleTextPlugin";
-    gsap.registerPlugin(ScrambleTextPlugin);
-import Paragraph from "../_components/paragraph.svelte";
+    import Paragraph from "../_components/paragraph.svelte";
 	import PostHeader from "../_components/postHeader.svelte";
 	import Card from "$lib/components/ui/card/card.svelte";
 
@@ -12,6 +11,8 @@ import Paragraph from "../_components/paragraph.svelte";
 
     let scrambleSpan: HTMLSpanElement;
     onMount(() => {
+        gsap.registerPlugin(ScrambleTextPlugin);
+
         function animateScrambleSpan() {
             gsap.timeline({ repeat: -1, repeatDelay: 3.5 })
                 .to(scrambleSpan, { 
@@ -21,7 +22,7 @@ import Paragraph from "../_components/paragraph.svelte";
                 })
                 .to(scrambleSpan, {
                 duration: 3.5, 
-                scrambleText: { text: "See how it changes. I have defined the chars, duration, and ease properies.", chars: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY1234567890!@#$%^&*"}, 
+                scrambleText: { text: "See how it changes. I have defined the chars, duration, and ease properties.", chars: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY1234567890!@#$%^&*"}, 
                 ease: "elastic.inOut", 
                 delay: 3.5
             });
@@ -56,28 +57,28 @@ import Paragraph from "../_components/paragraph.svelte";
         I have recently discovered <Link href="https://gsap.com/">GSAP</Link>, an amazing package then enables the implementation
         of seamless animation on the web. I wish I had discovered this earlier! I have been diving deeper lately into libraries 
         for doing 2D and 3D animation on the web lately. GSAP is a powerful one that enables you to animate HTML and CSS in simple and 
-        powerful ways. At the time of writing this I am still a begginer but I have been able to catch on relatively fast. Another library
-        I found was <Link href="https://threejs.org/">three.js</Link>, which allows one to render 3D models on the broswer (at the time of writing 
+        powerful ways. At the time of writing this I am still a beginner but I have been able to catch on relatively fast. Another library
+        I found was <Link href="https://threejs.org/">three.js</Link>, which allows one to render 3D models on the browser (at the time of writing 
         this I am planning to do a post on three.js in the future).
     </Paragraph>
 
     <Paragraph>
         If you are reading this you have probably noticed that this website has non-trivial animations. For example, there are elements that, when 
-        hovered over, will grow in scale and move in the direcetion of the cursor. This is done with GSAP! I use GSAP's <span class="italic">to()</span>
+        hovered over, will grow in scale and move in the direction of the cursor. This is done with GSAP! I use GSAP's <span class="italic">to()</span>
         function to move the position of an HTML element and scale it.
     </Paragraph>
 
 
     <Paragraph>
         GSAP has 3 core function that allow for creating custom animations: <span class="italic">to()</span>,  <span class="italic">from()</span>, and  <span class="italic">fromTo()</span>. The 
-        first allow you to reference an HTML element and move it to state (from the current state). The different states can involve size, scale, opactiy, and more. The  <span class="italic">from()</span>
+        first allow you to reference an HTML element and move it to state (from the current state). The different states can involve size, scale, opacity, and more. The  <span class="italic">from()</span>
         function allows one to animate an element from some state to the element's current state, and the final function allows one to animate from some state to some other state. An example use case is when some
-        component mounts, you can trigger some number of animations to occur; this is what happens in this website: when different pages load, elements swipe in from the sides of the sceen. GSAP also provides
-        a simple timeline feature that allows one to trigger animations in a row at specificed times, and allows for loops and yoyoing.
+        component mounts, you can trigger some number of animations to occur; this is what happens in this website: when different pages load, elements swipe in from the sides of the screen. GSAP also provides
+        a simple timeline feature that allows one to trigger animations in a row at specified times, and allows for loops and yoyoing.
     </Paragraph>
 
     <!-- TODO: show example of to(), from(), and fromTo() -->
-    <Paragraph>Click on the shapes below to visulize the functions:</Paragraph>
+    <Paragraph>Click on the shapes below to visualize the functions:</Paragraph>
     <div class="flex justify-center mb-8">
         <Card class="flex flex-col gap-6 items-center w-96">
             <button bind:this={toElt} onclick={animateTo} class="border-2 border-indigo-900 bg-indigo-600 text-white rounded-xl w-20 h-20 cursor-pointer " title="Click me">

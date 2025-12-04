@@ -2,7 +2,7 @@
 	import '../app.css';
     import { ModeWatcher } from "mode-watcher";
 	import favicon from '$lib/assets/favicon.ico';
-	import FloatingNavbar from '$lib/components/floatingNavbar.svelte';
+	import HeaderNav from '$lib/components/headerNav.svelte';
 	import Footer from '$lib/components/footer.svelte';
 	import ThemeToggle from '$lib/components/themeToggle.svelte';
 	import { Dialog } from 'bits-ui';
@@ -11,10 +11,9 @@
 	import DialogHeader from '$lib/components/ui/dialog/dialog-header.svelte';
 	import DialogTitle from '$lib/components/ui/dialog/dialog-title.svelte';
 	import Separator from '$lib/components/ui/separator.svelte';
-	import NavLink from '$lib/components/navLink.svelte';
+	import MobileNavLink from '$lib/components/mobileNavLink.svelte';
 	import { pageOptions } from '$lib/types/pageOptions';
-	import Button from '$lib/components/ui/button.svelte';
-	import ChevronDown from '@lucide/svelte/icons/chevron-down';
+	import { Menu } from 'lucide-svelte';
 
 	let { children } = $props();
 </script>
@@ -23,31 +22,23 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-
 <ModeWatcher />
-<div class="flex flex-col min-h-screen py-4">
-	<header class="grid grid-cols-3 items-center mt-2 px-10 gap-2">
-		<div class="justify-self-start">
-			<!-- Put a left-aligned thing here if want one-->
+<div class="flex flex-col min-h-screen">
+	<header class="grid grid-cols-3 items-center px-4 md:px-6 gap-2 border-b border-border pb-3 pt-4 bg-card/50">
+		<div class="justify-self-start flex">
+			<ThemeToggle/>
 		</div>
 
-		<div class="hidden md:flex justify-self-center">
-			<FloatingNavbar />
-		</div>
-
-		<!-- Helps with grid-3 formatting on different sized screens -->
-		<div class="flex md:hidden justify-self-center"></div>
+		<div class="justify-self-center"><!-- Put a middle-aligned thing here if want one--></div>
 
 		<div class="justify-self-end gap-2 flex flex-row items-center">
+
+			<!-- Mobile -->
 			<Dialog.Root>
 				<DialogTrigger>
-					
-					<Button variant="outline"  title="Navigation" class="py-5 flex md:hidden">
-						Nav
-						<ChevronDown />
-					</Button>
-				
-				
+					<button title="Navigation" class="flex md:hidden cursor-pointer">
+						<Menu class="size-8"/>
+					</button>
 				
 				</DialogTrigger>
 				<DialogContent>
@@ -56,24 +47,17 @@
 					</DialogHeader>
 
 					<div class="flex flex-col gap-3">
-						<NavLink href="/" title={pageOptions.home}/>
-
+						<MobileNavLink href="/" title={pageOptions.home}/>
 						<Separator/>
-
-						<NavLink href="/about" title={pageOptions.about}/>
-
+						<MobileNavLink href="/about" title={pageOptions.about}/>
 						<Separator/>
-
-						<NavLink href="/projects" title={pageOptions.projects}/>
-
+						<MobileNavLink href="/projects" title={pageOptions.projects}/>
 						<Separator/>
-
-						<NavLink href="/blog" title={pageOptions.blog}/>
+						<MobileNavLink href="/blog" title={pageOptions.blog}/>
 					</div>
 				</DialogContent>
 			</Dialog.Root>
-
-			<ThemeToggle/>
+			<HeaderNav navClass="hidden md:flex"/>
 		</div>
 	</header>
 

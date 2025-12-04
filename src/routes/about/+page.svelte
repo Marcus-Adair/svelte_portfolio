@@ -36,7 +36,6 @@
   <title>About</title>
 </svelte:head>
 
-
 <div class="grid grid-cols-1 md:grid-cols-[55%_45%] gap-16">
 
   <!-- Left Col -->
@@ -55,15 +54,15 @@
       </AnimatedCard>
 
       <AnimatedCard>
-        <span>Doing research at SCI was life-changing, and I learned alot. In my undergraduate research I developed a high throughput workflow to accelerate earthquake simulations, collaborated with scientists from Oregon and other places - including a a work trip to the University of Oregon, and wrote a paper that was eventually accepted by an SC23 workshop and <Link href="https://dl.acm.org/doi/10.1145/3624062.3624276">published by the ACM</Link>.</span>
+        <span>Doing research at SCI was life-changing, and I learned a lot. In my undergraduate research I developed a high throughput workflow to accelerate earthquake simulations, collaborated with scientists from Oregon and other places - including a a work trip to the University of Oregon, and wrote a paper that was eventually accepted by an SC23 workshop and <Link href="https://dl.acm.org/doi/10.1145/3624062.3624276">published by the ACM</Link>.</span>
       </AnimatedCard>
 
       <AnimatedCard>
-        <span>I graduated with my BS in Computer Science in Spring 2023. I continued to do research over the summer and then entered graduate school at the U of U and becoming a graduate research assistant at SCI. During the first year I explored using machine learning to synthesize volcanic geodata.</span>
+        <span>I graduated with my BS in Computer Science in Spring 2023. I continued to do research over the summer and then entered graduate school at the U of U and becoming a graduate research assistant at SCI. During the first year I explored using machine learning to synthesize volcanic geo-data.</span>
       </AnimatedCard>
 
       <AnimatedCard>
-        <span>In Summer 2024 I did an internship at the University of Oregon, where I began development on On-Demand Fakequakes, an iteration on previous work. I then turned this into my master's project and work research, continued devopment on it for a year, and created a full-stack app with a Python-based front-end, an AWS workflow (with Infrastructure-as-Code built in Python), and a CI/CD pipeline using GitHub Actions to automate AWS resource deployments, front-end updates, docker image builds and more. The project was targeted towards NASA scientists and other geoscientists.</span>
+        <span>In Summer 2024 I did an internship at the University of Oregon, where I began development on On-Demand FakeQuakes, an iteration on previous work. I then turned this into my master's project and work research, continued development on it for a year, and created a full-stack app with a Python-based front-end, an AWS workflow (with Infrastructure-as-Code built in Python), and a CI/CD pipeline using GitHub Actions to automate AWS resource deployments, front-end updates, docker image builds and more. The project was targeted towards NASA scientists and other geoscientists.</span>
       </AnimatedCard>
 
       <AnimatedCard>
