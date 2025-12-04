@@ -6,7 +6,6 @@
   import gsapPic from '$lib/assets/gsap_pic.png'
   import gsap from "gsap";
   import ScrambleTextPlugin from "gsap/ScrambleTextPlugin";
-  gsap.registerPlugin(ScrambleTextPlugin);
 	import { onMount } from 'svelte';
 	import AnimatedSeparator from "$lib/components/animatedSeparator.svelte";
 
@@ -17,6 +16,8 @@
   let coffee: HTMLImageElement;
   let quote: HTMLSpanElement;
   onMount(() => {
+    gsap.registerPlugin(ScrambleTextPlugin);
+
     gsap.fromTo(
       ".swipe-in",
       { x: -350},

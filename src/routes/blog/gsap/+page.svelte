@@ -3,8 +3,7 @@
 	import { onMount } from "svelte";
     import gsap from "gsap";
     import ScrambleTextPlugin from "gsap/ScrambleTextPlugin";
-    gsap.registerPlugin(ScrambleTextPlugin);
-import Paragraph from "../_components/paragraph.svelte";
+    import Paragraph from "../_components/paragraph.svelte";
 	import PostHeader from "../_components/postHeader.svelte";
 	import Card from "$lib/components/ui/card/card.svelte";
 
@@ -12,6 +11,8 @@ import Paragraph from "../_components/paragraph.svelte";
 
     let scrambleSpan: HTMLSpanElement;
     onMount(() => {
+        gsap.registerPlugin(ScrambleTextPlugin);
+
         function animateScrambleSpan() {
             gsap.timeline({ repeat: -1, repeatDelay: 3.5 })
                 .to(scrambleSpan, { 

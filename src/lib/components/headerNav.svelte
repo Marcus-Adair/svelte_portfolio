@@ -24,7 +24,7 @@
             >
                 <div class={cn("flex flex-row gap-2 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}>
                     <Coffee className="h-[24px]  w-auto -translate-y-[1px]"/>
-                    <span  class="whitespace-nowrap  relative overflow-hidden"><span>{pageOptions.home} </span><span class="absolute -bottom-[28px] left-0">{pageOptions.home} </span></span>
+                    <span>{pageOptions.home}</span>
                 </div>
             </a>
         </li>

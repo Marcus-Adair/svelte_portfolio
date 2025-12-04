@@ -13,6 +13,7 @@
 	import { HOVER_EXPAND_TAILWIND_ANIMATION } from '$lib/consts/style';
     import  resume  from "$lib/assets/Marcus_Adair_Portfolio_Resume.pdf"
     import gsap from "gsap";
+    import ScrambleTextPlugin from "gsap/ScrambleTextPlugin";
 	import { onMount } from 'svelte';
 	import AnimatedSeparator from '$lib/components/animatedSeparator.svelte';
 	import Link from '$lib/components/link.svelte';
@@ -29,6 +30,8 @@
     let h1: HTMLHeadingElement;
     let helloWorld: HTMLSpanElement;
     onMount(() => {
+        gsap.registerPlugin(ScrambleTextPlugin);
+        
         gsap.fromTo(coffee,
             { y: -325 }, 
             { y: 0, duration: 1.1, ease: "bounce.out" }
