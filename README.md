@@ -40,6 +40,3 @@ You can also open the app in your browser automatically:
 npm run dev -- --open
 ```
 
-### Notes
-
-See the site at https://marcusadair.com
