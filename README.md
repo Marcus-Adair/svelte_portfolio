@@ -11,6 +11,8 @@
 
 This is my personal portfolio website built from scratch with with Svelte 5, SvelteKit, HTML/CSS, and Tailwind CSS. It showcases my projects, skills, and experience.
 
+Visit: [marcusadair.com](https://marcusadair.com)
+
 This project uses some components from [shadcn-svelte.com](https://shadcn-svelte.com/)
 
 ## Getting Started
