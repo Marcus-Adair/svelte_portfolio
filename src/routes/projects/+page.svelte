@@ -5,6 +5,7 @@
 	import sedePic from '$lib/assets/SEDE_screenshot.png';
 	import alpsPic from '$lib/assets/alps_git_repo_screenshot.png';
 	import portfolioPicV2 from '$lib/assets/portfolio_pic_v2.png';
+	import svelte2048pic from '$lib/assets/svelte_2048_pic.png';
 	import Link from '$lib/components/link.svelte';
 	import ProjectCard from './components/projectCard.svelte';
 	import gsap from "gsap";
@@ -33,6 +34,14 @@
 	</div>
 
 	<div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+		<ProjectCard
+			title='Svelte 2048'
+			url="https://marcus-adair.github.io/svelte_2048/"
+			src={svelte2048pic}
+			alt="svelte_2048_pic"
+			description="I recreated the 2048 sliding tile game using TypeScript, Svelte, Tailwind CSS, and GSAP. The app is fully animated, includes themes, and is deployed using GitHub Pages."
+		/>
+
 		<ProjectCard
 			title='My Portfolio (marcusadair.com)'
 			url="https://github.com/Marcus-Adair/svelte_portfolio"
