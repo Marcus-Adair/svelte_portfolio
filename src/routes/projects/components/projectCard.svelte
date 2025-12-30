@@ -15,8 +15,9 @@
         alt: string;
         title: string;
         description: string | Snippet;
+		divElt: HTMLDivElement;
     }
-    let { url, src, srcType = "img", alt, title, description}: Props = $props();
+    let { url, src, srcType = "img", alt, title, description, divElt = $bindable() }: Props = $props();
 
 	const maxX = 25;
 	const maxY = 15;
@@ -71,7 +72,7 @@
 	});
 </script>
 
-<div>
+<div bind:this={divElt}>
     <a bind:this={card} href={url} target={url.startsWith("/") ? "" : "_blank"} rel={url.startsWith("/") ? "" : "noreferrer"} class="flex flex-col gap-2 text-center">
         <Card class='p-1.5 hover:bg-accent/50 transition-colors'>
 			{#if srcType === "iframe"}

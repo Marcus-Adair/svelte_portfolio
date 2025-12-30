@@ -12,12 +12,34 @@
 	import { onMount } from 'svelte';
 	import AnimatedSeparator from '$lib/components/animatedSeparator.svelte';
 
+
+	let svelte2048Div: HTMLDivElement;
+
+	
+	let portfolioDiv: HTMLDivElement;
+	let odfDiv: HTMLDivElement;
+	let elm2048Div: HTMLDivElement;
+	let alpsDiv: HTMLDivElement;
+	let fdwDiv: HTMLDivElement;
+	let sedeDiv: HTMLDivElement;
 	onMount(() => {
 		gsap.fromTo(
 			".animate-text-in",
 			{ x: -350},
 			{ x: 0, duration: 0.26, ease: "power1.out" }
 		);
+
+		const ANIM = { y: 40, duration:0.2, opacity: 0,  ease: "power1.out" };
+		const OVERLAP = "-=0.12"; 
+
+		const tl = gsap.timeline();
+		tl.from(svelte2048Div, ANIM);
+		tl.from(portfolioDiv, ANIM, OVERLAP);
+		tl.from(odfDiv, ANIM, OVERLAP);
+		tl.from(elm2048Div, ANIM, OVERLAP);
+		tl.from(alpsDiv, ANIM, OVERLAP);
+		tl.from(fdwDiv, ANIM, OVERLAP);
+		tl.from(sedeDiv, ANIM, OVERLAP);
 	});
 </script>
 
@@ -34,7 +56,10 @@
 	</div>
 
 	<div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+
+		
 		<ProjectCard
+			bind:divElt={svelte2048Div}
 			title='Svelte 2048'
 			url="https://marcus-adair.github.io/svelte_2048/"
 			src={svelte2048pic}
@@ -43,6 +68,7 @@
 		/>
 
 		<ProjectCard
+			bind:divElt={portfolioDiv}
 			title='My Portfolio (marcusadair.com)'
 			url="https://github.com/Marcus-Adair/svelte_portfolio"
 			src={portfolioPicV2}
@@ -51,6 +77,7 @@
 		/>
 
 		<ProjectCard
+			bind:divElt={odfDiv}
 			title='On-Demand FakeQuakes'
 			url='/projects/odf'
 			src={odfDashPic}
@@ -59,6 +86,7 @@
 		/>
 
 		<ProjectCard
+			bind:divElt={elm2048Div}
 			title='ELM 2048'
 			url='https://marcus-adair.github.io/ELM_2048/'
 			src={elm2048pic}
@@ -67,6 +95,7 @@
 		/>
 
 		<ProjectCard
+			bind:divElt={alpsDiv}
 			title='ALPS'
 			url='https://github.com/Marcus-Adair/alps_project'
 			src={alpsPic}
@@ -75,6 +104,7 @@
 		/>
 
 		<ProjectCard
+			bind:divElt={fdwDiv}
 			title='FakeQuakes DAGMan Workflow (FDW)'
 			url="https://github.com/Marcus-Adair/Accelerating-Data-Intensive-Seismic-Research-Through-Parallel-Workflow-Optimization-and-Federated-CI"
 			src={fqsPaperPic}
@@ -83,6 +113,7 @@
 		/>
 
 		<ProjectCard
+			bind:divElt={sedeDiv}
 			title='Spatial Enrichment Data Engine (SEDE)'
 			url='https://drive.google.com/drive/folders/1p6R3zL03XLPOm3x2jNea5T9apxR6reDN?usp=sharing'
 			src={sedePic}
