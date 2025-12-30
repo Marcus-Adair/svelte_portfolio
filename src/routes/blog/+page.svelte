@@ -12,6 +12,9 @@
 
   let coffee: HTMLImageElement;
   let quote: HTMLSpanElement;
+  let post1: HTMLDivElement;
+  let post2: HTMLDivElement;
+  let post3: HTMLDivElement;
   onMount(() => {
     gsap.registerPlugin(ScrambleTextPlugin);
 
@@ -24,7 +27,7 @@
     gsap.fromTo(
       ".animated-card",
       { x: -550},
-      { x: 0, duration: 0.35, ease: "power1.out", delay: 0.05 }
+      { x: 0, duration: 0.04, ease: "power1.out", delay: 0.05 }
     );
 
     function animateQuote() {
@@ -41,8 +44,20 @@
           delay: 3
         });
     }
-
     animateQuote();
+
+    const postsAnimIn = {
+      y: 40,
+      opacity: 0,
+      ease: "power1.out",
+      duration: 0.1,
+    };
+    const overlap = "-=0.0.8"; 
+
+    const tl = gsap.timeline();
+    tl.from(post1, postsAnimIn);
+    tl.from(post2, postsAnimIn, overlap);
+    tl.from(post3, postsAnimIn, overlap);
   });
 
   function spinCoffee() {
@@ -82,12 +97,18 @@
     <AnimatedSeparator />
   </div>
 
-  <BlogCard id="svelte-2048" title="2048 with with Svelte, Tailwind, and GSAP" date={new Date("2025-12-30T04:37:55.000Z")} about="Details on how I implemented 2048" href="/blog/svelte-2048" imgSrc={svelte2048pic}/>
-  <AnimatedSeparator />
+  <div bind:this={post1}>
+    <BlogCard id="svelte-2048" title="2048 with with Svelte, Tailwind, and GSAP" date={new Date("2025-12-30T04:37:55.000Z")} about="Details on how I implemented 2048" href="/blog/svelte-2048" imgSrc={svelte2048pic}/>
+    <AnimatedSeparator />
+  </div>
 
-  <BlogCard id="gsap" title="Web Animations w/ GSAP" date={new Date("2025-12-01T03:51:00Z")} about="GSAP is an awesome library" href="/blog/gsap" imgSrc={gsapPic}/>
-  <AnimatedSeparator />
+  <div bind:this={post2}>
+    <BlogCard id="gsap" title="Web Animations w/ GSAP" date={new Date("2025-12-01T03:51:00Z")} about="GSAP is an awesome library" href="/blog/gsap" imgSrc={gsapPic}/>
+    <AnimatedSeparator />
+  </div>
 
-  <BlogCard id="hello_world" title="Hello world!!" date={new Date("2025-10-21T05:51:55.000Z")} about="My first ever blog post" href="/blog/hello-world" imgSrc={helloWorldPic}/>
-  <AnimatedSeparator />
+  <div bind:this={post3}>
+    <BlogCard id="hello_world" title="Hello world!!" date={new Date("2025-10-21T05:51:55.000Z")} about="My first ever blog post" href="/blog/hello-world" imgSrc={helloWorldPic}/>
+    <AnimatedSeparator />
+  </div>
 </div>

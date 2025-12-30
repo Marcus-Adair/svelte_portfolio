@@ -1,4 +1,5 @@
 <script lang="ts">
+	import AnimatedSeparator from "$lib/components/animatedSeparator.svelte";
 	import Button from "$lib/components/ui/button.svelte";
 	import Separator from "$lib/components/ui/separator.svelte";
 	import { formatDate } from "$lib/utils/dates";
@@ -29,4 +30,4 @@
     </div>
 </div>
 
-<Separator/>
+<AnimatedSeparator/>
