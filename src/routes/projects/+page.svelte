@@ -6,6 +6,7 @@
 	import alpsPic from '$lib/assets/alps_git_repo_screenshot.png';
 	import portfolioPicV2 from '$lib/assets/portfolio_pic_v2.png';
 	import svelte2048pic from '$lib/assets/svelte_2048_pic.png';
+	import tweakcnClonePic from '$lib/assets/tweakcn_clone_pic.png'
 	import Link from '$lib/components/link.svelte';
 	import ProjectCard from './components/projectCard.svelte';
 	import gsap from "gsap";
@@ -13,9 +14,8 @@
 	import AnimatedSeparator from '$lib/components/animatedSeparator.svelte';
 
 
+	let tweakcnCloneDiv: HTMLDivElement;
 	let svelte2048Div: HTMLDivElement;
-
-	
 	let portfolioDiv: HTMLDivElement;
 	let odfDiv: HTMLDivElement;
 	let elm2048Div: HTMLDivElement;
@@ -33,7 +33,8 @@
 		const OVERLAP = "-=0.12"; 
 
 		const tl = gsap.timeline();
-		tl.from(svelte2048Div, ANIM);
+		tl.from(tweakcnCloneDiv, ANIM);
+		tl.from(svelte2048Div, ANIM, OVERLAP);
 		tl.from(portfolioDiv, ANIM, OVERLAP);
 		tl.from(odfDiv, ANIM, OVERLAP);
 		tl.from(elm2048Div, ANIM, OVERLAP);
@@ -51,13 +52,21 @@
 	<h1 class="mr-44 text-4xl md:text-5xl animate-text-in">Projects</h1>
 
 	<div class="flex flex-col gap-2">
-		<span class="text-sm text-muted-foreground animate-text-in tracking-widest font-light">Notable projects I've worked on:</span>
+		<span class="text-sm text-muted-foreground animate-text-in tracking-widest font-light">Notable projects:</span>
 		<AnimatedSeparator />
 	</div>
 
 	<div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
 
-		
+		<ProjectCard
+			bind:divElt={tweakcnCloneDiv}
+			title='tweakcn_clone'
+			url="https://marcus-adair.github.io/tweakcn_clone/#theme-presets"
+			src={tweakcnClonePic}
+			alt="tweakcn_clone_pic"
+			description="I built a clone of the front-end dashboard for tweakcn.com using TypeScript, Svelte, shadcn-svelte, TailWind CSS, and GSAP. Challenges included the various animations and advanced, animated theme switcher."
+		/>
+
 		<ProjectCard
 			bind:divElt={svelte2048Div}
 			title='Svelte 2048'
