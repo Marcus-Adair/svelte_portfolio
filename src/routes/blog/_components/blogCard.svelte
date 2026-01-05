@@ -9,12 +9,14 @@
     type Props = {
         id: string;
         title: string;
-        date: Date;
+        date?: Date;
         about: string;
         href: string;
         imgSrc: any;
+		hoverTitle?: string;
+		openInNewTab?: boolean;
     } & HTMLAnchorAttributes;
-    let { id, title, date, about, href, imgSrc, ...props }: Props = $props();
+    let { id, title, date, about, href, imgSrc, hoverTitle = "See post", openInNewTab, ...props }: Props = $props();
 
 	const maxX = 35;
 	const maxY = 20;
@@ -69,17 +71,27 @@
 	});
 </script>
 
-<a bind:this={card} {id} {href} class={cn("flex flex-row gap-4 cursor-pointer p-2 rounded-md hover:bg-accent/30 transition-colors", props.class)} title="See post" {...props}>
+<a
+	{...props}
+	bind:this={card}
+	{id}
+	{href}
+	class={cn("flex flex-row gap-4 cursor-pointer p-2 rounded-md hover:bg-accent/30 transition-colors", props.class)}
+	title={hoverTitle}
+	target={openInNewTab ? "_blank" : undefined}
+>
     <img
         src={imgSrc}
         alt={title}
-        class="w-36 sm:w-72 lg:w-96 h-auto rounded-md"
+        class="w-36 sm:w-72 lg:w-96 h-auto rounded-md border-2 border-border"
     />
 
     <div class="flex-1 flex flex-col gap-1 mt-4 ml-2">
         <span class="text-xl font-[Space_Grotesk]">{title}</span>
         <span class="font-light text-sm mt-4">{about}</span>
-        <span class="text-xs text-muted-foreground">{formatDate(date)}</span>
+		{#if date}
+			<span class="text-xs text-muted-foreground">{formatDate(date)}</span>
+		{/if}
     </div>
 
     <div class="flex items-center justify-center">

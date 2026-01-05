@@ -22,12 +22,36 @@
     setTimeout(() => { changingIcon = false; }, 1800);
   }
 
+  let MeetingElt: HTMLAnchorElement;
+  let EmailElt: HTMLDivElement;
+  let LinkedInElt: HTMLAnchorElement;
+  let GithubElt: HTMLAnchorElement;
+
+
   onMount(() => {
-    gsap.fromTo(
+    gsap.from(
         "h1",
-        { x: -300},
-        { x: 0, duration: 0.3, ease: "power1.out" }
+        { x: -300, duration: 0.3, ease: "power1.out"}
     );
+
+    const OVERLAP = "-=0.32"; 
+    const ANIM_FROM =  {opacity: 0};
+    const ANIM_TO =  {opacity: 1, duration: 0.45, ease: "power1.inOut"};
+    const linksTimeline = gsap.timeline();
+    linksTimeline.fromTo(MeetingElt, ANIM_FROM, ANIM_TO, OVERLAP );
+    linksTimeline.fromTo(EmailElt, ANIM_FROM, ANIM_TO, OVERLAP);    
+    linksTimeline.fromTo(LinkedInElt, ANIM_FROM, ANIM_TO, OVERLAP);    
+    linksTimeline.fromTo(GithubElt, ANIM_FROM, ANIM_TO, OVERLAP );
+
+
+
+		const ABOUT_ANIM = { y: 40, duration:0.2, opacity: 0,  ease: "power1.out" };
+		const ABOUT_OVERLAP = "-=0.12"; 
+		const tl = gsap.timeline();
+    tl.from(".about-anim-1", ABOUT_ANIM);
+    [2,3,4,5,6,7].forEach((i) => {
+      tl.from(`.about-anim-${i}`, ABOUT_ANIM, ABOUT_OVERLAP);
+    })
   });
 </script>
 
@@ -44,32 +68,32 @@
         <h1 class="text-2xl md:text-5xl mt-4">Hi, I'm Marcus Adair <span class="text-xl md:text-4xl wave">👋🏻</span></h1>
       </div>
 
-      <AnimatedCard>
+      <AnimatedCard aboutNum={1}>
         <span>I was born and raised in Utah. I grew up in Davis County (north of Salt Lake City) where I went to K-12 school and graduated from Viewmont Highschool in 2017. </span>
       </AnimatedCard>
 
 
-      <AnimatedCard>
+      <AnimatedCard aboutNum={2}>
         <span>I began studying Computer Science at the University of Utah (U of U) in Fall 2017. Before my senior year I started working as an undergraduate research assistant at the U of U's Scientific Computing and Imaging (SCI) Institute.</span>
       </AnimatedCard>
 
-      <AnimatedCard>
+      <AnimatedCard aboutNum={3}>
         <span>Doing research at SCI was life-changing, and I learned a lot. In my undergraduate research I developed a high throughput workflow to accelerate earthquake simulations, collaborated with scientists from Oregon and other places - including a a work trip to the University of Oregon, and wrote a paper that was eventually accepted by an SC23 workshop and <Link href="https://dl.acm.org/doi/10.1145/3624062.3624276">published by the ACM</Link>.</span>
       </AnimatedCard>
 
-      <AnimatedCard>
+      <AnimatedCard aboutNum={4}>
         <span>I graduated with my BS in Computer Science in Spring 2023. I continued to do research over the summer and then entered graduate school at the U of U and becoming a graduate research assistant at SCI. During the first year I explored using machine learning to synthesize volcanic geo-data.</span>
       </AnimatedCard>
 
-      <AnimatedCard>
+      <AnimatedCard aboutNum={5}>
         <span>In Summer 2024 I did an internship at the University of Oregon, where I began development on On-Demand FakeQuakes, an iteration on previous work. I then turned this into my master's project and work research, continued development on it for a year, and created a full-stack app with a Python-based front-end, an AWS workflow (with Infrastructure-as-Code built in Python), and a CI/CD pipeline using GitHub Actions to automate AWS resource deployments, front-end updates, docker image builds and more. The project was targeted towards NASA scientists and other geoscientists.</span>
       </AnimatedCard>
 
-      <AnimatedCard>
+      <AnimatedCard aboutNum={6}>
         In May 2025 I graduated with my MS in Computer Science, entered the industry, and I now work at SafeStreets as a software engineer. I am helping build TypeScript applications in the front-end with React and Svelte, and also working in the back-end with a Hono API and Drizzle database. The apps serve to manage security installation orders and appointments, inventory, and more for the business.
       </AnimatedCard>
 
-      <AnimatedCard>
+      <AnimatedCard aboutNum={7}>
         Aside from software-related things, I enjoy snowboarding, hiking, the outdoors, film, electronic music production and DJing, video games, and more! I am passionate about developing software and continuing to learn!
       </AnimatedCard>
   </div>
@@ -79,6 +103,7 @@
   <div class="flex flex-col gap-6 md:text-left text-center items-center md:items-start text-muted-foreground md:mt-24">
 
     <a 
+      bind:this={MeetingElt}
       class={cn("hover:text-ring transition-colors flex flex-row gap-4 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}
       href={CAL_EMAIL}
       title="Schedule a Meeting"
@@ -89,7 +114,7 @@
         <span>Schedule a Meeting</span>
     </a>
 
-    <div class="flex flex-row items-center gap-4">
+    <div class="flex flex-row items-center gap-4" bind:this={EmailElt}>
       <a 
         class={cn("hover:text-ring transition-colors flex flex-row gap-4 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}
         href={EMAIL_URL}
@@ -113,6 +138,7 @@
     <Separator />
 
     <a
+      bind:this={LinkedInElt}
       class={cn("hover:text-ring transition-colors flex flex-row gap-4 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}
       href={LINKED_IN_URL}
       title="LinkedIn"
@@ -124,6 +150,7 @@
     </a>
 
     <a
+      bind:this={GithubElt}
       class={cn("hover:text-ring transition-colors flex flex-row gap-4 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}
       href={GITHUB_URL}
       title="GitHub"

@@ -6,6 +6,7 @@
     import Paragraph from "../_components/paragraph.svelte";
 	import PostHeader from "../_components/postHeader.svelte";
 	import Card from "$lib/components/ui/card/card.svelte";
+	import Signature from "../_components/signature.svelte";
 
     const DATE = new Date("2025-12-01T03:51:00Z");
 
@@ -114,10 +115,10 @@
         other package managers, or a CDN. The source code for my website is open, so feel free to check out how I implemented my animations!
     </Paragraph>
 
-    
-
-    <span class="text-right text-4xl font-[Space_Grotesk] lg:mr-14 mt-2"> - Marcus,</span>
-    <span class="text-right text-lg font-[Space_Grotesk] lg:mr-14">Nov. 30th, 2025</span>
+    <Signature
+        name="- Marcus,"
+        date="Nov. 30th, 2025"
+    />
 
     <Paragraph>
         (P.S., Go to the <Link href="/">home page</Link> and try click on the coffee gif... 👀 ☕️)

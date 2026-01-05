@@ -3,6 +3,7 @@
 	import Paragraph from "../_components/paragraph.svelte";
 	import PostHeader from "../_components/postHeader.svelte";
     import svelteLogo from "$lib/assets/32px-Svelte_Logo.png"
+	import Signature from "../_components/signature.svelte";
 
     const DATE = new Date("2025-10-21T05:51:55.000Z")
 </script>
@@ -73,6 +74,8 @@
 
     <Paragraph>Thanks again, cheers!</Paragraph>
 
-    <span class="text-right text-4xl font-[Space_Grotesk] lg:mr-14 mt-2"> - Marcus,</span>
-    <span class="text-right text-lg font-[Space_Grotesk] lg:mr-14">Oct. 20th and 21st, 2025</span>
+    <Signature
+        name="- Marcus,"
+        date="Oct. 20th and 21st, 2025"
+    />
 </div>

@@ -7,7 +7,7 @@
   const currentYear: number = new Date().getFullYear();
 </script>
 
-<footer class="flex flex-col sm:flex-row justify-between items-center px-14 gap-6 border-t border-t-border mt-20 pt-4 pb-4 bg-card/50">
+<footer class="flex flex-col sm:flex-row justify-between items-center px-14 gap-6 border-t border-t-border mt-20 pt-4 pb-8 bg-card/50">
     <ol class="flex flex-row gap-4 justify-start text-sm">
       <li>
         <a href="/" title="Home" class={cn(

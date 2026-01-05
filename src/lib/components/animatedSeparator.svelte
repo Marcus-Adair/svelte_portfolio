@@ -4,8 +4,6 @@
 
     import gsap from "gsap";
 
-    
-
     type Props = {
       divClass?: string;
       slow?: boolean;

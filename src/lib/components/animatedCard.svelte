@@ -5,8 +5,9 @@
 
     interface Props {
         children: Snippet;
+		aboutNum: number;
     }
-    let { children}: Props = $props();
+    let { children, aboutNum }: Props = $props();
 
     const maxX = 15;
 	const maxY = 10;
@@ -63,7 +64,7 @@
 </script>
 
 
-<div bind:this={card}>
+<div bind:this={card} class={`about-anim-${aboutNum}`}>
 	<Card>
 		{@render children()}
 	</Card>
