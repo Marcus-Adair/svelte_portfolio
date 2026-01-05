@@ -14,8 +14,9 @@
         href: string;
         imgSrc: any;
 		hoverTitle?: string;
+		openInNewTab?: boolean;
     } & HTMLAnchorAttributes;
-    let { id, title, date, about, href, imgSrc, hoverTitle = "See post", ...props }: Props = $props();
+    let { id, title, date, about, href, imgSrc, hoverTitle = "See post", openInNewTab, ...props }: Props = $props();
 
 	const maxX = 35;
 	const maxY = 20;
@@ -70,7 +71,15 @@
 	});
 </script>
 
-<a bind:this={card} {id} {href} class={cn("flex flex-row gap-4 cursor-pointer p-2 rounded-md hover:bg-accent/30 transition-colors", props.class)} title={hoverTitle} {...props}>
+<a
+	{...props}
+	bind:this={card}
+	{id}
+	{href}
+	class={cn("flex flex-row gap-4 cursor-pointer p-2 rounded-md hover:bg-accent/30 transition-colors", props.class)}
+	title={hoverTitle}
+	target={openInNewTab ? "_blank" : undefined}
+>
     <img
         src={imgSrc}
         alt={title}

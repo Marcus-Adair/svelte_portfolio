@@ -28,7 +28,7 @@
     <Paragraph>
         So check out my new implementation of 2048, built with TypeScript, Svelte, Tailwind, GSAP, and more! Click below:
     </Paragraph>
-    <BlogCard id="svelte-2048-game" title="Svelte 2048" about="Click to play!" href="https://marcus-adair.github.io/svelte_2048/" imgSrc={svelte2048pic} hoverTitle="Click to play!"/>
+    <BlogCard id="svelte-2048-game" title="Svelte 2048" about="Click to play!" href="https://marcus-adair.github.io/svelte_2048/" imgSrc={svelte2048pic} hoverTitle="Click to play!" openInNewTab/>
 
     <Paragraph>
         I implemented the game with minimal AI-assistance, writing the game logic and animation logic myself. It turned out well! I 

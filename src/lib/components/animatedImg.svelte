@@ -13,6 +13,14 @@
 	onMount(() => {
 		if (!image) return;
 
+
+		gsap.from(image, {
+				scale: 0,
+				opacity: 0,
+				duration: 0.5,
+				ease: "power2.out"
+			});
+
         function scale(e: MouseEvent) {
 			gsap.to(image, {
 				scale: 1.02,

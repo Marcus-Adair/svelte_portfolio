@@ -14,8 +14,14 @@
 	import MobileNavLink from '$lib/components/mobileNavLink.svelte';
 	import { pageOptions } from '$lib/types/pageOptions';
 	import { Menu } from 'lucide-svelte';
+	import gsap from 'gsap';
+	import { onMount } from 'svelte';
 
 	let { children } = $props();
+
+	onMount(() => {
+		gsap.from(".anim-theme-toggle", {opacity: 0, scale: 0, duration: 0.3})
+	});
 </script>
 
 <svelte:head>
@@ -25,7 +31,7 @@
 <ModeWatcher />
 <div class="flex flex-col min-h-screen">
 	<header class="grid grid-cols-3 items-center px-4 md:px-6 gap-2 border-b border-border pb-3 pt-4 bg-card/50">
-		<div class="justify-self-start flex">
+		<div class="justify-self-start flex anim-theme-toggle">
 			<ThemeToggle/>
 		</div>
 
