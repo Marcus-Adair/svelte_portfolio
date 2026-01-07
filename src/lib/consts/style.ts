@@ -1,1 +1,2 @@
 export const HOVER_EXPAND_TAILWIND_ANIMATION = "transition-transform duration-200 hover:scale-103"
+export const HOVER_EXPAND_LARGE_TAILWIND_ANIMATION = "transition-transform duration-200 hover:scale-106"
