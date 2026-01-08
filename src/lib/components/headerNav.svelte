@@ -15,37 +15,6 @@
   }
   let { homeSpan = $bindable(), aboutSpan = $bindable(), projectsSpan = $bindable(), blogSpan = $bindable() }: Props = $props();
 
-
-  // TODO: move these up to the root +layout, I think i need to do everything in one timeline (div height + span anims) on hover enter
-  //       and then on leave
-
-
-  // $effect(() => {
-  //   const OVERLAP = "-=0.325";
-  //     if (showNavLabels) {
-  //         const tl = gsap.timeline();
-  //         const ANIM = { y: 10, duration: 0.4, ease: "power1.inOut" };
-
-  //         tl.from(homeSpan, ANIM);
-  //         tl.from(aboutSpan, ANIM, OVERLAP);
-  //         tl.from(projectsSpan, ANIM, OVERLAP);
-  //         tl.from(blogSpan, ANIM, OVERLAP);
-  //     } else {
-  //       const tl = gsap.timeline();
-  //       const ANIM = {
-  //         y: 10, duration: 0.4, ease: "power1.inOut",
-  //         onComplete: () => {
-  //           gsap.to(homeSpan, { y:0, duration: 0})
-  //         }
-  //       }
-
-  //       tl.to(homeSpan, ANIM);
-  //       tl.to(aboutSpan, ANIM, OVERLAP);
-  //       tl.to(projectsSpan, ANIM, OVERLAP);
-  //       tl.to(blogSpan, ANIM, OVERLAP);
-  //     }
-  // });
-
   const isActive = (href: string, exactMatch: boolean) => {
       return exactMatch 
           ? page.url.pathname === href
