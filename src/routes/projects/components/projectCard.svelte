@@ -10,7 +10,7 @@
 
     interface Props {
         url: string;
-        src: any;
+        src: string;
 		srcType?: "iframe" | "img";
         alt: string;
         title: string;
@@ -78,7 +78,7 @@
 			{#if srcType === "iframe"}
 				<iframe {title} {src} class="border-card aspect-video w-full cursor-pointer overflow-hidden rounded-md border"></iframe>
 			{:else}
-				<img {src} {alt} class="border-card aspect-video w-full cursor-pointer overflow-hidden rounded-md border">
+				<enhanced:img {src} {alt} class="border-card aspect-video w-full cursor-pointer overflow-hidden rounded-md border"/>
 			{/if}
         </Card>
     </a>

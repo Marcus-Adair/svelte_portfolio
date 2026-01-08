@@ -8,13 +8,12 @@
   import { onMount } from "svelte";
 
   interface Props {
-      showNavLabels: boolean;
       homeSpan: HTMLSpanElement;
       aboutSpan: HTMLSpanElement;
       projectsSpan: HTMLSpanElement;
       blogSpan: HTMLSpanElement;
   }
-  let { showNavLabels, homeSpan = $bindable(), aboutSpan = $bindable(), projectsSpan = $bindable(), blogSpan = $bindable() }: Props = $props();
+  let { homeSpan = $bindable(), aboutSpan = $bindable(), projectsSpan = $bindable(), blogSpan = $bindable() }: Props = $props();
 
 
   // TODO: move these up to the root +layout, I think i need to do everything in one timeline (div height + span anims) on hover enter
@@ -82,7 +81,7 @@
                   <!-- <Coffee className="h-[36px] w-auto -translate-y-[2px]" /> -->
 
                   <Coffee size={30} />
-                  <span bind:this={homeSpan} class={cn("text-lg", { "opacity-0": !showNavLabels })}>
+                  <span bind:this={homeSpan} class="text-base md:text-lg">
                       {pageOptions.home}
                   </span>
               </div>
@@ -100,7 +99,7 @@
           >
               <div class={cn("flex flex-col gap-0 items-center", HOVER_EXPAND_LARGE_TAILWIND_ANIMATION)}>
                   <BookOpen size={30} />
-                  <span bind:this={aboutSpan} class={cn("text-lg", { "opacity-0": !showNavLabels })}>
+                  <span bind:this={aboutSpan} class="text-base md:text-lg">
                       {pageOptions.about}
                   </span>
               </div>
@@ -118,7 +117,7 @@
           >
               <div class={cn("flex flex-col gap-0 items-center", HOVER_EXPAND_LARGE_TAILWIND_ANIMATION)}>
                   <CodeXml size={30} />
-                  <span bind:this={projectsSpan} class={cn("text-lg", { "opacity-0": !showNavLabels })}>
+                  <span bind:this={projectsSpan} class="text-base md:text-lg">
                       {pageOptions.projects}
                   </span>
               </div>
@@ -136,7 +135,7 @@
           >
               <div class={cn("flex flex-col gap-0 items-center", HOVER_EXPAND_LARGE_TAILWIND_ANIMATION)}>
                   <Laptop size={30} />
-                  <span bind:this={blogSpan} class={cn("text-lg", { "opacity-0": !showNavLabels })}>
+                  <span bind:this={blogSpan} class="text-base md:text-lg">
                       {pageOptions.blog}
                   </span>
               </div>

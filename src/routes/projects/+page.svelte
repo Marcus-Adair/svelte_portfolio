@@ -45,7 +45,7 @@
 </script>
 
 <svelte:head>
-  <title>Projects</title>
+  <title>Projects • Marcus Adair</title>
 </svelte:head>
 
 <div class="flex flex-col gap-6">

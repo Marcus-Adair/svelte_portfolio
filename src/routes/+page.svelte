@@ -84,7 +84,7 @@
 </script>
 
 <svelte:head>
-  <title>Home</title>
+  <title>Home • Marcus Adair</title>
 </svelte:head>
 
 <div class="flex flex-col gap-6">
@@ -108,7 +108,7 @@
 
         <Separator/>
 
-        <img src={headshot} alt="coffee_gif" class="w-auto h-32 md:h-40 rounded-full border border-border object-cover absolute top-8 right-0" />
+        <enhanced:img src={headshot} alt="coffee_gif" class="w-auto h-32 md:h-40 rounded-full border border-border object-cover absolute top-8 right-0" />
     </div>
 
 

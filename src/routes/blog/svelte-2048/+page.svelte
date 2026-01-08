@@ -11,7 +11,7 @@
 </script>
 
 <svelte:head>
-  <title>Blog - Svelte 2048</title>
+  <title>Blog - Svelte 2048 • Marcus Adair</title>
 </svelte:head>
 
 <!-- <Link href="https://marcus-adair.github.io/svelte_2048/">here</Link> -->

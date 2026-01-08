@@ -9,7 +9,7 @@
 </script>
 
 <svelte:head>
-  <title>Blog - Hello World!!</title>
+  <title>Blog - Hello World!! • Marcus Adair</title>
 </svelte:head>
 
 
@@ -62,7 +62,7 @@
     </Paragraph>
 
     <div class="flex flex-row items-center justify-center pb-10 pt-2">
-        <img src={spidermanMeme} alt="spiderman" class="w-96 h-auto">
+        <enhanced:img src={spidermanMeme} alt="spiderman" class="w-96 h-auto"/>
     </div>
     
 

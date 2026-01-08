@@ -36,6 +36,7 @@
 	--sidebar-border: oklch(0.948 0.0066 5.6293);
 	--sidebar-ring: oklch(0.6653 0.2303 9.2854);
 
+	--header: oklch(0.96 0 0);
 	--header-foreground: oklch(0.5542 0.0453 1.1489);
 
 	--font-sans: Inter, sans-serif;
@@ -81,6 +82,7 @@
 	--input: oklch(0.3715 0 0);
 	--ring: oklch(0.6653 0.2303 9.2854);
 
+	--header: oklch(0.2686 0 0);
 	--header-foreground: oklch(0.8455 0 0);
 
 	--chart-1: oklch(0.7162 0.1934 0.6386);
@@ -150,6 +152,7 @@
 	--color-sidebar-border: var(--sidebar-border);
 	--color-sidebar-ring: var(--sidebar-ring);
 
+	--color-header: var(--header);
 	--color-header-foreground: var(--header-foreground);
 
 	--font-sans: var(--font-sans);

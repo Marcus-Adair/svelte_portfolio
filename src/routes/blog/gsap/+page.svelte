@@ -48,7 +48,7 @@
 </script>
 
 <svelte:head>
-  <title>Blog - GSAP</title>
+  <title>Blog - GSAP • Marcus Adair</title>
 </svelte:head>
 
 <div class="flex flex-col gap-4">

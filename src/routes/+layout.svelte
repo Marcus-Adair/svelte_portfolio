@@ -5,29 +5,17 @@
 	import HeaderNav from '$lib/components/headerNav.svelte';
 	import Footer from '$lib/components/footer.svelte';
 	import ThemeToggle from '$lib/components/themeToggle.svelte';
-	import { Dialog } from 'bits-ui';
-	import DialogTrigger from '$lib/components/ui/dialog/dialog-trigger.svelte';
-	import DialogContent from '$lib/components/ui/dialog/dialog-content.svelte';
-	import DialogHeader from '$lib/components/ui/dialog/dialog-header.svelte';
-	import DialogTitle from '$lib/components/ui/dialog/dialog-title.svelte';
-	import Separator from '$lib/components/ui/separator.svelte';
-	import MobileNavLink from '$lib/components/mobileNavLink.svelte';
-	import { pageOptions } from '$lib/types/pageOptions';
-	import { Menu } from 'lucide-svelte';
 	import gsap from 'gsap';
 	import { onMount } from 'svelte';
 	import { cn } from '$lib/utils';
 
 	let { children } = $props();
 
-
-
 	let headerDiv: HTMLElement;
 	let homeSpan = $state<HTMLSpanElement | undefined>();
 	let aboutSpan = $state<HTMLSpanElement | undefined>();
 	let projectsSpan = $state<HTMLSpanElement | undefined>();
 	let blogSpan = $state<HTMLSpanElement | undefined>();
-	let showNavLabels = $state(false);
 
 	let headerTl: gsap.core.Timeline;
 
@@ -46,12 +34,10 @@
 	});
 
 	function onHeaderEnter() {
-		showNavLabels = true;
-		headerTl.play();
+ 		headerTl.play();
 	}
 	function onHeaderLeave() {
 		headerTl.reverse();
-		showNavLabels = false;
 	}
 
 </script>
@@ -68,7 +54,7 @@
 		bind:this={headerDiv}
 		class={cn(
 			"fixed top-0 z-100 h-[68px] w-screen",
-			"bg-card/70 backdrop-blur-xl"
+			"bg-header/70 backdrop-blur-xl"
 		)}
 		onmouseenter={() => onHeaderEnter()}
 		onmouseleave={() => onHeaderLeave()}
@@ -84,7 +70,6 @@
 			<div class="justify-self-end gap-2 flex flex-row items-center">
 				<!-- Desktop -->
 				<HeaderNav
-					{showNavLabels}
 					bind:homeSpan={homeSpan!} bind:aboutSpan={aboutSpan!}
 					bind:projectsSpan={projectsSpan!} bind:blogSpan={blogSpan!}
 				/>
