@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Card from "$lib/components/ui/card/card.svelte";
 	import Separator from "$lib/components/ui/separator.svelte";
 	import { CAL_EMAIL, EMAIL, EMAIL_URL, GITHUB_URL, LINKED_IN_URL } from "$lib/consts/config";
 	import { HOVER_EXPAND_TAILWIND_ANIMATION } from "$lib/consts/style";
@@ -43,8 +42,6 @@
     linksTimeline.fromTo(LinkedInElt, ANIM_FROM, ANIM_TO, OVERLAP);    
     linksTimeline.fromTo(GithubElt, ANIM_FROM, ANIM_TO, OVERLAP );
 
-
-
 		const ABOUT_ANIM = { y: 40, duration:0.2, opacity: 0,  ease: "power1.out" };
 		const ABOUT_OVERLAP = "-=0.12"; 
 		const tl = gsap.timeline();
@@ -57,7 +54,7 @@
 
 
 <svelte:head>
-  <title>About</title>
+  <title>About • Marcus Adair</title>
 </svelte:head>
 
 <div class="grid grid-cols-1 md:grid-cols-[55%_45%] gap-16">

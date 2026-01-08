@@ -73,7 +73,7 @@
 </script>
 
 <svelte:head>
-  <title>Blog</title>
+  <title>Blog • Marcus Adair</title>
 </svelte:head>
 
 <div class="flex flex-col gap-6">

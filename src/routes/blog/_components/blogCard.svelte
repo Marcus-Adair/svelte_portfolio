@@ -12,7 +12,7 @@
         date?: Date;
         about: string;
         href: string;
-        imgSrc: any;
+        imgSrc: string;
 		hoverTitle?: string;
 		openInNewTab?: boolean;
     } & HTMLAnchorAttributes;
@@ -80,7 +80,7 @@
 	title={hoverTitle}
 	target={openInNewTab ? "_blank" : undefined}
 >
-    <img
+    <enhanced:img
         src={imgSrc}
         alt={title}
         class="w-36 sm:w-72 lg:w-96 h-auto rounded-md border-2 border-border"

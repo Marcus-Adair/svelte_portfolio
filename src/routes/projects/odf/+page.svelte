@@ -8,7 +8,7 @@
 </script>
 
 <svelte:head>
-  <title>Projects - ODF</title>
+  <title>Projects - ODF • Marcus Adair</title>
 </svelte:head>
 
 
@@ -68,7 +68,7 @@
 
     <span>Here is a diagram I created using Figma to illustrate the flow and utilized technologies of On-Demand Fakequakes:</span>
     <div class="flex flex-col items-center gap-8">
-        <img src={workflowDiagram} alt="Workflow Diagram" class="w-auto h-auto px-4"/>
+        <enhanced:img src={workflowDiagram} alt="Workflow Diagram" class="w-auto h-auto px-4"/>
         <span>
             This shows the flow from the front-end, that was deployed through AWS, which could trigger a JSON file (with simulation parameters) to be deposited
             into an S3 bucket and thus the larger workflow.
@@ -79,7 +79,7 @@
 
     <span>Here is a diagram that illustrates the high-level parts of the continuous integration/continuous deployment (CI/CD) pipeline for the app:</span>
     <div class="flex flex-col items-center gap-8">
-        <img src={cicdDiagram} alt="CI/CD Diagram" class="max-w-auto h-auto px-4"/>
+        <enhanced:img src={cicdDiagram} alt="CI/CD Diagram" class="max-w-auto h-auto px-4"/>
         <span>
             Through AWS <Link href="https://aws.amazon.com/cloudformation/">CloudFormation</Link> and <Link href="https://aws.amazon.com/cdk/">Cloud Development Kit</Link> (services that enables you to turn code into AWS infrastructure resources in an automated and secure manner)
             and GitHub Actions, I engineered a CI/CD pipeline. Updates to the Git repo would trigger AWS resource stacks to updated and deployed, Docker images to be rebuilt, the UI to be updated, and more without letting the live website go down.
