@@ -5,15 +5,12 @@
 	import { cn } from "$lib/utils";
 	import { CalendarDays, Check, Copy, Github, LinkedinIcon, Mail } from "lucide-svelte";
   import snowboard_photo from "$lib/assets/snowboard_photo.jpg"
-  import nasa_photo from "$lib/assets/nasa_photo.jpg"
   import masters_photo from "$lib/assets/masters_photo.jpg"
 	import Link from "$lib/components/link.svelte";
   import gsap from "gsap";
 	import { onMount } from "svelte";
 	import AnimatedCard from "$lib/components/animatedCard.svelte";
 	import AnimatedImg from "$lib/components/animatedImg.svelte";
-
-
 
   let MeetingElt: HTMLAnchorElement;
   let EmailElt: HTMLDivElement;
@@ -136,12 +133,6 @@
         <div bind:this={checkIcon}>
           <Check class="size-4.5 hover:text-ring absolute top-0 left-0 -translate-y-[20px]" />
         </div>
-
-        <!-- {#if changingIcon}
-          
-        {:else}
-          <Copy class="size-4 hover:text-ring cursor-pointer" />
-        {/if} -->
       </button>
     </div>
 
@@ -176,7 +167,6 @@
     <div class="flex flex-col">
       <AnimatedImg src={snowboard_photo} alt="snowboard_photo" class="-rotate-2 mt-8" />
       <AnimatedImg src={masters_photo} alt="grad_phot" class="rotate-2 mt-24" />
-      <!-- <AnimatedImg src={nasa_photo} alt="nasa_photo" class="-rotate-2 mt-16" /> -->
   </div>
   </div>
 </div>
@@ -185,15 +175,15 @@
 <!-- Wave animation -->
 <style>
   @keyframes wave {
-    0%, 12% { transform: rotate(0deg); }       /* pause at start */
-    20% { transform: rotate(20deg); }          /* quick lift */
-    30% { transform: rotate(-15deg); }         /* swing back */
-    40% { transform: rotate(15deg); }          /* swing forward */
-    50% { transform: rotate(-10deg); }         /* smaller swing back */
-    60% { transform: rotate(10deg); }          /* smaller swing forward */
-    70% { transform: rotate(-5deg); }          /* tiny swing back */
-    80% { transform: rotate(5deg); }           /* tiny swing forward */
-    90%, 100% { transform: rotate(0deg); }     /* pause at end */
+    0%, 12% { transform: rotate(0deg); }
+    20% { transform: rotate(20deg); }
+    30% { transform: rotate(-15deg); }
+    40% { transform: rotate(15deg); }
+    50% { transform: rotate(-10deg); }
+    60% { transform: rotate(10deg); }
+    70% { transform: rotate(-5deg); }
+    80% { transform: rotate(5deg); }
+    90%, 100% { transform: rotate(0deg); }
   }
 
   .wave {
