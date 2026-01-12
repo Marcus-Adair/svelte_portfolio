@@ -186,8 +186,8 @@
             </a>
         </div>
 
-        <Button variant="outline" size="lg" title="My Resume" href={resume} download="Marcus_Adair_Resume.pdf">
-            <span class="hidden sm:flex">Download Resume</span>
+        <Button variant="outline" size="lg" title="My Resume" onclick={() => window.open(resume, "_blank")}>
+            <span class="hidden sm:flex">My Resume</span>
             <Download/>
         </Button>    
     </div>

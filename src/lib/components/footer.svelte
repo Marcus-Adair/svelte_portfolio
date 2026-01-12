@@ -11,7 +11,7 @@
     <ol class="flex flex-row gap-4 justify-start text-sm">
       <li>
         <a href="/" title="Home" class={cn(
-          "transition-all duration-300 ease-out hover:text-primary/80 font-light",
+          "transition-all duration-300 ease-out hover:text-primary/80 font-light hover:underline underline-offset-2",
           page.url.pathname === "/"
             ? "text-primary font-semibold"
             : "text-muted-foreground"
@@ -22,7 +22,7 @@
   
       <li>
         <a href="/about" title="About" class={cn(
-          "transition-all duration-300 ease-out hover:text-primary/80 font-light",
+          "transition-all duration-300 ease-out hover:text-primary/80 font-light hover:underline underline-offset-2",
           page.url.pathname.includes("about")
             ? "text-primary font-semibold"
             : "text-muted-foreground"
@@ -33,7 +33,7 @@
         
       <li>
         <a href="/projects" title="Projects" class={cn(
-          "transition-all duration-300 ease-out hover:text-primary/80 font-light",
+          "transition-all duration-300 ease-out hover:text-primary/80 font-light hover:underline underline-offset-2",
           page.url.pathname.includes("projects")
             ? "text-primary font-semibold"
             : "text-muted-foreground"
@@ -45,7 +45,7 @@
 
       <li>
         <a href="/blog" title="Blog" class={cn(
-          "transition-all duration-300 ease-out hover:text-primary/80 font-light",
+          "transition-all duration-300 ease-out hover:text-primary/80 font-light hover:underline underline-offset-2",
           page.url.pathname.includes("blog")
             ? "text-primary font-semibold"
             : "text-muted-foreground"
