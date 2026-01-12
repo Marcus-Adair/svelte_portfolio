@@ -13,19 +13,14 @@
 	import AnimatedCard from "$lib/components/animatedCard.svelte";
 	import AnimatedImg from "$lib/components/animatedImg.svelte";
 
-  let changingIcon = $state(false);
-  
-  function copyEmail() {
-    navigator.clipboard.writeText(EMAIL)
-    changingIcon = true;
-    setTimeout(() => { changingIcon = false; }, 1800);
-  }
+
 
   let MeetingElt: HTMLAnchorElement;
   let EmailElt: HTMLDivElement;
   let LinkedInElt: HTMLAnchorElement;
   let GithubElt: HTMLAnchorElement;
-
+  let copyIcon: HTMLElement;
+  let checkIcon: HTMLElement;
 
   onMount(() => {
     gsap.from(
@@ -43,13 +38,30 @@
     linksTimeline.fromTo(GithubElt, ANIM_FROM, ANIM_TO, OVERLAP );
 
 		const ABOUT_ANIM = { y: 40, duration:0.2, opacity: 0,  ease: "power1.out" };
-		const ABOUT_OVERLAP = "-=0.12"; 
 		const tl = gsap.timeline();
-    tl.from(".about-anim-1", ABOUT_ANIM);
-    [2,3,4,5,6,7].forEach((i) => {
-      tl.from(`.about-anim-${i}`, ABOUT_ANIM, ABOUT_OVERLAP);
+    [1,2,3,4,5].forEach((i) => {
+      tl.from(`.about-anim-${i}`, ABOUT_ANIM, i * 0.1);
     })
   });
+
+
+	const EASE = "power2.out";
+	const DURATION = 0.22;
+	function transCopyIcon() {
+		gsap.fromTo(copyIcon, { y: 0}, { y: 20, duration: DURATION, ease: EASE });
+		gsap.fromTo(checkIcon, {y: -20 }, { y: 0, duration: DURATION, ease: EASE });
+	}
+
+  function copyEmail() {
+    transCopyIcon();
+    navigator.clipboard.writeText(EMAIL);
+
+    setTimeout(() => { 
+      gsap.fromTo(copyIcon, { y: 20}, { y: 0, duration: DURATION, ease: EASE });
+      gsap.fromTo(checkIcon, {y: 0 }, { y: -20, duration: DURATION, ease: EASE });
+    }, 1800);
+  }
+
 </script>
 
 
@@ -66,32 +78,26 @@
       </div>
 
       <AnimatedCard aboutNum={1}>
-        <span>I was born and raised in Utah. I grew up in Davis County (north of Salt Lake City) where I went to K-12 school and graduated from Viewmont Highschool in 2017. </span>
+        <span>I was born and raised in Utah, primarily in Davis County. I studied Computer Science at the University of Utah (U of U) starting in Fall 2017. During the Summer before my final undergrad. year, in 2022, I began working as an undergraduate research assistant at the Scientific Computing and Imaging (SCI) Institute.</span>
       </AnimatedCard>
 
-
       <AnimatedCard aboutNum={2}>
-        <span>I began studying Computer Science at the University of Utah (U of U) in Fall 2017. Before my senior year I started working as an undergraduate research assistant at the U of U's Scientific Computing and Imaging (SCI) Institute.</span>
+        <span>At SCI, I developed a high-throughput workflow to accelerate earthquake simulations and collaborated with scientists across institutions. This work led to a paper <Link href="https://dl.acm.org/doi/10.1145/3624062.3624276">published by the ACM</Link> at an SC23 workshop.</span>
       </AnimatedCard>
 
       <AnimatedCard aboutNum={3}>
-        <span>Doing research at SCI was life-changing, and I learned a lot. In my undergraduate research I developed a high throughput workflow to accelerate earthquake simulations, collaborated with scientists from Oregon and other places - including a a work trip to the University of Oregon, and wrote a paper that was eventually accepted by an SC23 workshop and <Link href="https://dl.acm.org/doi/10.1145/3624062.3624276">published by the ACM</Link>.</span>
+        <span>
+          I earned my BS in Computer Science in 2023, then pursued my MS at the U of U, working as a graduate research assistant at SCI. At the start of grad. school I explored using machine learning to synthesize volcanic geo-data.
+          Then I transitioned and for my master's project, I iterated on previous work involving earthquake simulations and built a full-stack application including a Python front-end user interface, an AWS workflow build with Python and, AWS Infrastructure-as-Code in Python, a CI/CD pipeline with GitHub Actions for automated deployments and Docker builds, and more.</span>
       </AnimatedCard>
 
+
       <AnimatedCard aboutNum={4}>
-        <span>I graduated with my BS in Computer Science in Spring 2023. I continued to do research over the summer and then entered graduate school at the U of U and becoming a graduate research assistant at SCI. During the first year I explored using machine learning to synthesize volcanic geo-data.</span>
+        <span>I graduated with my MS in Computer Science in May 2025 and now work at SafeStreets as a software engineer, building modern TypeScript applications with Svelte, React-Native, and more to support business operations.</span>
       </AnimatedCard>
 
       <AnimatedCard aboutNum={5}>
-        <span>In Summer 2024 I did an internship at the University of Oregon, where I began development on On-Demand FakeQuakes, an iteration on previous work. I then turned this into my master's project and work research, continued development on it for a year, and created a full-stack app with a Python-based front-end, an AWS workflow (with Infrastructure-as-Code built in Python), and a CI/CD pipeline using GitHub Actions to automate AWS resource deployments, front-end updates, docker image builds and more. The project was targeted towards NASA scientists and other geoscientists.</span>
-      </AnimatedCard>
-
-      <AnimatedCard aboutNum={6}>
-        In May 2025 I graduated with my MS in Computer Science, entered the industry, and I now work at SafeStreets as a software engineer. I am helping build TypeScript applications in the front-end with React and Svelte, and also working in the back-end with a Hono API and Drizzle database. The apps serve to manage security installation orders and appointments, inventory, and more for the business.
-      </AnimatedCard>
-
-      <AnimatedCard aboutNum={7}>
-        Aside from software-related things, I enjoy snowboarding, hiking, the outdoors, film, electronic music production and DJing, video games, and more! I am passionate about developing software and continuing to learn!
+        <span>Outside of work, I enjoy snowboarding, hiking, electronic music production, animation, web development, and always learning something new!</span>
       </AnimatedCard>
   </div>
 
@@ -123,13 +129,20 @@
         <span>marcus.a.adair@gmail.com</span>
       </a>
       
-      <div class="transition-all" title="Copy" onclick={copyEmail} onkeydown={copyEmail} role="button" tabindex={1}>
-        {#if changingIcon}
-          <Check class="size-4 hover:text-ring" />
+      <button class="transition-colors relative w-fit h-fit overflow-clip" title="Copy" onclick={copyEmail}>
+        <div bind:this={copyIcon}>
+          <Copy class="size-4.5 hover:text-ring cursor-pointer" />
+        </div>
+        <div bind:this={checkIcon}>
+          <Check class="size-4.5 hover:text-ring absolute top-0 left-0 -translate-y-[20px]" />
+        </div>
+
+        <!-- {#if changingIcon}
+          
         {:else}
           <Copy class="size-4 hover:text-ring cursor-pointer" />
-        {/if}
-      </div>
+        {/if} -->
+      </button>
     </div>
 
     <Separator />
@@ -163,7 +176,7 @@
     <div class="flex flex-col">
       <AnimatedImg src={snowboard_photo} alt="snowboard_photo" class="-rotate-2 mt-8" />
       <AnimatedImg src={masters_photo} alt="grad_phot" class="rotate-2 mt-24" />
-      <AnimatedImg src={nasa_photo} alt="nasa_photo" class="-rotate-2 mt-16" />
+      <!-- <AnimatedImg src={nasa_photo} alt="nasa_photo" class="-rotate-2 mt-16" /> -->
   </div>
   </div>
 </div>

@@ -63,8 +63,9 @@
 
 </script>
 
+<!-- hover:ring-2 ring-primary -->
 
-<div bind:this={card} class={`about-anim-${aboutNum}`}>
+<div bind:this={card} class={`about-anim-${aboutNum} `}>
 	<Card>
 		{@render children()}
 	</Card>
