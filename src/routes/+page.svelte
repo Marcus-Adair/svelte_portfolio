@@ -17,7 +17,6 @@
 	import { onMount } from 'svelte';
 	import AnimatedSeparator from '$lib/components/animatedSeparator.svelte';
 	import Link from '$lib/components/link.svelte';
-	import Separator from '$lib/components/ui/separator.svelte';
 
     let changingIcon = $state(false);
     function copyEmail() {
@@ -106,7 +105,7 @@
             </div>
         </div>
 
-        <Separator/>
+        <AnimatedSeparator slow/>
 
         <enhanced:img src={headshot} alt="coffee_gif" class="w-auto h-32 md:h-40 rounded-full border border-border object-cover absolute top-8 right-0" />
     </div>
@@ -152,9 +151,9 @@
                 href={LINKED_IN_URL}
                 title="LinkedIn"
                 target="_blank"
-                rel="noreferrer"
+                rel="external"
             >
-            <LinkedinIcon class="size-7"/>
+                <LinkedinIcon class="size-7"/>
             </a>
 
                 <a
@@ -162,7 +161,7 @@
                     href={GITHUB_URL}
                     title="GitHub"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="external"
                 >
                 <Github class="size-7"/>
             </a>
@@ -171,7 +170,7 @@
                 href={CAL_EMAIL}
                 title="Calendar"
                 target="_blank"
-                rel="noreferrer"
+                rel="external"
             >
                 <CalendarDays class="size-7"/>
             </a>
@@ -180,7 +179,7 @@
                 href={EMAIL_URL}
                 title="Email"
                 target="_blank"
-                rel="noreferrer"
+                rel="external"
             >
                 <Mail class="size-7"/>
             </a>

@@ -9,12 +9,19 @@
 	import { onMount } from 'svelte';
 	import AnimatedSeparator from "$lib/components/animatedSeparator.svelte";
   import svelte2048pic from '$lib/assets/svelte_2048_pic.png';
+  import easyScrumPic from '$lib/assets/easy-scrum_pic.png';
+	import { ChevronDown, ChevronUp } from "lucide-svelte";
+	import Button from "$lib/components/ui/button.svelte";
+
+  let showingAllPosts = $state(false);
 
   let coffee: HTMLImageElement;
   let quote: HTMLSpanElement;
   let post1: HTMLDivElement;
   let post2: HTMLDivElement;
+  // svelte-ignore non_reactive_update
   let post3: HTMLDivElement;
+  let post4: HTMLDivElement;
   onMount(() => {
     gsap.registerPlugin(ScrambleTextPlugin);
 
@@ -55,7 +62,8 @@
     const overlap = "-=0.0.8"; 
 
     const tl = gsap.timeline();
-    tl.from(post1, postsAnimIn);
+    tl.from(post4, postsAnimIn);
+    tl.from(post1, postsAnimIn, overlap);
     tl.from(post2, postsAnimIn, overlap);
     tl.from(post3, postsAnimIn, overlap);
   });
@@ -93,12 +101,17 @@
   </div>
 
   <div class="flex flex-col gap-1.25 mt-2">
-    <span class="text-xs text-muted-foreground">HIGHLIGHTED POSTS</span>
+    <span class="text-xs text-muted-foreground">{showingAllPosts ? "ALL" : "HIGHLIGHTED"} POSTS</span>
+    <AnimatedSeparator />
+  </div>
+
+  <div bind:this={post4}>
+    <BlogCard id="easy-scrum" title="I Made a Simple, Collaborative Scrum App" date={new Date("2026-03-08T06:00:00.000Z")} about="Shipping a scrum board app fast with SvelteKit, Drizzle, Railway, Claude Code, and more" href="/blog/easy-scrum" imgSrc={easyScrumPic}/>
     <AnimatedSeparator />
   </div>
 
   <div bind:this={post1}>
-    <BlogCard id="svelte-2048" title="2048 with with Svelte, Tailwind, and GSAP" date={new Date("2025-12-30T04:37:55.000Z")} about="Details on how I implemented 2048" href="/blog/svelte-2048" imgSrc={svelte2048pic}/>
+    <BlogCard id="svelte-2048" title="2048 with Svelte, Tailwind, and GSAP" date={new Date("2025-12-30T04:37:55.000Z")} about="Details on how I implemented 2048" href="/blog/svelte-2048" imgSrc={svelte2048pic}/>
     <AnimatedSeparator />
   </div>
 
@@ -107,8 +120,28 @@
     <AnimatedSeparator />
   </div>
 
-  <div bind:this={post3}>
-    <BlogCard id="hello_world" title="Hello world!!" date={new Date("2025-10-21T05:51:55.000Z")} about="My first ever blog post" href="/blog/hello-world" imgSrc={helloWorldPic}/>
-    <AnimatedSeparator />
+  {#if showingAllPosts}
+    <div bind:this={post3}>
+      <BlogCard id="hello_world" title="Hello world!!" date={new Date("2025-10-21T05:51:55.000Z")} about="My first ever blog post" href="/blog/hello-world" imgSrc={helloWorldPic}/>
+      <AnimatedSeparator />
+    </div>
+  {/if}
+
+  <div class="flex gap-2 justify-end">
+    <Button
+      variant="ghost"
+      size="sm"
+      onclick={() => showingAllPosts = !showingAllPosts}
+      title={showingAllPosts ? "Show Highlighted Posts" : "See All Posts"}
+    >
+      <span>
+        { !showingAllPosts ? "SEE ALL" : "SHOW HIGHLIGHTED" } POSTS
+      </span>
+      {#if showingAllPosts}
+        <ChevronUp class="size-4"/>
+      {:else}
+        <ChevronDown class="size-4"/>
+      {/if}
+    </Button>
   </div>
 </div>
