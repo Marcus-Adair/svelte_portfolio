@@ -28,7 +28,7 @@
         <ChevronLeft class="size-8"/>
     </Button>
     <div class="flex flex-col gap-2 flex-1">
-        <span bind:this={titleSpan} class="text-4xl font-normal">{title}</span>
+        <h1 bind:this={titleSpan} class="text-4xl font-normal">{title}</h1>
 
         <div bind:this={dateDiv} class="flex flex-row justify-between items-center">
             <div class="flex flex-row items-center gap-2 h-4">

@@ -7,6 +7,7 @@
 	import portfolioPicV2 from '$lib/assets/portfolio_pic_v2.png';
 	import svelte2048pic from '$lib/assets/svelte_2048_pic.png';
 	import tweakcnClonePic from '$lib/assets/tweakcn_clone_pic.png'
+	import easyScrumPic from '$lib/assets/easy-scrum_pic.png';
 	import Link from '$lib/components/link.svelte';
 	import ProjectCard from './components/projectCard.svelte';
 	import gsap from "gsap";
@@ -14,6 +15,7 @@
 	import AnimatedSeparator from '$lib/components/animatedSeparator.svelte';
 
 
+	let easyScrumDiv: HTMLDivElement;
 	let tweakcnCloneDiv: HTMLDivElement;
 	let svelte2048Div: HTMLDivElement;
 	let portfolioDiv: HTMLDivElement;
@@ -33,7 +35,8 @@
 		const OVERLAP = "-=0.12"; 
 
 		const tl = gsap.timeline();
-		tl.from(tweakcnCloneDiv, ANIM);
+		tl.from(easyScrumDiv, ANIM);
+		tl.from(tweakcnCloneDiv, ANIM, OVERLAP);
 		tl.from(svelte2048Div, ANIM, OVERLAP);
 		tl.from(portfolioDiv, ANIM, OVERLAP);
 		tl.from(odfDiv, ANIM, OVERLAP);
@@ -59,12 +62,21 @@
 	<div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
 
 		<ProjectCard
+			bind:divElt={easyScrumDiv}
+			title='Easy-Scrum'
+			url="https://easyscrum.net"
+			src={easyScrumPic}
+			alt="easy_scrum_pic"
+			description="A lightweight scrum board app I built. Create sessions, add color-coded boards and task notes, and collaborate with comments. Built with SvelteKit, Tailwind CSS, Drizzle, and shadcn-svelte. Uses Supabase for a production database and deployed with Railway."
+		/>
+
+		<ProjectCard
 			bind:divElt={tweakcnCloneDiv}
 			title='tweakcn_clone'
 			url="https://marcus-adair.github.io/tweakcn_clone/#theme-presets"
 			src={tweakcnClonePic}
 			alt="tweakcn_clone_pic"
-			description="I built a clone of the front-end dashboard for tweakcn.com using TypeScript, Svelte, shadcn-svelte, TailWind CSS, and GSAP. Challenges included the various animations and advanced, animated theme switcher."
+			description="I built a clone of the front-end dashboard for tweakcn.com using TypeScript, Svelte, shadcn-svelte, TailWind CSS, and GSAP. Challenges included the various animations and advanced, animated theme switcher. Based on an older version of the website"
 		/>
 
 		<ProjectCard
