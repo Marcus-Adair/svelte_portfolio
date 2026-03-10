@@ -14,7 +14,7 @@
 </svelte:head>
 
 <div class="flex flex-col gap-4">
-	<PostHeader date={DATE} postNum={4} title="Building Easy-Scrum in a Week with Claude Code"/>
+	<PostHeader date={DATE} postNum={4} title="I Made a Simple, Collaborative Scrum App"/>
 
 	<Paragraph>
 		I recently was inspired to build a simple scrum board app for writing notes and moving them between statuses. 
