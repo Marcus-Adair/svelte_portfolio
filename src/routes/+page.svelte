@@ -14,22 +14,43 @@
     import  resume  from "$lib/assets/Marcus_Adair_Portfolio_Resume.pdf"
     import gsap from "gsap";
     import ScrambleTextPlugin from "gsap/ScrambleTextPlugin";
+    import SplitText from "gsap/SplitText";
 	import { onMount } from 'svelte';
 	import AnimatedSeparator from '$lib/components/animatedSeparator.svelte';
 	import Link from '$lib/components/link.svelte';
 
-    let changingIcon = $state(false);
+    let copyIcon: HTMLElement;
+    let checkIcon: HTMLElement;
+
+    const EASE = "power2.out";
+    const DURATION = 0.22;
+
     function copyEmail() {
-        navigator.clipboard.writeText(EMAIL)
-        changingIcon = true;
-        setTimeout(() => { changingIcon = false; }, 1800);
+        navigator.clipboard.writeText(EMAIL);
+        gsap.fromTo(copyIcon, { y: 0 }, { y: 20, duration: DURATION, ease: EASE });
+        gsap.fromTo(checkIcon, { y: -20 }, { y: 0, duration: DURATION, ease: EASE });
+
+        setTimeout(() => {
+            gsap.fromTo(copyIcon, { y: 20 }, { y: 0, duration: DURATION, ease: EASE });
+            gsap.fromTo(checkIcon, { y: 0 }, { y: -20, duration: DURATION, ease: EASE });
+        }, 1800);
     }
 
     let coffee: HTMLImageElement;
     let h1: HTMLHeadingElement;
     let helloWorld: HTMLSpanElement;
+    let resumeTl: gsap.core.Timeline;
+
     onMount(() => {
-        gsap.registerPlugin(ScrambleTextPlugin);
+        gsap.registerPlugin(ScrambleTextPlugin, SplitText);
+
+        // Resume button split text animation
+        const SPLIT_ANIM = { y: -25, duration: 0.15, stagger: 0.03, ease: "power1.out" };
+        const resumeSplit1 = SplitText.create(".split-text-resume", { type: "chars" });
+        const resumeSplit2 = SplitText.create(".split-text-resume-2", { type: "chars" });
+        resumeTl = gsap.timeline({ paused: true })
+            .to(resumeSplit1.chars, SPLIT_ANIM)
+            .to(resumeSplit2.chars, SPLIT_ANIM, 0);
         
         gsap.fromTo(coffee,
             { y: -325 }, 
@@ -96,13 +117,14 @@
 
         <div class="flex flex-row gap-3 items-center text-muted-foreground">
             <span class="text-sm tracking-wider font-light">marcus.a.adair@gmail.com</span>
-            <div class="transition-all hover:text-ring" title="Copy" onclick={copyEmail} onkeydown={copyEmail} role="button" tabindex={1}>
-                {#if changingIcon}
-                    <Check class="size-3.5" />
-                {:else}
-                    <Copy class="size-3.5 cursor-pointer" />
-                {/if}
-            </div>
+            <button class="relative w-fit h-fit overflow-clip cursor-pointer" title="Copy" onclick={copyEmail}>
+                <div bind:this={copyIcon}>
+                    <Copy class="size-3.5 hover:text-ring" />
+                </div>
+                <div bind:this={checkIcon} class="absolute top-0 left-0 -translate-y-[20px]">
+                    <Check class="size-3.5 text-green-600" />
+                </div>
+            </button>
         </div>
 
         <AnimatedSeparator slow/>
@@ -185,8 +207,18 @@
             </a>
         </div>
 
-        <Button variant="outline" size="lg" title="My Resume" onclick={() => window.open(resume, "_blank")}>
-            <span class="hidden sm:flex">My Resume</span>
+        <Button
+            variant="outline"
+            size="lg"
+            title="My Resume"
+            onclick={() => window.open(resume, "_blank")}
+            onmouseenter={() => resumeTl.play()}
+            onmouseleave={() => resumeTl.reverse()}
+        >
+            <div class="hidden sm:flex relative overflow-clip">
+                <span class="split-text-resume">My Resume</span>
+                <span class="absolute inset-0 translate-y-[25px] split-text-resume-2">My Resume</span>
+            </div>
             <Download/>
         </Button>    
     </div>
