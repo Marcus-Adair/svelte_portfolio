@@ -8,8 +8,9 @@
 
 	type Props = {
 		src: string,
+		disableScrollTrigger?: boolean,
 	} & HTMLImgAttributes;
-    let { src, ...props }: Props = $props();
+    let { src, disableScrollTrigger, ...props }: Props = $props();
 
 	const maxX = 35;
 	const maxY = 20;
@@ -22,13 +23,13 @@
 			{
 				scale: 0,
 				opacity: 0,
-				duration: 0.4,
-				ease: "power2.out",
-				scrollTrigger: image
+				duration: 0.7,
+				ease: "power4.out",
+				...(disableScrollTrigger ? {} : { scrollTrigger: image })
 			}
 		);
 
-        function scale(e: MouseEvent) {
+        function scale() {
 			gsap.to(image!, {
 				scale: 1.02,
 				duration: 0.5,
@@ -72,7 +73,6 @@
 			image?.removeEventListener("mouseenter", scale);
 		};
 	});
-
 </script>
 
 <enhanced:img bind:this={image} src={src} alt={props.alt} class={cn("rounded-md", props.class)} />

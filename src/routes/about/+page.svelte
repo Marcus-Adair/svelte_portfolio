@@ -8,6 +8,7 @@
   import masters_photo from "$lib/assets/masters_photo.jpg"
 	import Link from "$lib/components/link.svelte";
   import gsap from "gsap";
+	import SplitText from "gsap/SplitText";
 	import { onMount } from "svelte";
 	import AnimatedCard from "$lib/components/animatedCard.svelte";
 	import AnimatedImg from "$lib/components/animatedImg.svelte";
@@ -19,20 +20,35 @@
   let copyIcon: HTMLElement;
   let checkIcon: HTMLElement;
 
+  const splitKeys = ['schedule', 'email', 'linked-in', 'git-hub'];
+  const splitTextTLs: Record<string, gsap.core.Timeline> = {};
+
   onMount(() => {
+    gsap.registerPlugin(SplitText);
+
+    const SPLIT_ANIM = { y: -25, duration: 0.175, stagger: 0.02, ease: "power1.out" };
+    (splitKeys).forEach(key => {
+        const split1 = SplitText.create(`.split-text-${key}`, { type: "chars" });
+        const split2 = SplitText.create(`.split-text-${key}-2`, { type: "chars" });
+        splitTextTLs[key] = gsap.timeline({ paused: true })
+            .to(split1.chars, SPLIT_ANIM)
+            .to(split2.chars, SPLIT_ANIM, 0);
+    });
+
     gsap.from(
         "h1",
-        { x: -300, duration: 0.3, ease: "power1.out"}
+        { x: -300, duration: 0.4, ease: "power1.out"}
     );
 
-    const OVERLAP = "-=0.32"; 
-    const ANIM_FROM =  {opacity: 0};
-    const ANIM_TO =  {opacity: 1, duration: 0.45, ease: "power1.inOut"};
-    const linksTimeline = gsap.timeline();
-    linksTimeline.fromTo(MeetingElt, ANIM_FROM, ANIM_TO, OVERLAP );
-    linksTimeline.fromTo(EmailElt, ANIM_FROM, ANIM_TO, OVERLAP);    
-    linksTimeline.fromTo(LinkedInElt, ANIM_FROM, ANIM_TO, OVERLAP);    
-    linksTimeline.fromTo(GithubElt, ANIM_FROM, ANIM_TO, OVERLAP );
+    // TODO: make this look better ... use a x/y trans .. i think i tried but it didn't work
+    // const OVERLAP = "-=0.32"; 
+    // const ANIM_FROM =  {opacity: 0};
+    // const ANIM_TO =  {opacity: 1, duration: 0.45, ease: "power1.inOut"};
+    // const linksTimeline = gsap.timeline();
+    // linksTimeline.fromTo(LinkedInElt, ANIM_FROM, ANIM_TO, OVERLAP);    
+    // linksTimeline.fromTo(GithubElt, ANIM_FROM, ANIM_TO, OVERLAP );
+    // linksTimeline.fromTo(MeetingElt, ANIM_FROM, ANIM_TO, OVERLAP );
+    // linksTimeline.fromTo(EmailElt, ANIM_FROM, ANIM_TO, OVERLAP);   
 
 		const ABOUT_ANIM = { y: 40, duration:0.2, opacity: 0,  ease: "power1.out" };
 		const tl = gsap.timeline();
@@ -40,7 +56,6 @@
       tl.from(`.about-anim-${i}`, ABOUT_ANIM, i * 0.1);
     })
   });
-
 
 	const EASE = "power2.out";
 	const DURATION = 0.22;
@@ -58,16 +73,13 @@
       gsap.fromTo(checkIcon, {y: 0 }, { y: -20, duration: DURATION, ease: EASE });
     }, 1800);
   }
-
 </script>
-
 
 <svelte:head>
   <title>About • Marcus Adair</title>
 </svelte:head>
 
 <div class="grid grid-cols-1 md:grid-cols-[55%_45%] gap-16">
-
   <!-- Left Col -->
     <div class="flex flex-col gap-6">
       <div class="flex flex-row gap-4 items-center mb-2">
@@ -98,56 +110,23 @@
       </AnimatedCard>
   </div>
 
-  
   <!-- Right Col -->
   <div class="flex flex-col gap-6 md:text-left text-center items-center md:items-start text-muted-foreground md:mt-24">
-
-    <a 
-      bind:this={MeetingElt}
-      class={cn("hover:text-ring transition-colors flex flex-row gap-4 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}
-      href={CAL_EMAIL}
-      title="Schedule a Meeting"
-      target="_blank"
-      rel="noreferrer"
-    >
-        <CalendarDays class="size-6"/>
-        <span>Schedule a Meeting</span>
-    </a>
-
-    <div class="flex flex-row items-center gap-4" bind:this={EmailElt}>
-      <a 
-        class={cn("hover:text-ring transition-colors flex flex-row gap-4 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}
-        href={EMAIL_URL}
-        title="My Email"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <Mail class="size-6"/>
-        <span>marcus.a.adair@gmail.com</span>
-      </a>
-      
-      <button class="transition-colors relative w-fit h-fit overflow-clip" title="Copy" onclick={copyEmail}>
-        <div bind:this={copyIcon}>
-          <Copy class="size-4.5 hover:text-ring cursor-pointer" />
-        </div>
-        <div bind:this={checkIcon}>
-          <Check class="size-4.5 hover:text-ring absolute top-0 left-0 -translate-y-[20px]" />
-        </div>
-      </button>
-    </div>
-
-    <Separator />
-
     <a
       bind:this={LinkedInElt}
       class={cn("hover:text-ring transition-colors flex flex-row gap-4 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}
       href={LINKED_IN_URL}
+      rel="external"
       title="LinkedIn"
       target="_blank"
-      rel="noreferrer"
+      onmouseenter={() => splitTextTLs[splitKeys[2]].play()}
+      onmouseleave={() => splitTextTLs[splitKeys[2]].reverse()}
     >
       <LinkedinIcon class="size-6"/>
-      <span>LinkedIn</span>
+      <div class="relative overflow-clip">
+        <span class={`split-text-${splitKeys[2]}`}>LinkedIn</span>
+        <span class={cn("absolute inset-0 translate-y-[25px]", `split-text-${splitKeys[2]}-2`)}>LinkedIn</span>
+      </div>
     </a>
 
     <a
@@ -156,11 +135,62 @@
       href={GITHUB_URL}
       title="GitHub"
       target="_blank"
-      rel="noreferrer"
+      rel="external"
+      onmouseenter={() => splitTextTLs[splitKeys[3]].play()}
+      onmouseleave={() => splitTextTLs[splitKeys[3]].reverse()}   
     >
       <Github class="size-6"/>
-      <span>GitHub</span>
+      <div class="relative overflow-clip">
+        <span class={`split-text-${splitKeys[3]}`}>GitHub</span>
+        <span class={cn("absolute inset-0 translate-y-[25px]", `split-text-${splitKeys[3]}-2`)}>GitHub</span>
+      </div>
     </a>
+
+    <Separator />
+
+    <a 
+      bind:this={MeetingElt}
+      class={cn("hover:text-ring transition-colors flex flex-row gap-4 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}
+      href={CAL_EMAIL}
+      title="Schedule a Meeting"
+      target="_blank"
+      rel="external"
+      onmouseenter={() => splitTextTLs[splitKeys[0]].play()}
+      onmouseleave={() => splitTextTLs[splitKeys[0]].reverse()}
+    >
+        <CalendarDays class="size-6"/>
+        <div class="relative overflow-clip">
+          <span class={`split-text-${splitKeys[0]}`}>Schedule a Meeting</span>
+          <span class={cn("absolute inset-0 translate-y-[25px]", `split-text-${splitKeys[0]}-2`)}>Schedule a Meeting</span>
+        </div>
+    </a>
+
+    <div class="flex flex-row items-center gap-4" bind:this={EmailElt}>
+      <a 
+        class={cn("hover:text-ring transition-colors flex flex-row gap-4 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}
+        href={EMAIL_URL}
+        title="My Email"
+        target="_blank"
+        rel="external"
+        onmouseenter={() => splitTextTLs[splitKeys[1]].play()}
+        onmouseleave={() => splitTextTLs[splitKeys[1]].reverse()}
+      >
+        <Mail class="size-6"/>
+        <div class="relative overflow-clip">
+          <span class={`split-text-${splitKeys[1]}`}>marcus.a.adair@gmail.com</span>
+          <span class={cn("absolute inset-0 translate-y-[25px]", `split-text-${splitKeys[1]}-2`)}>marcus.a.adair@gmail.com</span>
+        </div>
+      </a>
+      
+      <button class="transition-colors relative w-fit h-fit overflow-clip" title="Copy" onclick={copyEmail}>
+        <div bind:this={copyIcon}>
+          <Copy class="size-4.5 hover:text-ring cursor-pointer" />
+        </div>
+        <div bind:this={checkIcon}>
+          <Check class="size-4.5 hover:text-ring absolute top-0 left-0 -translate-y-[20px] text-green-600" />
+        </div>
+      </button>
+    </div>
 
     <Separator />
 
@@ -170,7 +200,6 @@
   </div>
   </div>
 </div>
-
 
 <!-- Wave animation -->
 <style>

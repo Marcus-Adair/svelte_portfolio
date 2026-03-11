@@ -11,26 +11,26 @@
 
 	let { children } = $props();
 
-	let headerDiv: HTMLElement;
-	let homeSpan = $state<HTMLSpanElement | undefined>();
-	let aboutSpan = $state<HTMLSpanElement | undefined>();
-	let projectsSpan = $state<HTMLSpanElement | undefined>();
-	let blogSpan = $state<HTMLSpanElement | undefined>();
+	let headerElt: HTMLElement;
+	let homeDiv = $state<HTMLDivElement | undefined>();
+	let aboutDiv = $state<HTMLDivElement | undefined>();
+	let projectsDiv = $state<HTMLDivElement | undefined>();
+	let blogDiv = $state<HTMLDivElement | undefined>();
 
 	let headerTl: gsap.core.Timeline;
 
 	onMount(() => {
 		gsap.from(".anim-theme-toggle", {opacity: 0, scale: 0, duration: 0.3})
 
-		const LABEL_ANIM = { opacity: 0, y: 10, duration: 0.1, ease: "power1.inOut" };
+		const LABEL_ANIM = { opacity: 0, y: 10, duration: 0.095, ease: "power1.inOut" };
 		const OVERLAP = "-=0.05";
 		headerTl = gsap.timeline({ paused: true });
 		headerTl
-			.to(headerDiv, { height: 88, duration: 0.1, ease: "power1.out" }) // toggle open/close full header
-			.from(homeSpan!, LABEL_ANIM)
-			.from(aboutSpan!, LABEL_ANIM, OVERLAP)
-			.from(projectsSpan!, LABEL_ANIM, OVERLAP)
-			.from(blogSpan!, LABEL_ANIM, OVERLAP);
+			.to(headerElt, { height: 88, duration: 0.1, ease: "power1.out" }) // toggle open/close full header
+			.from(homeDiv!, LABEL_ANIM)
+			.from(aboutDiv!, LABEL_ANIM, OVERLAP)
+			.from(projectsDiv!, LABEL_ANIM, OVERLAP)
+			.from(blogDiv!, LABEL_ANIM, OVERLAP);
 	});
 
 	function onHeaderEnter() {
@@ -51,7 +51,7 @@
 	<!-- TODO: -->
 	<!-- svelte-ignore a11y_role_has_required_aria_props -->
 	<header
-		bind:this={headerDiv}
+		bind:this={headerElt}
 		class={cn(
 			"fixed top-0 z-100 h-[68px] w-screen",
 			"bg-header/70 backdrop-blur-xl"
@@ -70,8 +70,8 @@
 			<div class="justify-self-end gap-2 flex flex-row items-center">
 				<!-- Desktop -->
 				<HeaderNav
-					bind:homeSpan={homeSpan!} bind:aboutSpan={aboutSpan!}
-					bind:projectsSpan={projectsSpan!} bind:blogSpan={blogSpan!}
+					bind:homeDiv={homeDiv!} bind:aboutDiv={aboutDiv!}
+					bind:projectsDiv={projectsDiv!} bind:blogDiv={blogDiv!}
 				/>
 			</div>
 		</div>

@@ -44,7 +44,7 @@
 	title="Toggle theme"
 	class="p-4"
 >
-	<div class="relative w-fit h-fit overflow-clip">
+	<div class="relative w-4.5 h-4.5 overflow-clip">
 		<div bind:this={moonIcon}>
 			<Moon class="size-4.5" />
 		</div>
