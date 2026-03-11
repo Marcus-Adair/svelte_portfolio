@@ -64,7 +64,7 @@
           >
             <div class={cn("flex flex-col gap-0 items-center", HOVER_EXPAND_LARGE_TAILWIND_ANIMATION)}>
                   <Coffee size={30} />
-                  <div bind:this={homeDiv} class="relative text-base md:text-lg overflow-clip">
+                  <div bind:this={homeDiv} class="relative text-base md:text-lg overflow-clip whitespace-nowrap">
                     <span class="split-text-home">
                         {pageOptions.home}
                     </span>
@@ -87,7 +87,7 @@
           >
               <div class={cn("flex flex-col gap-0 items-center", HOVER_EXPAND_LARGE_TAILWIND_ANIMATION)}>
                   <BookOpen size={30} />
-                  <div bind:this={aboutDiv} class="relative text-base md:text-lg overflow-clip">
+                  <div bind:this={aboutDiv} class="relative text-base md:text-lg overflow-clip whitespace-nowrap">
                     <span class="split-text-about">
                         {pageOptions.about}
                     </span>
@@ -110,7 +110,7 @@
           >
               <div class={cn("flex flex-col gap-0 items-center", HOVER_EXPAND_LARGE_TAILWIND_ANIMATION)}>
                   <CodeXml size={30} />
-                  <div bind:this={projectsDiv} class="relative text-base md:text-lg overflow-clip">
+                  <div bind:this={projectsDiv} class="relative text-base md:text-lg overflow-clip whitespace-nowrap">
                     <span class="split-text-projects">
                         {pageOptions.projects}
                     </span>
@@ -133,7 +133,7 @@
           >
               <div class={cn("flex flex-col gap-0 items-center", HOVER_EXPAND_LARGE_TAILWIND_ANIMATION)}>
                   <Laptop size={30} />
-                  <div bind:this={blogDiv} class="relative text-base md:text-lg overflow-clip">
+                  <div bind:this={blogDiv} class="relative text-base md:text-lg overflow-clip whitespace-nowrap">
                     <span class="split-text-blog">
                         {pageOptions.blog}
                     </span>
