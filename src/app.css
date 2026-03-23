@@ -330,3 +330,10 @@
 		@apply font-[Space_Grotesk] font-bold tracking-wide;
 	}
 }
+
+@layer utilities {
+	/* Prevents image squishing in flex layouts, maintains 16:9 aspect ratio */
+	.img-frame {
+		@apply aspect-video object-cover flex-shrink-0;
+	}
+}

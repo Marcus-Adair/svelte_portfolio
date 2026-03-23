@@ -78,7 +78,7 @@
 			{#if srcType === "iframe"}
 				<iframe {title} {src} class="border-card aspect-video w-full cursor-pointer overflow-hidden rounded-md border"></iframe>
 			{:else}
-				<enhanced:img {src} {alt} class="border-card aspect-video w-full cursor-pointer overflow-hidden rounded-md border"/>
+				<enhanced:img {src} {alt} class="border-card img-frame w-full cursor-pointer overflow-hidden rounded-md border"/>
 			{/if}
         </Card>
     </a>

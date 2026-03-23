@@ -24,7 +24,7 @@
 	onMount(() => {
 		if (!card) return;
 
-        function scale(e: MouseEvent) {
+        function scale() {
 			gsap.to(card, {
 				scale: 1.02,
 				duration: 0.5,
@@ -32,7 +32,6 @@
 			});
         }
 		function handleMove(e: MouseEvent) {
-
 			const rect = card.getBoundingClientRect();
 			const relX = e.clientX - rect.left;
 			const relY = e.clientY - rect.top;
@@ -76,25 +75,40 @@
 	bind:this={card}
 	{id}
 	{href}
-	class={cn("flex flex-row gap-4 cursor-pointer p-2 rounded-md hover:bg-accent/30 transition-colors", props.class)}
+	class={cn("flex flex-col lg:flex-row gap-4 cursor-pointer p-2 rounded-md hover:bg-accent/30 transition-colors", props.class)}
 	title={hoverTitle}
 	target={openInNewTab ? "_blank" : undefined}
 >
     <enhanced:img
         src={imgSrc}
         alt={title}
-        class="w-36 sm:w-72 lg:w-96 h-auto rounded-md border-2 border-border"
+        class="lg:w-110 img-frame rounded-md border-2 border-border"
     />
 
-    <div class="flex-1 flex flex-col gap-1 mt-4 ml-2">
-        <span class="text-xl font-[Space_Grotesk]">{title}</span>
-        <span class="font-light text-sm mt-4">{about}</span>
+    <div class="hidden lg:flex flex-1 flex-col gap-1 mt-4 ml-2">
+        <span class="text-2xl font-[Space_Grotesk]">{title}</span>
+        <span class="font-light mt-4">{about}</span>
 		{#if date}
-			<span class="text-xs text-muted-foreground">{formatDate(date)}</span>
+			<span class="text-sm text-muted-foreground">{formatDate(date)}</span>
 		{/if}
     </div>
 
-    <div class="flex items-center justify-center">
+    <div class="hidden lg:flex items-center justify-center">
         <ChevronRight  />
     </div>
+
+	<!-- Mobile -->
+	<div class="flex flex-row gap-4">
+		<div class="flex lg:hidden flex-1 flex-col gap-1 mt-4 ml-2">
+			<span class="text-2xl font-[Space_Grotesk]">{title}</span>
+			<span class="font-light mt-4">{about}</span>
+			{#if date}
+				<span class="text-sm text-muted-foreground">{formatDate(date)}</span>
+			{/if}
+		</div>
+	
+		<div class="flex lg:hidden items-center justify-center">
+			<ChevronRight  />
+		</div>
+	</div>
 </a>

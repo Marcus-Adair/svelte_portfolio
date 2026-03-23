@@ -6,10 +6,18 @@
 	import Footer from '$lib/components/footer.svelte';
 	import ThemeToggle from '$lib/components/themeToggle.svelte';
 	import gsap from 'gsap';
+	import { SplitText } from 'gsap/SplitText';
 	import { onMount } from 'svelte';
 	import { cn } from '$lib/utils';
+	import coffee_gif from '$lib/assets/hot-coffee.gif';
+	import { showingBootAnimation, endBootAnimation } from '$lib/stores/boot.svelte';
 
 	let { children } = $props();
+
+	// svelte-ignore non_reactive_update
+	let bootOverlay: HTMLDivElement;
+	let bootText1: HTMLHeadingElement;
+	let textHeight = $state(0);
 
 	let headerElt: HTMLElement;
 	let homeDiv = $state<HTMLDivElement | undefined>();
@@ -19,11 +27,76 @@
 
 	let headerTl: gsap.core.Timeline;
 
+	// === BOOT ANIMATION CONFIG ===  //
+	const BOOT = {
+		enter: {
+			y: 600, // starts this far down
+			duration: 0.5,
+			ease: "power2.out"
+		},
+		holdBeforeRoll: 0.3,
+		roll: {
+			// y is set dynamically from measured text height
+			duration: 0.1,
+			stagger: 0.065,
+		},
+		holdAfterRoll: 0.15,
+		exit: {
+			opacity: 0,
+			y: -800,
+			duration: 0.25,
+			ease: "power2.in"
+		}
+	};
 	onMount(() => {
-		gsap.from(".anim-theme-toggle", {opacity: 0, scale: 0, duration: 0.3})
+		gsap.registerPlugin(SplitText);
 
+		const textContainer = ".main-boot-text-div";
+		const b1 = ".boot-text-1";
+		const b2 = ".boot-text-2";
+
+		// Create SplitText for roll animation
+		const split1 = SplitText.create(b1, { type: "chars" });
+		const split2 = SplitText.create(b2, { type: "chars" });
+		const chars1 = split1.chars as HTMLElement[];
+		const chars2 = split2.chars as HTMLElement[];
+
+		// Measure text height for dynamic roll offset
+		textHeight = bootText1?.offsetHeight ?? 120;
+
+		// Initial state: visible but positioned down
+		gsap.set(textContainer, { opacity: 1, y: BOOT.enter.y });
+
+		const bootTl = gsap.timeline({
+			onComplete: () => { endBootAnimation(); }
+		});
+
+		// Slide up
+		bootTl.to(textContainer, {
+			y: 0,
+			duration: BOOT.enter.duration,
+			ease: BOOT.enter.ease
+		});
+
+		// Hold before roll
+		bootTl.to({}, { duration: BOOT.holdBeforeRoll });
+
+		// Roll animation
+		const rollAnim = { y: -textHeight, ...BOOT.roll };
+		bootTl.to(chars1, rollAnim);
+		bootTl.to(chars2, rollAnim, "<");
+
+		// Hold after roll
+		bootTl.to({}, { duration: BOOT.holdAfterRoll });
+
+		// Exit
+		bootTl.to(bootOverlay, { ...BOOT.exit });
+
+		// Animate in header UI elts
 		const LABEL_ANIM = { opacity: 0, y: 10, duration: 0.095, ease: "power1.inOut" };
 		const OVERLAP = "-=0.05";
+
+		gsap.from(".anim-theme-toggle", {opacity: 0, scale: 0, duration: 0.3})
 		headerTl = gsap.timeline({ paused: true });
 		headerTl
 			.to(headerElt, { height: 88, duration: 0.1, ease: "power1.out" }) // toggle open/close full header
@@ -45,8 +118,25 @@
 <svelte:head>
 	<link rel="icon" href={favicon} />
 </svelte:head>
-
 <ModeWatcher />
+
+{#if showingBootAnimation()}
+  <div bind:this={bootOverlay} class="fixed inset-0 z-9999 bg-primary text-primary-foreground flex flex-col justify-center items-center gap-1">
+	<div class="main-boot-text-div flex gap-2 md:gap-4 items-center opacity-0">
+		<div class="relative text-5xl md:text-7xl lg:text-9xl font-bold overflow-clip">
+			<h1 bind:this={bootText1} class="boot-text-1">Marcus Adair</h1>
+			<h1
+				class="boot-text-2 absolute inset-0"
+				style="transform: translateY({textHeight}px)"
+			>
+				Marcus Adair
+			</h1>
+		</div>
+		<img src={coffee_gif} alt="coffee_image" class="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24" />
+	</div>
+  </div>
+{/if}
+
 <div class="flex flex-col min-h-screen">
 	<!-- TODO: -->
 	<!-- svelte-ignore a11y_role_has_required_aria_props -->
