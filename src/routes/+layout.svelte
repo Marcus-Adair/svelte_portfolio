@@ -92,18 +92,23 @@
 		// Exit
 		bootTl.to(bootOverlay, { ...BOOT.exit });
 
-		// Animate in header UI elts
-		const LABEL_ANIM = { opacity: 0, y: 10, duration: 0.095, ease: "power1.inOut" };
-		const OVERLAP = "-=0.05";
+	});
 
-		gsap.from(".anim-theme-toggle", {opacity: 0, scale: 0, duration: 0.3})
-		headerTl = gsap.timeline({ paused: true });
-		headerTl
-			.to(headerElt, { height: 88, duration: 0.1, ease: "power1.out" }) // toggle open/close full header
-			.from(homeDiv!, LABEL_ANIM)
-			.from(aboutDiv!, LABEL_ANIM, OVERLAP)
-			.from(projectsDiv!, LABEL_ANIM, OVERLAP)
-			.from(blogDiv!, LABEL_ANIM, OVERLAP);
+	// Set up header animation AFTER boot completes (when nav divs exist)
+	$effect(() => {
+		if (!showingBootAnimation() && homeDiv && aboutDiv && projectsDiv && blogDiv) {
+			const LABEL_ANIM = { opacity: 0, y: 10, duration: 0.095, ease: "power1.inOut" };
+			const OVERLAP = "-=0.05";
+
+			gsap.from(".anim-theme-toggle", { opacity: 0, scale: 0, duration: 0.3 });
+			headerTl = gsap.timeline({ paused: true });
+			headerTl
+				.to(headerElt, { height: 88, duration: 0.1, ease: "power1.out" })
+				.from(homeDiv, LABEL_ANIM)
+				.from(aboutDiv, LABEL_ANIM, OVERLAP)
+				.from(projectsDiv, LABEL_ANIM, OVERLAP)
+				.from(blogDiv, LABEL_ANIM, OVERLAP);
+		}
 	});
 
 	function onHeaderEnter() {
