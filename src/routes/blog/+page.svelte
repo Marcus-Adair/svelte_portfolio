@@ -12,6 +12,7 @@
   import easyScrumPic from '$lib/assets/easy-scrum_pic.png';
 	import { ChevronDown, ChevronUp } from "lucide-svelte";
 	import Button from "$lib/components/ui/button.svelte";
+	import { showingBootAnimation } from "$lib/stores/boot.svelte";
 
   let showingAllPosts = $state(false);
 
@@ -22,22 +23,18 @@
   // svelte-ignore non_reactive_update
   let post3: HTMLDivElement;
   let post4: HTMLDivElement;
-  onMount(() => {
-    gsap.registerPlugin(ScrambleTextPlugin);
 
+  function spinCoffee() {
     gsap.fromTo(
-      ".swipe-in",
-      { x: -350},
-      { x: 0, duration: 0.3, ease: "power1.out" }
+      coffee,
+      { rotate: 0 },
+      {
+        rotate: 360,
+        duration: 0.42,
+      }
     );
-
-    gsap.fromTo(
-      ".animated-card",
-      { x: -550},
-      { x: 0, duration: 0.04, ease: "power1.out", delay: 0.05 }
-    );
-
-    function animateQuote() {
+  }
+  function animateQuote() {
       gsap.timeline({ repeat: -1, repeatDelay: 3 })
         .to(quote, { 
           duration: 3, 
@@ -51,39 +48,48 @@
           delay: 3
         });
     }
-    animateQuote();
-
-    const postsAnimIn = {
-      y: 40,
-      opacity: 0,
-      ease: "power1.out",
-      duration: 0.1,
-    };
-    const overlap = "-=0.0.8"; 
-
-    const tl = gsap.timeline();
-    tl.from(post4, postsAnimIn);
-    tl.from(post1, postsAnimIn, overlap);
-    tl.from(post2, postsAnimIn, overlap);
-    tl.from(post3, postsAnimIn, overlap);
+  onMount(() => {
+    gsap.registerPlugin(ScrambleTextPlugin);
   });
+  $effect(() => {
+    if (!showingBootAnimation()) {  
+      gsap.fromTo(
+        ".swipe-in",
+        { x: -350},
+        { x: 0, duration: 0.3, ease: "power1.out" }
+      );
 
-  function spinCoffee() {
-    gsap.fromTo(
-      coffee,
-      { rotate: 0 },
-      {
-        rotate: 360,
-        duration: 0.42,
-      }
-    );
-  }
+      gsap.fromTo(
+        ".animated-card",
+        { x: -550},
+        { x: 0, duration: 0.04, ease: "power1.out", delay: 0.05 }
+      );
+
+
+      animateQuote();
+
+      const postsAnimIn = {
+        y: 40,
+        opacity: 0,
+        ease: "power1.out",
+        duration: 0.1,
+      };
+      const overlap = "-=0.0.8"; 
+
+      const tl = gsap.timeline();
+      tl.from(post4, postsAnimIn);
+      tl.from(post1, postsAnimIn, overlap);
+      tl.from(post2, postsAnimIn, overlap);
+      tl.from(post3, postsAnimIn, overlap);
+    }
+  });
 </script>
 
 <svelte:head>
   <title>Blog • Marcus Adair</title>
 </svelte:head>
 
+{#if !showingBootAnimation()}
 <div class="flex flex-col gap-6">
   <h1 class="text-4xl md:text-5xl md:mt-4 swipe-in">The Marcus Adair Blog.</h1>
 
@@ -145,3 +151,4 @@
     </Button>
   </div>
 </div>
+{/if}

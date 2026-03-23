@@ -15,7 +15,7 @@
 	onMount(() => {
 		if (!card) return;
 
-        function scale(e: MouseEvent) {
+        function scale() {
 			gsap.to(card, {
 				scale: 1.025,
 				duration: 0.5,
