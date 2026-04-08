@@ -10,6 +10,7 @@
 	import AnimatedSeparator from "$lib/components/animatedSeparator.svelte";
   import svelte2048pic from '$lib/assets/svelte_2048_pic.png';
   import easyScrumPic from '$lib/assets/easy-scrum_pic.png';
+  import lucyPic from '$lib/assets/lucy_pic.png';
 	import { ChevronDown, ChevronUp } from "lucide-svelte";
 	import Button from "$lib/components/ui/button.svelte";
 	import { showingBootAnimation } from "$lib/stores/boot.svelte";
@@ -23,6 +24,7 @@
   // svelte-ignore non_reactive_update
   let post3: HTMLDivElement;
   let post4: HTMLDivElement;
+  let post5: HTMLDivElement;
 
   function spinCoffee() {
     gsap.fromTo(
@@ -77,7 +79,8 @@
       const overlap = "-=0.0.8"; 
 
       const tl = gsap.timeline();
-      tl.from(post4, postsAnimIn);
+      tl.from(post5, postsAnimIn);
+      tl.from(post4, postsAnimIn, overlap);
       tl.from(post1, postsAnimIn, overlap);
       tl.from(post2, postsAnimIn, overlap);
       tl.from(post3, postsAnimIn, overlap);
@@ -111,10 +114,17 @@
     <AnimatedSeparator />
   </div>
 
-  <div bind:this={post4}>
-    <BlogCard id="easy-scrum" title="I Made a Simple, Collaborative Scrum App" date={new Date("2026-03-08T06:00:00.000Z")} about="Shipping a scrum board app fast with SvelteKit, Drizzle, Railway, Claude Code, and more" href="/blog/easy-scrum" imgSrc={easyScrumPic}/>
+  <div bind:this={post5}>
+    <BlogCard id="lucy" title="Meet Lucy" date={new Date("2026-04-08T04:10:00.000Z")} about="An AI writing about itself — the Lucy experiment" href="/blog/lucy" imgSrc={lucyPic}/>
     <AnimatedSeparator />
   </div>
+
+  {#if showingAllPosts}
+    <div bind:this={post4}>
+      <BlogCard id="easy-scrum" title="I Made a Simple, Collaborative Scrum App" date={new Date("2026-03-08T06:00:00.000Z")} about="Shipping a scrum board app fast with SvelteKit, Drizzle, Railway, Claude Code, and more" href="/blog/easy-scrum" imgSrc={easyScrumPic}/>
+      <AnimatedSeparator />
+    </div>
+  {/if}
 
   <div bind:this={post1}>
     <BlogCard id="svelte-2048" title="2048 with Svelte, Tailwind, and GSAP" date={new Date("2025-12-30T04:37:55.000Z")} about="Details on how I implemented 2048" href="/blog/svelte-2048" imgSrc={svelte2048pic}/>
