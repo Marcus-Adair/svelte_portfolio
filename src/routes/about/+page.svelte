@@ -26,27 +26,29 @@
   onMount(() => {
     gsap.registerPlugin(SplitText);
 
-    const SPLIT_ANIM = { y: -25, duration: 0.175, stagger: 0.02, ease: "power1.out" };
-    (splitKeys).forEach(key => {
-        const split1 = SplitText.create(`.split-text-${key}`, { type: "chars" });
-        const split2 = SplitText.create(`.split-text-${key}-2`, { type: "chars" });
-        splitTextTLs[key] = gsap.timeline({ paused: true })
-            .to(split1.chars, SPLIT_ANIM)
-            .to(split2.chars, SPLIT_ANIM, 0);
-    });
-
     // TODO: make this look better ... use a x/y trans .. i think i tried but it didn't work
-    // const OVERLAP = "-=0.32"; 
+    // const OVERLAP = "-=0.32";
     // const ANIM_FROM =  {opacity: 0};
     // const ANIM_TO =  {opacity: 1, duration: 0.45, ease: "power1.inOut"};
     // const linksTimeline = gsap.timeline();
-    // linksTimeline.fromTo(LinkedInElt, ANIM_FROM, ANIM_TO, OVERLAP);    
+    // linksTimeline.fromTo(LinkedInElt, ANIM_FROM, ANIM_TO, OVERLAP);
     // linksTimeline.fromTo(GithubElt, ANIM_FROM, ANIM_TO, OVERLAP );
     // linksTimeline.fromTo(MeetingElt, ANIM_FROM, ANIM_TO, OVERLAP );
-    // linksTimeline.fromTo(EmailElt, ANIM_FROM, ANIM_TO, OVERLAP);   
+    // linksTimeline.fromTo(EmailElt, ANIM_FROM, ANIM_TO, OVERLAP);
   });
+
   $effect(() => {
-    if (!showingBootAnimation()) {  
+    if (!showingBootAnimation()) {
+      // SplitText animations (must wait for DOM to exist)
+      const SPLIT_ANIM = { y: -25, duration: 0.175, stagger: 0.02, ease: "power1.out" };
+      (splitKeys).forEach(key => {
+          const split1 = SplitText.create(`.split-text-${key}`, { type: "chars" });
+          const split2 = SplitText.create(`.split-text-${key}-2`, { type: "chars" });
+          splitTextTLs[key] = gsap.timeline({ paused: true })
+              .to(split1.chars, SPLIT_ANIM)
+              .to(split2.chars, SPLIT_ANIM, 0);
+      });
+
       // Animate after boot sequence
       const ABOUT_ANIM = { y: 40, duration:0.2, opacity: 0,  ease: "power1.out" };
       const tl = gsap.timeline();
