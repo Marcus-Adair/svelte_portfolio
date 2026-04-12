@@ -31,10 +31,10 @@
 	const BOOT = {
 		enter: {
 			y: 600, // starts this far down
-			duration: 0.5,
+			duration: 0.2,
 			ease: "power2.out"
 		},
-		holdBeforeRoll: 0.3,
+		holdBeforeRoll: 0.35,
 		roll: {
 			// y is set dynamically from measured text height
 			duration: 0.1,

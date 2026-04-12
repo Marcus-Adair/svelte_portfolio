@@ -10,6 +10,7 @@
     } 
     let { divClass, slow = false}: Props  = $props();
 
+    // svelte-ignore non_reactive_update
     let sep: HTMLDivElement;
     $effect(() => {
         if (!showingBootAnimation()) {

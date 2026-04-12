@@ -7,8 +7,7 @@
 	import Accordion from '$lib/components/ui/accordion/accordion.svelte';
 	import Button from '$lib/components/ui/button.svelte';
 	import Card from '$lib/components/ui/card/card.svelte';
-	import { CAL_EMAIL, EMAIL, EMAIL_URL, GITHUB_URL, LINKED_IN_URL } from '$lib/consts/config';
-	import { CalendarDays,  Check,  Copy,  Download, Github, LinkedinIcon, Mail } from 'lucide-svelte';
+	import { CalendarDays,  Check,  Copy,  FileText, Github, LinkedinIcon, Mail } from 'lucide-svelte';
 	import { cn } from '$lib/utils';
 	import { HOVER_EXPAND_TAILWIND_ANIMATION } from '$lib/consts/style';
     import  resume  from "$lib/assets/Marcus_Adair_Portfolio_Resume.pdf"
@@ -25,7 +24,7 @@
     const EASE = "power2.out";
     const DURATION = 0.22;
     function copyEmail() {
-        navigator.clipboard.writeText(EMAIL);
+        navigator.clipboard.writeText("marcus.a.adair@gmail.com");
         gsap.fromTo(copyIcon, { y: 0 }, { y: 20, duration: DURATION, ease: EASE });
         gsap.fromTo(checkIcon, { y: -20 }, { y: 0, duration: DURATION, ease: EASE });
 
@@ -80,16 +79,19 @@
 
     onMount(() => {
         gsap.registerPlugin(ScrambleTextPlugin, SplitText);
-
-        // Resume button split text animation
-        const SPLIT_ANIM = { y: -25, duration: 0.15, stagger: 0.03, ease: "power1.out" };
-        const resumeSplit1 = SplitText.create(".split-text-resume", { type: "chars" });
-        const resumeSplit2 = SplitText.create(".split-text-resume-2", { type: "chars" });
-        resumeTl = gsap.timeline({ paused: true })
-            .to(resumeSplit1.chars, SPLIT_ANIM)
-            .to(resumeSplit2.chars, SPLIT_ANIM, 0);
-        
         animateHelloWord();
+    });
+
+    $effect(() => {
+        if (!showingBootAnimation()) {
+            // Resume button split text animation (must wait for DOM to exist)
+            const SPLIT_ANIM = { y: -25, duration: 0.15, stagger: 0.03, ease: "power1.out" };
+            const resumeSplit1 = SplitText.create(".split-text-resume", { type: "chars" });
+            const resumeSplit2 = SplitText.create(".split-text-resume-2", { type: "chars" });
+            resumeTl = gsap.timeline({ paused: true })
+                .to(resumeSplit1.chars, SPLIT_ANIM)
+                .to(resumeSplit2.chars, SPLIT_ANIM, 0);
+        }
     });
     // Do page animations after boot sequence is over
     $effect(() => {
@@ -111,7 +113,7 @@
 </svelte:head>
 
 {#if !showingBootAnimation()}
-    <div class="flex flex-col gap-6">
+    <div class="flex flex-col gap-3">
         <div class="flex flex-col gap-2.5 relative">
             <button onclick={animateCoffee} class="flex-none cursor-pointer -translate-x-4">
                 <img bind:this={coffee} src={coffee_gif} alt="coffee_image" class="w-24 h-24" />
@@ -119,16 +121,61 @@
 
             <h1 bind:this={h1} class="text-4xl md:text-5xl mr-44 md:mr-54">Software Engineer, Computer Scientist, and Creative.</h1>
 
-            <div class="flex flex-row gap-3 items-center text-muted-foreground">
-                <span class="text-sm tracking-wider font-light">marcus.a.adair@gmail.com</span>
-                <button class="relative w-fit h-fit overflow-clip cursor-pointer" title="Copy" onclick={copyEmail}>
-                    <div bind:this={copyIcon}>
-                        <Copy class="size-3.5 hover:text-ring" />
+            <div class="flex flex-col-reverse gap-4 sm:flex-row sm:gap-2 sm:justify-between items-center mt-1">
+                <Button
+                    variant="outline"
+                    size="lg"
+                    title="My Resume"
+                    onclick={() => window.open(resume, "_blank")}
+                    onmouseenter={() => resumeTl.play()}
+                    onmouseleave={() => resumeTl.reverse()}
+                    class="w-full sm:w-fit"
+                >
+                    <div class="relative overflow-clip">
+                        <span class="split-text-resume">My Resume</span>
+                        <span class="absolute inset-0 translate-y-[25px] split-text-resume-2">My Resume</span>
                     </div>
-                    <div bind:this={checkIcon} class="absolute top-0 left-0 -translate-y-[20px]">
-                        <Check class="size-3.5 text-green-600" />
-                    </div>
-                </button>
+                    <FileText/>
+                </Button>
+                
+                <div class="flex flex-row gap-6 text-muted-foreground items-center">
+                    <a
+                        class={cn("hover:text-ring transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
+                        href="https://cal.com/marcus-adair"
+                        title="Calendar"
+                        target="_blank"
+                        rel="external"
+                    >
+                        <CalendarDays class="size-7"/>
+                    </a>
+                    <a
+                        class={cn("hover:text-ring transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
+                        href="mailto:marcus.a.adair@gmail.com"
+                        title="Email"
+                        target="_blank"
+                        rel="external"
+                    >
+                        <Mail class="size-7"/>
+                    </a>
+                    <a
+                        class={cn("hover:text-ring transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
+                        href="https://github.com/Marcus-Adair"
+                        title="GitHub"
+                        target="_blank"
+                        rel="external"
+                    >
+                        <Github class="size-7"/>
+                    </a>
+                    <a
+                        class={cn("hover:text-ring transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
+                        href="https://www.linkedin.com/in/marcus-adair/"
+                        title="LinkedIn"
+                        target="_blank"
+                        rel="external"
+                    >
+                        <LinkedinIcon class="size-7"/>
+                    </a>
+                </div>
             </div>
 
             <AnimatedSeparator slow/>
@@ -136,9 +183,7 @@
             <enhanced:img src={headshot} alt="coffee_gif" class="w-auto h-32 md:h-40 rounded-full border border-border object-cover absolute top-8 right-0" />
         </div>
 
-
-        
-        <Accordion type="single" class="w-full flex flex-row justify-end sm:mt-2 " value="intro">
+        <Accordion type="single" class="w-full flex flex-row justify-end" value="intro">
             <Card class="text-card-foreground px-6 py-2 w-full">
                 <AccordionItem value="intro">
                     <AccordionTrigger>
@@ -168,63 +213,20 @@
             </Card>
         </Accordion>
             
-        <AnimatedSeparator slow/>
+        <AnimatedSeparator slow/>   
 
-        <div class="flex flex-row justify-between items-end mb-8">
-            <div class="flex flex-row gap-6 text-muted-foreground ">
-                <a
-                    class={cn("hover:text-ring transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
-                    href={LINKED_IN_URL}
-                    title="LinkedIn"
-                    target="_blank"
-                    rel="external"
-                >
-                    <LinkedinIcon class="size-7"/>
-                </a>
-
-                    <a
-                        class={cn("hover:text-ring transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
-                        href={GITHUB_URL}
-                        title="GitHub"
-                        target="_blank"
-                        rel="external"
-                    >
-                    <Github class="size-7"/>
-                </a>
-                <a
-                    class={cn("hover:text-ring transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
-                    href={CAL_EMAIL}
-                    title="Calendar"
-                    target="_blank"
-                    rel="external"
-                >
-                    <CalendarDays class="size-7"/>
-                </a>
-                <a
-                    class={cn("hover:text-ring transition-colors", HOVER_EXPAND_TAILWIND_ANIMATION)}
-                    href={EMAIL_URL}
-                    title="Email"
-                    target="_blank"
-                    rel="external"
-                >
-                    <Mail class="size-7"/>
-                </a>
+        <div class="flex justify-center sm:justify-end -mt-1.5">
+            <div class="flex flex-row gap-3 items-center text-muted-foreground">
+                <span class="tracking-wider font-light">marcus.a.adair@gmail.com</span>
+                <button class="relative w-fit h-fit overflow-clip cursor-pointer" title="Copy" onclick={copyEmail}>
+                    <div bind:this={copyIcon}>
+                        <Copy class="size-3.5 hover:text-ring" />
+                    </div>
+                    <div bind:this={checkIcon} class="absolute top-0 left-0 -translate-y-[20px]">
+                        <Check class="size-3.5 text-green-600" />
+                    </div>
+                </button>
             </div>
-
-            <Button
-                variant="outline"
-                size="lg"
-                title="My Resume"
-                onclick={() => window.open(resume, "_blank")}
-                onmouseenter={() => resumeTl.play()}
-                onmouseleave={() => resumeTl.reverse()}
-            >
-                <div class="hidden sm:flex relative overflow-clip">
-                    <span class="split-text-resume">My Resume</span>
-                    <span class="absolute inset-0 translate-y-[25px] split-text-resume-2">My Resume</span>
-                </div>
-                <Download/>
-            </Button>
         </div>
     </div>
 {/if}
