@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Separator from "$lib/components/ui/separator.svelte";
-	import { CAL_EMAIL, EMAIL, EMAIL_URL, GITHUB_URL, LINKED_IN_URL } from "$lib/consts/config";
 	import { HOVER_EXPAND_TAILWIND_ANIMATION } from "$lib/consts/style";
 	import { cn } from "$lib/utils";
 	import { CalendarDays, Check, Copy, Github, LinkedinIcon, Mail } from "lucide-svelte";
@@ -72,7 +71,7 @@
 
   function copyEmail() {
     transCopyIcon();
-    navigator.clipboard.writeText(EMAIL);
+    navigator.clipboard.writeText("marcus.a.adair@gmail.com");
 
     setTimeout(() => { 
       gsap.fromTo(copyIcon, { y: 20}, { y: 0, duration: DURATION, ease: EASE });
@@ -126,7 +125,7 @@
       <a
         bind:this={LinkedInElt}
         class={cn("hover:text-ring transition-colors flex flex-row gap-4 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}
-        href={LINKED_IN_URL}
+        href="https://www.linkedin.com/in/marcus-adair/"
         rel="external"
         title="LinkedIn"
         target="_blank"
@@ -143,7 +142,7 @@
       <a
         bind:this={GithubElt}
         class={cn("hover:text-ring transition-colors flex flex-row gap-4 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}
-        href={GITHUB_URL}
+        href="https://github.com/Marcus-Adair"
         title="GitHub"
         target="_blank"
         rel="external"
@@ -162,7 +161,7 @@
       <a 
         bind:this={MeetingElt}
         class={cn("hover:text-ring transition-colors flex flex-row gap-4 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}
-        href={CAL_EMAIL}
+        href="https://cal.com/marcus-adair"
         title="Schedule a Meeting"
         target="_blank"
         rel="external"
@@ -179,7 +178,7 @@
       <div class="flex flex-row items-center gap-4" bind:this={EmailElt}>
         <a 
           class={cn("hover:text-ring transition-colors flex flex-row gap-4 items-center", HOVER_EXPAND_TAILWIND_ANIMATION)}
-          href={EMAIL_URL}
+          href="mailto:marcus.a.adair@gmail.com"
           title="My Email"
           target="_blank"
           rel="external"
