@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { cn } from "$lib/utils";
 	import { formatDate } from "$lib/utils/dates";
-	import { ChevronRight, MousePointerClick } from "lucide-svelte";
+	import { ChevronRight } from "lucide-svelte";
 	import type { HTMLAnchorAttributes } from "svelte/elements";
     import gsap from "gsap";
 	import { onMount } from "svelte";
@@ -86,7 +86,7 @@
     />
 
     <div class="hidden lg:flex flex-1 flex-col gap-1 mt-4 ml-2">
-        <span class="text-2xl font-[Space_Grotesk]">{title}</span>
+        <span class="text-2xl">{title}</span>
         <span class="font-light mt-4">{about}</span>
 		{#if date}
 			<span class="text-sm text-muted-foreground">{formatDate(date)}</span>
@@ -100,7 +100,7 @@
 	<!-- Mobile -->
 	<div class="flex flex-row gap-4">
 		<div class="flex lg:hidden flex-1 flex-col gap-1 mt-4 ml-2">
-			<span class="text-2xl font-[Space_Grotesk]">{title}</span>
+			<span class="text-2xl">{title}</span>
 			<span class="font-light mt-4">{about}</span>
 			{#if date}
 				<span class="text-sm text-muted-foreground">{formatDate(date)}</span>

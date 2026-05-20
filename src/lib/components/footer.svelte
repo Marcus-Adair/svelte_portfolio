@@ -4,15 +4,16 @@
 	import { pageOptions } from "$lib/types/pageOptions";
 	import { cn } from "$lib/utils";
 	import Separator from "./ui/separator.svelte";
+	import { toggleMode, mode } from "mode-watcher";
 
   const currentYear: number = new Date().getFullYear();
 </script>
 
 <footer class={cn(
-  "flex flex-col sm:flex-row justify-between items-center px-14 gap-6 border-t border-t-border pt-4 pb-8 bg-card/50",
+  "flex flex-col sm:flex-row justify-between items-center px-14 gap-2.5 sm:gap-6 border-t border-t-border/60 pt-2 pb-3 sm:pt-4 sm:pb-8 bg-header/70",
   page.url.pathname === "/" ? "mt-8" : "mt-20"
 )}>
-    <ol class="flex flex-row gap-4 justify-start text-sm">
+    <ol class="flex flex-row gap-4 justify-start text-xs">
       <li>
         <a href={resolve("/")} title="Home" class={cn(
           "transition-all duration-300 ease-out hover:text-primary/80 font-light hover:underline underline-offset-2",
@@ -20,21 +21,10 @@
             ? "text-primary font-semibold"
             : "text-muted-foreground"
         )}>
-          {pageOptions.home}
+          {pageOptions.home.toUpperCase()}
         </a>
       </li>
   
-      <li>
-        <a href={resolve("/about")} title="About" class={cn(
-          "transition-all duration-300 ease-out hover:text-primary/80 font-light hover:underline underline-offset-2",
-          page.url.pathname.includes("about")
-            ? "text-primary font-semibold"
-            : "text-muted-foreground"
-        )}>
-          {pageOptions.about}
-        </a>
-      </li>
-        
       <li>
         <a href={resolve("/projects")} title="Projects" class={cn(
           "transition-all duration-300 ease-out hover:text-primary/80 font-light hover:underline underline-offset-2",
@@ -42,7 +32,7 @@
             ? "text-primary font-semibold"
             : "text-muted-foreground"
         )}>
-          {pageOptions.projects}
+          {pageOptions.projects.toUpperCase()}
         </a>
       </li>
 
@@ -54,13 +44,23 @@
             ? "text-primary font-semibold"
             : "text-muted-foreground"
         )}>
-          {pageOptions.blog}
+          {pageOptions.blog.toUpperCase()}
         </a>
+      </li>
+
+      <li>
+        <button
+          onclick={toggleMode}
+          title="Toggle theme"
+          class="transition-all duration-300 ease-out hover:text-primary/80 font-light hover:underline underline-offset-2 text-muted-foreground cursor-pointer"
+        >
+          {mode.current === "light" ? "DARK" : "LIGHT"}
+        </button>
       </li>
 
     </ol>
 
-    <Separator class="flex sm:hidden w-72! -mt-3"/>
+    <Separator class="flex sm:hidden w-72"/>
 
     <span class="text-xs text-muted-foreground">© {currentYear} <a href={resolve("/")} class="text-primary hover:text-primary/80 underline-offset-2 hover:underline">Marcus Adair.</a> All rights reserved.</span>
   </footer>

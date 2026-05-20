@@ -12,7 +12,7 @@
 	import ProjectCard from './components/projectCard.svelte';
 	import gsap from "gsap";
 	import AnimatedSeparator from '$lib/components/animatedSeparator.svelte';
-	import { showingBootAnimation } from '$lib/stores/boot.svelte';
+	import { onMount } from 'svelte';
 
 
 	let easyScrumDiv: HTMLDivElement;
@@ -24,17 +24,15 @@
 	let alpsDiv: HTMLDivElement;
 	let fdwDiv: HTMLDivElement;
 	let sedeDiv: HTMLDivElement;
-	$effect(() => {
-    if (!showingBootAnimation()) {
-      // Animate after boot sequence
-	  gsap.fromTo(
+	onMount(() => {
+		gsap.fromTo(
 			".animate-text-in",
 			{ x: -350},
 			{ x: 0, duration: 0.26, ease: "power1.out" }
 		);
 
 		const ANIM = { y: 40, duration:0.2, opacity: 0,  ease: "power1.out" };
-		const OVERLAP = "-=0.12"; 
+		const OVERLAP = "-=0.12";
 
 		const tl = gsap.timeline();
 		tl.from(easyScrumDiv, ANIM);
@@ -46,16 +44,14 @@
 		tl.from(alpsDiv, ANIM, OVERLAP);
 		tl.from(fdwDiv, ANIM, OVERLAP);
 		tl.from(sedeDiv, ANIM, OVERLAP);
-    }
-  });
+	});
 </script>
 
 <svelte:head>
   <title>Projects • Marcus Adair</title>
 </svelte:head>
 
-{#if !showingBootAnimation()}
-	<div class="flex flex-col gap-6">
+<div class="flex flex-col gap-6">
 		<h1 class="mr-44 text-4xl md:text-5xl animate-text-in">Projects</h1>
 
 		<div class="flex flex-col gap-1.25 mt-2">
@@ -146,8 +142,7 @@
 				description='I served as the front-end lead on a geocoding web application developed for my BS senior capstone project in collaboration with Idaho National Laboratory. I developed web components, harnessed an API to create a custom map interface, and more. The front-end was built with TypeScript, Angular, HTML, and CSS, and the back-end was .NET-based and written in C#.'
 			/>
 		</div>
-	</div>
-{/if}
+</div>
 
 {#snippet FdwDescription()}
 	<span class="text-sm">While serving as an undergraduate research assistant, I developed FDW, a high-throughput workflow utilizing Bash, Python, Singularity (containerization), and more. FDW significantly accelerated premier earthquake simulation software using the <Link href="https://osg-htc.org/">Open Science Grid</Link>. The work resulted in a paper accepted at an SC23 workshop and published by the ACM.</span>

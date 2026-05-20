@@ -13,7 +13,6 @@
   import lucyPic from '$lib/assets/lucy_pic.png';
 	import { ChevronDown, ChevronUp } from "lucide-svelte";
 	import Button from "$lib/components/ui/button.svelte";
-	import { showingBootAnimation } from "$lib/stores/boot.svelte";
 
   let showingAllPosts = $state(false);
 
@@ -21,7 +20,6 @@
   let quote: HTMLSpanElement;
   let post1: HTMLDivElement;
   let post2: HTMLDivElement;
-  // svelte-ignore non_reactive_update
   let post3: HTMLDivElement;
   let post4: HTMLDivElement;
   let post5: HTMLDivElement;
@@ -38,53 +36,49 @@
   }
   function animateQuote() {
       gsap.timeline({ repeat: -1, repeatDelay: 3 })
-        .to(quote, { 
-          duration: 3, 
-          scrambleText: {text: "- I turn coffee into algorithms", chars: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY1234567890!@#$%^&*"},
-          ease: "elastic.inOut" 
+        .to(quote, {
+          duration: 3,
+          scrambleText: {text: "- I turn coffee into algorithms", chars: "[]{}||I()01!@#$%&*", tweenLength: false},
+          ease: "elastic.inOut"
         })
         .to(quote, {
-          duration: 3, 
-          scrambleText: { text: "- Welcome to my blog", chars: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY1234567890!@#$%^&*"}, 
-          ease: "elastic.inOut", 
+          duration: 3,
+          scrambleText: { text: "- Welcome to my blog", chars: "[]{}||I()01!@#$%&*", tweenLength: false},
+          ease: "elastic.inOut",
           delay: 3
         });
     }
   onMount(() => {
     gsap.registerPlugin(ScrambleTextPlugin);
-  });
-  $effect(() => {
-    if (!showingBootAnimation()) {  
-      gsap.fromTo(
-        ".swipe-in",
-        { x: -350},
-        { x: 0, duration: 0.3, ease: "power1.out" }
-      );
 
-      gsap.fromTo(
-        ".animated-card",
-        { x: -550},
-        { x: 0, duration: 0.04, ease: "power1.out", delay: 0.05 }
-      );
+    gsap.fromTo(
+      ".swipe-in",
+      { x: -350},
+      { x: 0, duration: 0.3, ease: "power1.out" }
+    );
 
+    gsap.fromTo(
+      ".animated-card",
+      { x: -550},
+      { x: 0, duration: 0.04, ease: "power1.out", delay: 0.05 }
+    );
 
-      animateQuote();
+    animateQuote();
 
-      const postsAnimIn = {
-        y: 40,
-        opacity: 0,
-        ease: "power1.out",
-        duration: 0.1,
-      };
-      const overlap = "-=0.0.8"; 
+    const postsAnimIn = {
+      y: 40,
+      opacity: 0,
+      ease: "power1.out",
+      duration: 0.1,
+    };
+    const overlap = "-=0.0.8";
 
-      const tl = gsap.timeline();
-      tl.from(post5, postsAnimIn);
-      tl.from(post4, postsAnimIn, overlap);
-      tl.from(post1, postsAnimIn, overlap);
-      tl.from(post2, postsAnimIn, overlap);
-      tl.from(post3, postsAnimIn, overlap);
-    }
+    const tl = gsap.timeline();
+    tl.from(post5, postsAnimIn);
+    tl.from(post4, postsAnimIn, overlap);
+    tl.from(post1, postsAnimIn, overlap);
+    tl.from(post2, postsAnimIn, overlap);
+    tl.from(post3, postsAnimIn, overlap);
   });
 </script>
 
@@ -92,21 +86,20 @@
   <title>Blog • Marcus Adair</title>
 </svelte:head>
 
-{#if !showingBootAnimation()}
 <div class="flex flex-col gap-6">
   <h1 class="text-4xl md:text-5xl md:mt-4 swipe-in">The Marcus Adair Blog.</h1>
 
-  <div class="flex flex-col gap-3.5">
-    <div class="flex flex-row gap-4 h-5 font-[Space_Grotesk] swipe-in">
-      <div class="flex gap-4 quote">
+  <div class="flex flex-col gap-3.5 font-light">
+    <div class="flex flex-row gap-4 h-5 swipe-in">
+      <div class="flex gap-4 quote tracking-wider">
         <span bind:this={quote}>- I turn coffee into algorithms</span>
         <Separator orientation="vertical"/>
       </div>
-      <button onclick={spinCoffee} class="flex-none cursor-pointer">
+      <button onclick={spinCoffee} class="flex-none cursor-pointer" title="Click Me!!">
         <img src={coffee_gif} bind:this={coffee} alt="coffee_gif" class="size-12 -translate-y-5.25 -translate-x-1" />
       </button>
     </div>
-    <span class="text-muted-foreground text-xs font-light tracking-wider">A collection of my sporadic and genius thoughts on software, some memes, and more.</span>
+    <span class="text-muted-foreground text-sm font-light">A collection of my sporadic and genius thoughts on software, some memes, and more.</span>
   </div>
 
   <div class="flex flex-col gap-1.25 mt-2">
@@ -161,4 +154,3 @@
     </Button>
   </div>
 </div>
-{/if}
