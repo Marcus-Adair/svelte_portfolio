@@ -147,19 +147,19 @@
 
 {#snippet heroText()}
             <div class="mb-1"><p>
-                <span class="font-[Britney] text-7xl">M</span><span>ARCUS</span>&nbsp;
-                <span><span class="font-[Britney] text-7xl mr-1 line">A</span><span>DAIR</span></span>
+                <span class="font-[Britney] text-5xl sm:text-7xl">M</span><span>ARCUS</span>&nbsp;
+                <span><span class="font-[Britney] text-5xl sm:text-7xl mr-1 line">A</span><span>DAIR</span></span>
             </p></div>
             <div><p>SOFTWARE ENGINEER,</p></div>
-            <div><p class="font-[Array] text-6xl">COMPUTER SCIENTIST,</p></div>
+            <div><p class="font-[Array] text-4xl sm:text-6xl">COMPUTER SCIENTIST,</p></div>
             <div><p class="font-[Britney]">AND CREATIVE.</p></div>
-            <div><p class="text-xl mt-4">- BASED IN SANDY, UTAH -</p></div>
+            <div><p class="text-base sm:text-xl mt-4">- BASED IN SANDY, UTAH -</p></div>
 {/snippet}
 
 <div class="flex flex-col gap-3">
     <div bind:this={heroWrapper} class="relative h-150 flex justify-center">
         <!-- Normal hero text -->
-        <div bind:this={heroTextDiv} class="absolute top-5 left-1/2 -translate-x-1/2 w-[800px] h-[320px] text-5xl font-[Stardom] tracking-wider text-center text-foreground pointer-events-none flex flex-col justify-center z-0">
+        <div bind:this={heroTextDiv} class="absolute w-[800px] h-[320px] text-3xl sm:text-5xl top-5 left-1/2 -translate-x-1/2 font-[Stardom] tracking-wider text-center text-foreground pointer-events-none flex flex-col justify-center z-0">
             {@render heroText()}
         </div>
 
@@ -174,7 +174,7 @@
                     >
                         <!-- Inverted text positioned to align with normal text -->
                         <div
-                            class="absolute w-[800px] h-[320px] text-5xl font-[Stardom] tracking-wider text-center text-primary-foreground flex flex-col justify-center"
+                            class="absolute w-[800px] h-[320px] text-3xl sm:text-5xl font-[Stardom] tracking-wider text-center text-primary-foreground flex flex-col justify-center"
                             style={getInvertedTextStyle(i)}
                         >
                             {@render heroText()}
