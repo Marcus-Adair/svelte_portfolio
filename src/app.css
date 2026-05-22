@@ -42,7 +42,7 @@
 	--font-sans: Inter, sans-serif;
 	--font-serif: Source Serif 4, serif;
 	--font-mono: JetBrains Mono, monospace;
-	--radius: 0.725rem;
+	--radius: 0.425rem;
 	--shadow-x: 0;
 	--shadow-y: 1px;
 	--shadow-blur: 3px;
@@ -101,7 +101,7 @@
 	--font-sans: Inter, sans-serif;
 	--font-serif: Source Serif 4, serif;
 	--font-mono: JetBrains Mono, monospace;
-	--radius: 0.725rem;
+	--radius: 0.425rem;
 	--shadow-x: 0;
 	--shadow-y: 1px;
 	--shadow-blur: 3px;
@@ -179,139 +179,177 @@
 
 @font-face {
 	font-family: 'Satoshi-Light';
-	src:
-		url('$lib/fonts/Satoshi-Light.woff2') format('woff2'),
-		url('$lib/fonts/Satoshi-Light.woff') format('woff'),
-		url('$lib/fonts/Satoshi-Light.ttf') format('truetype');
+	src: url('$lib/fonts/Satoshi-Light.woff2') format('woff2');
 	font-weight: 300;
 	font-display: swap;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'Satoshi-LightItalic';
-	src:
-		url('$lib/fonts/Satoshi-LightItalic.woff2') format('woff2'),
-		url('$lib/fonts/Satoshi-LightItalic.woff') format('woff'),
-		url('$lib/fonts/Satoshi-LightItalic.ttf') format('truetype');
+	src: url('$lib/fonts/Satoshi-LightItalic.woff2') format('woff2');
 	font-weight: 300;
 	font-display: swap;
 	font-style: italic;
 }
 @font-face {
 	font-family: 'Satoshi-Regular';
-	src:
-		url('$lib/fonts/Satoshi-Regular.woff2') format('woff2'),
-		url('$lib/fonts/Satoshi-Regular.woff') format('woff'),
-		url('$lib/fonts/Satoshi-Regular.ttf') format('truetype');
+	src: url('$lib/fonts/Satoshi-Regular.woff2') format('woff2');
 	font-weight: 400;
 	font-display: swap;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'Satoshi-Italic';
-	src:
-		url('$lib/fonts/Satoshi-Italic.woff2') format('woff2'),
-		url('$lib/fonts/Satoshi-Italic.woff') format('woff'),
-		url('$lib/fonts/Satoshi-Italic.ttf') format('truetype');
+	src: url('$lib/fonts/Satoshi-Italic.woff2') format('woff2');
 	font-weight: 400;
 	font-display: swap;
 	font-style: italic;
 }
 @font-face {
 	font-family: 'Satoshi-Medium';
-	src:
-		url('$lib/fonts/Satoshi-Medium.woff2') format('woff2'),
-		url('$lib/fonts/Satoshi-Medium.woff') format('woff'),
-		url('$lib/fonts/Satoshi-Medium.ttf') format('truetype');
+	src: url('$lib/fonts/Satoshi-Medium.woff2') format('woff2');
 	font-weight: 500;
 	font-display: swap;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'Satoshi-MediumItalic';
-	src:
-		url('$lib/fonts/Satoshi-MediumItalic.woff2') format('woff2'),
-		url('$lib/fonts/Satoshi-MediumItalic.woff') format('woff'),
-		url('$lib/fonts/Satoshi-MediumItalic.ttf') format('truetype');
+	src: url('$lib/fonts/Satoshi-MediumItalic.woff2') format('woff2');
 	font-weight: 500;
 	font-display: swap;
 	font-style: italic;
 }
 @font-face {
 	font-family: 'Satoshi-Bold';
-	src:
-		url('$lib/fonts/Satoshi-Bold.woff2') format('woff2'),
-		url('$lib/fonts/Satoshi-Bold.woff') format('woff'),
-		url('$lib/fonts/Satoshi-Bold.ttf') format('truetype');
+	src: url('$lib/fonts/Satoshi-Bold.woff2') format('woff2');
 	font-weight: 700;
 	font-display: swap;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'Satoshi-BoldItalic';
-	src:
-		url('$lib/fonts/Satoshi-BoldItalic.woff2') format('woff2'),
-		url('$lib/fonts/Satoshi-BoldItalic.woff') format('woff'),
-		url('$lib/fonts/Satoshi-BoldItalic.ttf') format('truetype');
+	src: url('$lib/fonts/Satoshi-BoldItalic.woff2') format('woff2');
 	font-weight: 700;
 	font-display: swap;
 	font-style: italic;
 }
 @font-face {
 	font-family: 'Satoshi-Black';
-	src:
-		url('$lib/fonts/Satoshi-Black.woff2') format('woff2'),
-		url('$lib/fonts/Satoshi-Black.woff') format('woff'),
-		url('$lib/fonts/Satoshi-Black.ttf') format('truetype');
+	src: url('$lib/fonts/Satoshi-Black.woff2') format('woff2');
 	font-weight: 900;
 	font-display: swap;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'Satoshi-BlackItalic';
-	src:
-		url('$lib/fonts/Satoshi-BlackItalic.woff2') format('woff2'),
-		url('$lib/fonts/Satoshi-BlackItalic.woff') format('woff'),
-		url('$lib/fonts/Satoshi-BlackItalic.ttf') format('truetype');
+	src: url('$lib/fonts/Satoshi-BlackItalic.woff2') format('woff2');
 	font-weight: 900;
 	font-display: swap;
 	font-style: italic;
 }
-/**
-* This is a variable font
-* You can control variable axes as shown below:
-* font-variation-settings: wght 900.0;
-*
-* available axes:
-'wght' (range from 300.0 to 900.0
-*/
 @font-face {
 	font-family: 'Satoshi-Variable';
-	src:
-		url('$lib/fonts/Satoshi-Variable.woff2') format('woff2'),
-		url('$lib/fonts/Satoshi-Variable.woff') format('woff'),
-		url('$lib/fonts/Satoshi-Variable.ttf') format('truetype');
+	src: url('$lib/fonts/Satoshi-Variable.woff2') format('woff2');
 	font-weight: 300 900;
 	font-display: swap;
 	font-style: normal;
 }
-/**
-* This is a variable font
-* You can control variable axes as shown below:
-* font-variation-settings: wght 900.0;
-*
-* available axes:
-'wght' (range from 300.0 to 900.0
-*/
 @font-face {
 	font-family: 'Satoshi-VariableItalic';
-	src:
-		url('$lib/fonts/Satoshi-VariableItalic.woff2') format('woff2'),
-		url('$lib/fonts/Satoshi-VariableItalic.woff') format('woff'),
-		url('$lib/fonts/Satoshi-VariableItalic.ttf') format('truetype');
+	src: url('$lib/fonts/Satoshi-VariableItalic.woff2') format('woff2');
 	font-weight: 300 900;
 	font-display: swap;
 	font-style: italic;
+}
+
+/* ------------------------------------------------------------- */
+/* ------------------------------------------------------------- */
+
+@font-face {
+	font-family: 'Stardom';
+	src: url('$lib/fonts/Stardom-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Britney';
+	src: url('$lib/fonts/Britney-Light.woff2') format('woff2');
+	font-weight: 300;
+	font-display: swap;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Britney';
+	src: url('$lib/fonts/Britney-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-display: swap;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Britney';
+	src: url('$lib/fonts/Britney-Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-display: swap;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Britney';
+	src: url('$lib/fonts/Britney-Ultra.woff2') format('woff2');
+	font-weight: 900;
+	font-display: swap;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Britney-Variable';
+	src: url('$lib/fonts/Britney-Variable.woff2') format('woff2');
+	font-weight: 100 900;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Array';
+	src: url('$lib/fonts/Array-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-display: swap;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Array';
+	src: url('$lib/fonts/Array-Semibold.woff2') format('woff2');
+	font-weight: 600;
+	font-display: swap;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Array';
+	src: url('$lib/fonts/Array-Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-display: swap;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Array-Wide';
+	src: url('$lib/fonts/Array-Wide.woff2') format('woff2');
+	font-weight: 400;
+	font-display: swap;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Array-Wide';
+	src: url('$lib/fonts/Array-SemiboldWide.woff2') format('woff2');
+	font-weight: 600;
+	font-display: swap;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Array-Wide';
+	src: url('$lib/fonts/Array-BoldWide.woff2') format('woff2');
+	font-weight: 700;
+	font-display: swap;
+	font-style: normal;
 }
 
 /* ------------------------------------------------------------- */
@@ -322,18 +360,18 @@
 		@apply border-border outline-ring/50;
 	}
 	body {
-		@apply bg-background leading-relaxed tracking-wide text-foreground;
+		@apply bg-background leading-relaxed text-foreground;
 		font-family: Satoshi-Medium;
 	}
 
 	h1 {
-		@apply font-[Space_Grotesk] font-bold tracking-wide;
+		@apply font-[Stardom] font-bold tracking-wide;
 	}
 }
 
 @layer utilities {
 	/* Prevents image squishing in flex layouts, maintains 16:9 aspect ratio */
 	.img-frame {
-		@apply aspect-video object-cover flex-shrink-0;
+		@apply aspect-video flex-shrink-0 object-cover;
 	}
 }

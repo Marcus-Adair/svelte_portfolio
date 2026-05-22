@@ -1,7 +1,7 @@
 export const pageOptions = {
     home: "Home",
-    about: "About",
     projects: "Projects",
-    blog: "Blog"
+    blog: "My Blog",
+    resume: "Resume"
 }
 export type PageOptionsKey =  keyof typeof pageOptions;

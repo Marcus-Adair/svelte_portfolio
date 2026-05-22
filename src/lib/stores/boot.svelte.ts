@@ -1,8 +1,11 @@
-let showBootAnimation = $state(true);
-  
-export function endBootAnimation(): void {
-    showBootAnimation = false;
+// Tracks whether the initial boot/curtain animation has completed
+// Persists across client-side navigations
+let bootComplete = $state(false);
+
+export function isBootComplete() {
+    return bootComplete;
 }
-export function showingBootAnimation(): boolean {
-    return showBootAnimation
+
+export function markBootComplete() {
+    bootComplete = true;
 }
