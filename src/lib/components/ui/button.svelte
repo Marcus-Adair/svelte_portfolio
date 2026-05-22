@@ -10,7 +10,7 @@
           destructive:
             "bg-destructive hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 text-white",
           outline:
-            "bg-muted text-muted-foreground hover:text-primary border-border border hover:border-primary",
+            "bg-muted text-muted-foreground hover:text-primary active:text-primary/80 border-border border hover:border-primary",
           secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
           ghost: "hover:bg-accent text-muted-foreground hover:text-accent-foreground dark:hover:bg-accent/50",
           link: "text-primary underline-offset-2 hover:underline",

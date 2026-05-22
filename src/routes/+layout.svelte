@@ -8,17 +8,17 @@
 	import { cn } from '$lib/utils';
 	import { onMount } from 'svelte';
 	import { markBootComplete } from '$lib/stores/boot.svelte';
+	import { resolve } from '$app/paths';
 
 	let { children } = $props();
 
 	// Curtain reveal
 	let curtainVisible = $state(true);
+	// svelte-ignore non_reactive_update
 	let curtain: HTMLDivElement;
 
 	onMount(() => {
-		// 
-		
-
+		// Lift curtain
 		gsap.fromTo(curtain,
 			{ '--mask-h': '0%', '--mask-w': '80%' },
 			{
@@ -36,27 +36,28 @@
 	let homeDiv = $state<HTMLDivElement | undefined>();
 	let projectsDiv = $state<HTMLDivElement | undefined>();
 	let blogDiv = $state<HTMLDivElement | undefined>();
+	let resumeDiv = $state<HTMLDivElement | undefined>();
 
 	let headerTl: gsap.core.Timeline;
 
+	// Header animation ------------------ //
 	$effect(() => {
-		if (homeDiv && projectsDiv && blogDiv) {
+		if (homeDiv && projectsDiv && blogDiv && resumeDiv) {
 			headerTl = gsap.timeline({ paused: true });
 			headerTl
-				.to(headerElt, { height: 86, duration: 0.1, ease: "power1.out" })
+				.to(headerElt, { height: 77, duration: 0.1, ease: "power1.out" })
 				.from(homeDiv, { opacity: 0, y: 10, duration: 0.095, ease: "power1.inOut" })
 				.from(projectsDiv, { opacity: 0, y: 10, duration: 0.095, ease: "power1.inOut" }, "-=0.05")
-				.from(blogDiv, { opacity: 0, y: 10, duration: 0.095, ease: "power1.inOut" }, "-=0.05");
+				.from(blogDiv, { opacity: 0, y: 10, duration: 0.095, ease: "power1.inOut" }, "-=0.05")
+				.from(resumeDiv, { opacity: 0, y: 10, duration: 0.095, ease: "power1.inOut" }, "-=0.05");
 		}
 	});
-
 	function onHeaderEnter() {
 		headerTl?.play();
 	}
 	function onHeaderLeave() {
 		headerTl?.reverse();
 	}
-
 </script>
 
 <svelte:head>
@@ -64,7 +65,6 @@
 </svelte:head>
 <ModeWatcher />
 
-<!-- Curtain reveal -->
 {#if curtainVisible}
 	<div
 		bind:this={curtain}
@@ -74,7 +74,6 @@
 {/if}
 
 <div class="flex flex-col min-h-screen">
-	<!-- svelte-ignore a11y_role_has_required_aria_props -->
 	<header
 		bind:this={headerElt}
 		class={cn(
@@ -84,24 +83,31 @@
 		onmouseenter={() => onHeaderEnter()}
 		onmouseleave={() => onHeaderLeave()}
 		role="heading"
+		aria-level={1}
 	>
-		<div class={cn("grid grid-cols-3 px-4 md:px-6 gap-2 pb-3 pt-4")}>
-			<span class="text-sm translate-y-1">MARCUS ADAIR</span>
-
+		<div class={cn("grid grid-cols-3 pl-7 pr-1 gap-2 pb-3 pt-4")}>
+			<div class="justify-self-start">
+				<a href={resolve("/")} class="hidden sm:flex text-xs text-muted-foreground translate-y-1 hover:text-primary active:text-primary/80 w-fit h-fit">
+					MARCUS ADAIR
+				</a>
+			</div>
+		
 			<div class="justify-self-center"><!-- Put a middle-aligned thing here if want one--></div>
 
 			<div class="justify-self-end gap-2 flex flex-row items-center">
 				<HeaderNav
 					bind:homeDiv={homeDiv!}
-					bind:projectsDiv={projectsDiv!} bind:blogDiv={blogDiv!}
+					bind:projectsDiv={projectsDiv!}
+					bind:blogDiv={blogDiv!}
+					bind:resumeDiv={resumeDiv!}
 				/>
 			</div>
 		</div>
 	</header>
 
+	<main class="flex-1 px-6 md:px-36 mt-27">
+		{@render children?.()}
+	</main>
 
-		<main class="flex-1 px-6 md:px-36 mt-27">
-			{@render children?.()}
-		</main>
 	<Footer/>
 </div>

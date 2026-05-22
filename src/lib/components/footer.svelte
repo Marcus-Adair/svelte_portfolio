@@ -16,7 +16,7 @@
     <ol class="flex flex-row gap-4 justify-start text-xs">
       <li>
         <a href={resolve("/")} title="Home" class={cn(
-          "transition-all duration-300 ease-out hover:text-primary/80 font-light hover:underline underline-offset-2",
+          "transition-all duration-300 ease-out hover:text-primary active:text-primary/80 font-light hover:underline underline-offset-2",
           page.url.pathname === "/"
             ? "text-primary font-semibold"
             : "text-muted-foreground"
@@ -27,7 +27,7 @@
   
       <li>
         <a href={resolve("/projects")} title="Projects" class={cn(
-          "transition-all duration-300 ease-out hover:text-primary/80 font-light hover:underline underline-offset-2",
+          "transition-all duration-300 ease-out hover:text-primary active:text-primary/80 font-light hover:underline underline-offset-2",
           page.url.pathname.includes("projects")
             ? "text-primary font-semibold"
             : "text-muted-foreground"
@@ -39,7 +39,7 @@
 
       <li>
         <a href={resolve("/blog")} title="Blog" class={cn(
-          "transition-all duration-300 ease-out hover:text-primary/80 font-light hover:underline underline-offset-2",
+          "transition-all duration-300 ease-out hover:text-primary active:text-primary/80 font-light hover:underline underline-offset-2",
           page.url.pathname.includes("blog")
             ? "text-primary font-semibold"
             : "text-muted-foreground"
@@ -52,7 +52,7 @@
         <button
           onclick={toggleMode}
           title="Toggle theme"
-          class="transition-all duration-300 ease-out hover:text-primary/80 font-light hover:underline underline-offset-2 text-muted-foreground cursor-pointer"
+          class="transition-all duration-300 ease-out hover:text-primary active:text-primary/80 font-light hover:underline underline-offset-2 text-muted-foreground cursor-pointer"
         >
           {mode.current === "light" ? "DARK" : "LIGHT"}
         </button>
@@ -62,6 +62,6 @@
 
     <Separator class="flex sm:hidden w-72"/>
 
-    <span class="text-xs text-muted-foreground">© {currentYear} <a href={resolve("/")} class="text-primary hover:text-primary/80 underline-offset-2 hover:underline">Marcus Adair.</a> All rights reserved.</span>
+    <span class="text-xs text-muted-foreground">© {currentYear} <a href={resolve("/")} class="text-primary hover:text-primary active:text-primary/80 underline-offset-2 hover:underline">Marcus Adair.</a> All rights reserved.</span>
   </footer>
   

@@ -1,9 +1,9 @@
 <script lang="ts">
     import { page } from "$app/state";
-    import { HOVER_EXPAND_LARGE_TAILWIND_ANIMATION } from "$lib/consts/style";
     import { pageOptions } from "$lib/types/pageOptions";
     import { cn } from "$lib/utils";
-    import { CodeXml, Coffee, Laptop } from "lucide-svelte";
+    import { CodeXml, Coffee, FileText, Laptop } from "lucide-svelte";
+    import resume from "$lib/assets/Marcus_Adair_Portfolio_Resume.pdf";
     import gsap from "gsap";
     import { onMount } from "svelte";
     import { resolve } from "$app/paths";
@@ -13,8 +13,14 @@
         homeDiv: HTMLDivElement;
         projectsDiv: HTMLDivElement;
         blogDiv: HTMLDivElement;
+        resumeDiv: HTMLDivElement;
     }
-    let { homeDiv = $bindable(), projectsDiv = $bindable(), blogDiv = $bindable() }: Props = $props();
+    let {   
+        homeDiv = $bindable(),
+        projectsDiv = $bindable(),
+        blogDiv = $bindable(),
+        resumeDiv = $bindable()
+    }: Props = $props();
 
     const isActive = (href: string, exactMatch: boolean) => {
         return exactMatch 
@@ -39,75 +45,101 @@
         });
     });
 </script>
+
 <nav class="flex flex-row justify-center">
-        <ol class="flex flex-row items-center gap-3.5 md:gap-4.5 transition-all font-bold">
-            <li>
-                <a 
-                    href={resolve("/")} 
-                    title="Home" 
-                    class={cn(
-                        "transition-all duration-300 ease-out hover:text-primary/80",
-                        isActive("/", true) ? "text-primary" : "text-header-foreground"
-                    )}
-                    onmouseenter={() => splitTextTLs.home.play()}
-                    onmouseleave={() => splitTextTLs.home.reverse()}
-                >
-                    <div class={cn("flex flex-col gap-1 items-center", HOVER_EXPAND_LARGE_TAILWIND_ANIMATION)}>
-                        <Coffee size={28} />
-                        <div bind:this={homeDiv} class="relative text-sm overflow-clip whitespace-nowrap">
-                            <span class="split-text-home">
-                                {pageOptions.home.toUpperCase()}
-                            </span>
-                            <span class="absolute inset-0 translate-y-[25px] split-text-home-2">{pageOptions.home.toUpperCase()}</span>
-                        </div>
+    <ol class="flex flex-row items-end gap-0 text-xs tracking-wider font-bold">
+        <li class="min-w-[4.5rem] flex justify-center">
+            <a 
+                href={resolve("/")} 
+                title="Home" 
+                class={cn(
+                    "transition-colors duration-300 ease-out hover:text-primary active:text-primary/80",
+                    isActive("/", true) ? "text-primary" : "text-header-foreground"
+                )}
+                onmouseenter={() => splitTextTLs.home.play()}
+                onmouseleave={() => splitTextTLs.home.reverse()}
+            >
+                <div class={cn("flex flex-col gap-1 items-center")}>
+                    <Coffee size={28} />
+                    <div bind:this={homeDiv} class="relative overflow-clip whitespace-nowrap">
+                        <span class="split-text-home">
+                            {pageOptions.home.toUpperCase()}
+                        </span>
+                        <span class="absolute inset-0 translate-y-[25px] split-text-home-2">{pageOptions.home.toUpperCase()}</span>
                     </div>
-                </a>
-            </li>
+                </div>
+            </a>
+        </li>
 
-            <li>
-                <a
-                    href={resolve("/projects")}
-                    title="Projects"
-                    class={cn(
-                        "transition-all duration-300 ease-out hover:text-primary/80",
-                        isActive("/projects", false) ? "text-primary" : "text-header-foreground"
-                    )}
-                    onmouseenter={() => splitTextTLs.projects.play()}
-                    onmouseleave={() => splitTextTLs.projects.reverse()}
-                >
-                    <div class={cn("flex flex-col gap-1 items-center", HOVER_EXPAND_LARGE_TAILWIND_ANIMATION)}>
-                        <CodeXml size={28} />
-                        <div bind:this={projectsDiv} class="relative text-sm overflow-clip whitespace-nowrap">
-                            <span class="split-text-projects">
-                                {pageOptions.projects.toUpperCase()}
-                            </span>
-                            <span class="absolute inset-0 translate-y-[25px] split-text-projects-2">{pageOptions.projects.toUpperCase()}</span>
-                        </div>
+        <li class="min-w-[4.5rem] flex justify-center">
+            <a
+                href={resolve("/projects")}
+                title="Projects"
+                class={cn(
+                    "transition-colors duration-300 ease-out hover:text-primary active:text-primary/80",
+                    isActive("/projects", false) ? "text-primary" : "text-header-foreground"
+                )}
+                onmouseenter={() => splitTextTLs.projects.play()}
+                onmouseleave={() => splitTextTLs.projects.reverse()}
+            >
+                <div class={cn("flex flex-col gap-1 items-center")}>
+                    <CodeXml size={28} />
+                    <div bind:this={projectsDiv} class="relative overflow-clip whitespace-nowrap">
+                        <span class="split-text-projects">
+                            {pageOptions.projects.toUpperCase()}
+                        </span>
+                        <span class="absolute inset-0 translate-y-[25px] split-text-projects-2">{pageOptions.projects.toUpperCase()}</span>
                     </div>
-                </a>
-            </li>
+                </div>
+            </a>
+        </li>
 
-            <li>
-                <a
-                    href={resolve("/blog")}
-                    title="Blog"
-                    class={cn(
-                        "transition-all duration-300 ease-out hover:text-primary/80",
-                        isActive("/blog", false) ? "text-primary" : "text-header-foreground"
-                    )}
-                    onmouseenter={() => splitTextTLs.blog.play()}
-                    onmouseleave={() => splitTextTLs.blog.reverse()}
-                >
-                    <div class={cn("flex flex-col gap-1 items-center", HOVER_EXPAND_LARGE_TAILWIND_ANIMATION)}>
-                        <Laptop size={28} />
-                        <div bind:this={blogDiv} class="relative text-sm overflow-clip whitespace-nowrap">
-                            <span class="split-text-blog">
-                                {pageOptions.blog.toUpperCase()}
-                            </span>
-                            <span class="absolute inset-0 translate-y-[25px] split-text-blog-2">{pageOptions.blog.toUpperCase()}</span>
-                        </div>
+        <li class="min-w-[4.5rem] flex justify-center">
+            <a
+                href={resolve("/blog")}
+                title="Blog"
+                class={cn(
+                    "transition-colors duration-300 ease-out hover:text-primary active:text-primary/80",
+                    isActive("/blog", false) ? "text-primary" : "text-header-foreground"
+                )}
+                onmouseenter={() => splitTextTLs.blog.play()}
+                onmouseleave={() => splitTextTLs.blog.reverse()}
+            >
+                <div class={cn("flex flex-col gap-1 items-center")}>
+                    <Laptop size={28} />
+                    <div bind:this={blogDiv} class="relative overflow-clip whitespace-nowrap">
+                        <span class="split-text-blog">
+                            {pageOptions.blog.toUpperCase()}
+                        </span>
+                        <span class="absolute inset-0 translate-y-[25px] split-text-blog-2">{pageOptions.blog.toUpperCase()}</span>
                     </div>
-                </a>
-            </li>
-        </ol>
+                </div>
+            </a>
+        </li>
+
+        <li class="min-w-[4.5rem] flex justify-center">
+            <a
+                href={resume}
+                rel="external"
+                target="_blank"
+                title="Resume"
+                class={cn(
+                    "transition-colors duration-300 ease-out hover:text-primary active:text-primary/80",
+                    "text-header-foreground"
+                )}
+                onmouseenter={() => splitTextTLs.resume.play()}
+                onmouseleave={() => splitTextTLs.resume.reverse()}
+            >
+                <div class={cn("flex flex-col gap-1 items-center")}>
+                    <FileText size={24} class="-translate-y-[1.5px]" />
+                    <div bind:this={resumeDiv} class="relative overflow-clip whitespace-nowrap">
+                        <span class="split-text-resume">
+                            {pageOptions.resume.toUpperCase()}
+                        </span>
+                        <span class="absolute inset-0 translate-y-[25px] split-text-resume-2">{pageOptions.resume.toUpperCase()}</span>
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ol>
 </nav>
