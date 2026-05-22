@@ -5,6 +5,7 @@
 	import { cn } from "$lib/utils";
 	import Separator from "./ui/separator.svelte";
 	import { toggleMode, mode } from "mode-watcher";
+  import resume from "$lib/assets/Marcus_Adair_Portfolio_Resume.pdf";
 
   const currentYear: number = new Date().getFullYear();
 </script>
@@ -15,7 +16,7 @@
 )}>
     <ol class="flex flex-row gap-4 justify-start text-xs">
       <li>
-        <a href={resolve("/")} title="Home" class={cn(
+        <a href={resolve("/")} title={pageOptions.home.toUpperCase()} class={cn(
           "transition-all duration-300 ease-out hover:text-primary active:text-primary/80 font-light hover:underline underline-offset-2",
           page.url.pathname === "/"
             ? "text-primary font-semibold"
@@ -26,7 +27,7 @@
       </li>
   
       <li>
-        <a href={resolve("/projects")} title="Projects" class={cn(
+        <a href={resolve("/projects")} title={pageOptions.projects.toUpperCase()} class={cn(
           "transition-all duration-300 ease-out hover:text-primary active:text-primary/80 font-light hover:underline underline-offset-2",
           page.url.pathname.includes("projects")
             ? "text-primary font-semibold"
@@ -38,20 +39,35 @@
 
 
       <li>
-        <a href={resolve("/blog")} title="Blog" class={cn(
+        <a 
+          href={resume}
+          rel="external"
+          target="_blank"
+          title={pageOptions.resume.toUpperCase()} class={cn(
+          "transition-all duration-300 ease-out hover:text-primary active:text-primary/80 font-light hover:underline underline-offset-2",
+          "text-muted-foreground"
+        )}>
+          {pageOptions.resume.toUpperCase()}
+        </a>
+      </li>
+
+
+
+      <li>
+        <a href={resolve("/blog")} title="BLOG" class={cn(
           "transition-all duration-300 ease-out hover:text-primary active:text-primary/80 font-light hover:underline underline-offset-2",
           page.url.pathname.includes("blog")
             ? "text-primary font-semibold"
             : "text-muted-foreground"
         )}>
-          {pageOptions.blog.toUpperCase()}
+          BLOG
         </a>
       </li>
 
       <li>
         <button
           onclick={toggleMode}
-          title="Toggle theme"
+          title={mode.current === "light" ? "GO DARK MODE" : "GO LIGHT MODE"}
           class="transition-all duration-300 ease-out hover:text-primary active:text-primary/80 font-light hover:underline underline-offset-2 text-muted-foreground cursor-pointer"
         >
           {mode.current === "light" ? "DARK" : "LIGHT"}

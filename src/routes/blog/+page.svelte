@@ -99,7 +99,7 @@
         <img src={coffee_gif} bind:this={coffee} alt="coffee_gif" class="size-12 -translate-y-5.25 -translate-x-1" />
       </button>
     </div>
-    <span class="text-muted-foreground text-sm font-light">A collection of my sporadic and genius thoughts on software, some memes, and more.</span>
+    <span class="text-muted-foreground text-sm tracking-widesr font-light">A collection of my sporadic and genius thoughts on software, some memes, and more.</span>
   </div>
 
   <div class="flex flex-col gap-1.25 mt-2">

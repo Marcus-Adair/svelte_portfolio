@@ -47,11 +47,11 @@
 </script>
 
 <nav class="flex flex-row justify-center">
-    <ol class="flex flex-row items-end gap-0 text-xs tracking-wider font-bold">
-        <li class="min-w-[4.5rem] flex justify-center">
+    <ol class="flex flex-row items-end gap-0 text-[0.85rem] tracking-wider font-bold">
+        <li class="min-w-[5rem] flex justify-center">
             <a 
                 href={resolve("/")} 
-                title="Home" 
+                title={pageOptions.home.toUpperCase()}
                 class={cn(
                     "transition-colors duration-300 ease-out hover:text-primary active:text-primary/80",
                     isActive("/", true) ? "text-primary" : "text-header-foreground"
@@ -71,10 +71,10 @@
             </a>
         </li>
 
-        <li class="min-w-[4.5rem] flex justify-center">
+        <li class="min-w-[5rem] flex justify-center">
             <a
                 href={resolve("/projects")}
-                title="Projects"
+                title={pageOptions.projects.toUpperCase()}
                 class={cn(
                     "transition-colors duration-300 ease-out hover:text-primary active:text-primary/80",
                     isActive("/projects", false) ? "text-primary" : "text-header-foreground"
@@ -94,35 +94,12 @@
             </a>
         </li>
 
-        <li class="min-w-[4.5rem] flex justify-center">
-            <a
-                href={resolve("/blog")}
-                title="Blog"
-                class={cn(
-                    "transition-colors duration-300 ease-out hover:text-primary active:text-primary/80",
-                    isActive("/blog", false) ? "text-primary" : "text-header-foreground"
-                )}
-                onmouseenter={() => splitTextTLs.blog.play()}
-                onmouseleave={() => splitTextTLs.blog.reverse()}
-            >
-                <div class={cn("flex flex-col gap-1 items-center")}>
-                    <Laptop size={28} />
-                    <div bind:this={blogDiv} class="relative overflow-clip whitespace-nowrap">
-                        <span class="split-text-blog">
-                            {pageOptions.blog.toUpperCase()}
-                        </span>
-                        <span class="absolute inset-0 translate-y-[25px] split-text-blog-2">{pageOptions.blog.toUpperCase()}</span>
-                    </div>
-                </div>
-            </a>
-        </li>
-
-        <li class="min-w-[4.5rem] flex justify-center">
+        <li class="min-w-[5rem] flex justify-center">
             <a
                 href={resume}
                 rel="external"
                 target="_blank"
-                title="Resume"
+                title={pageOptions.resume.toUpperCase()}
                 class={cn(
                     "transition-colors duration-300 ease-out hover:text-primary active:text-primary/80",
                     "text-header-foreground"
@@ -137,6 +114,29 @@
                             {pageOptions.resume.toUpperCase()}
                         </span>
                         <span class="absolute inset-0 translate-y-[25px] split-text-resume-2">{pageOptions.resume.toUpperCase()}</span>
+                    </div>
+                </div>
+            </a>
+        </li>
+        
+        <li class="min-w-[5rem] flex justify-center">
+            <a
+                href={resolve("/blog")}
+                title={pageOptions.blog.toUpperCase()}
+                class={cn(
+                    "transition-colors duration-300 ease-out hover:text-primary active:text-primary/80",
+                    isActive("/blog", false) ? "text-primary" : "text-header-foreground"
+                )}
+                onmouseenter={() => splitTextTLs.blog.play()}
+                onmouseleave={() => splitTextTLs.blog.reverse()}
+            >
+                <div class={cn("flex flex-col gap-1 items-center")}>
+                    <Laptop size={28} />
+                    <div bind:this={blogDiv} class="relative overflow-clip whitespace-nowrap">
+                        <span class="split-text-blog">
+                            {pageOptions.blog.toUpperCase()}
+                        </span>
+                        <span class="absolute inset-0 translate-y-[25px] split-text-blog-2">{pageOptions.blog.toUpperCase()}</span>
                     </div>
                 </div>
             </a>
