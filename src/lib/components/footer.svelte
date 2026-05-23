@@ -7,12 +7,12 @@
 	import { toggleMode, mode } from "mode-watcher";
   import resume from "$lib/assets/Marcus_Adair_Portfolio_Resume.pdf";
 
-  const currentYear: number = new Date().getFullYear();
+const currentYear: number = new Date().getFullYear();
 </script>
 
 <footer class={cn(
   "flex flex-col sm:flex-row justify-between items-center px-14 gap-2.5 sm:gap-6 border-t border-t-border/60 pt-2 pb-3 sm:pt-4 sm:pb-8 bg-header/70",
-  page.url.pathname === "/" ? "mt-8" : "mt-20"
+  page.url.pathname !== "/" && "mt-20"
 )}>
     <ol class="flex flex-row gap-4 justify-start text-xs">
       <li>
@@ -78,6 +78,6 @@
 
     <Separator class="flex sm:hidden w-72"/>
 
-    <span class="text-xs text-muted-foreground">© {currentYear} <a href={resolve("/")} class="text-primary hover:text-primary active:text-primary/80 underline-offset-2 hover:underline">Marcus Adair.</a> All rights reserved.</span>
+    <span class="text-xs text-muted-foreground">© {currentYear} <a href={resolve("/")} class="text-primary hover:text-primary active:text-primary/80 underline-offset-2 hover:underline">Marcus Adair.</a> <span class="text-[9px]">✧✧✧</span></span>
   </footer>
   
