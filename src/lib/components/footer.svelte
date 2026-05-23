@@ -7,19 +7,12 @@
 	import { toggleMode, mode } from "mode-watcher";
   import resume from "$lib/assets/Marcus_Adair_Portfolio_Resume.pdf";
 
-
-  type Props = {
-        className?: string;
-  }
-  let { className }: Props = $props();
-
-  const currentYear: number = new Date().getFullYear();
+const currentYear: number = new Date().getFullYear();
 </script>
 
 <footer class={cn(
   "flex flex-col sm:flex-row justify-between items-center px-14 gap-2.5 sm:gap-6 border-t border-t-border/60 pt-2 pb-3 sm:pt-4 sm:pb-8 bg-header/70",
-  page.url.pathname !== "/" && "mt-20",
-  className
+  page.url.pathname !== "/" && "mt-20"
 )}>
     <ol class="flex flex-row gap-4 justify-start text-xs">
       <li>
