@@ -9,14 +9,13 @@
 	import { onMount } from 'svelte';
 	import { markBootComplete } from '$lib/stores/boot.svelte';
 	import { resolve } from '$app/paths';
+	import { page } from '$app/state';
 
 	let { children } = $props();
 
 	// Curtain reveal
-	let curtainVisible = $state(true);
-	// svelte-ignore non_reactive_update
 	let curtain: HTMLDivElement;
-
+	let curtainDone = $state(false);
 	onMount(() => {
 		// Lift curtain
 		gsap.fromTo(curtain,
@@ -27,7 +26,7 @@
 				duration: 0.6,
 				delay: 0.35,
 				ease: 'power1.out',
-				onComplete: () => { curtainVisible = false; markBootComplete(); }
+				onComplete: () => { markBootComplete(); curtainDone = true; }
 			}
 		);
 	});
@@ -65,13 +64,12 @@
 </svelte:head>
 <ModeWatcher />
 
-{#if curtainVisible}
-	<div
-		bind:this={curtain}
-		class="fixed inset-0 z-[9999] bg-primary"
-		style="--mask-w: 80%; --mask-h: 0%; mask-image: radial-gradient(ellipse var(--mask-w) var(--mask-h) at 50% 100%, transparent 99%, black 100%);"
-	></div>
-{/if}
+<div
+	bind:this={curtain}
+	class="fixed inset-0 z-[9999] bg-primary pointer-events-none"
+	class:hidden={curtainDone}
+	style="--mask-w: 80%; --mask-h: 0%; mask-image: radial-gradient(ellipse var(--mask-w) var(--mask-h) at 50% 100%, transparent 100%, black 100%);"
+></div>
 
 <div class="flex flex-col min-h-screen">
 	<header
@@ -105,7 +103,7 @@
 		</div>
 	</header>
 
-	<main class="flex-1 px-6 md:px-36 mt-27">
+	<main class={cn("flex-1 flex flex-col px-6 md:px-36", page.url.pathname !== "/" && "mt-27")}>
 		{@render children?.()}
 	</main>
 

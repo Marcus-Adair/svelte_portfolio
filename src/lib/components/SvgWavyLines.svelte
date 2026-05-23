@@ -2,13 +2,13 @@
     import { onMount } from 'svelte';
 
     // Config
-    const LINE_COUNT = 25;
+    const LINE_COUNT = 20;
     const POINTS_PER_LINE = 50;
     const REPEL_RADIUS = 150;
     const REPEL_STRENGTH = 40;
-    const RETURN_SPEED = 0.08;
-    const WAVE_AMPLITUDE = 3;
-    const WAVE_SPEED = 0.002;
+    const RETURN_SPEED = 0.06;
+    const WAVE_AMPLITUDE = 7;
+    const WAVE_SPEED = 0.003;
 
     interface Props {
         containerRef?: HTMLElement; // Reference element for mouse position calculations
@@ -64,12 +64,16 @@
     function updatePoints() {
         time += WAVE_SPEED;
 
-        for (const line of lines) {
+        for (let lineIndex = 0; lineIndex < lines.length; lineIndex++) {
+            const line = lines[lineIndex];
+            // Each line gets a slightly different speed (0.8x to 1.2x)
+            const speedVariation = 0.8 + (lineIndex / lines.length) * 0.4;
+
             for (let i = 0; i < line.length; i++) {
                 const point = line[i];
 
-                // Idle wave animation
-                const waveOffset = Math.sin(time + point.baseY * 0.02) * WAVE_AMPLITUDE;
+                // Idle wave animation with per-line speed variation
+                const waveOffset = Math.sin(time * speedVariation + point.baseY * 0.02) * WAVE_AMPLITUDE;
                 let targetX = point.baseX + waveOffset;
                 let targetY = point.baseY;
 
