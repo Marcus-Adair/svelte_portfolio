@@ -66,8 +66,8 @@
 
         for (let lineIndex = 0; lineIndex < lines.length; lineIndex++) {
             const line = lines[lineIndex];
-            // Each line gets a slightly different speed (0.8x to 1.2x)
-            const speedVariation = 0.8 + (lineIndex / lines.length) * 0.4;
+            // Each line gets a different speed (0.4x to 1.6x)
+            const speedVariation = 0.4 + (lineIndex / lines.length) * 1.2;
 
             for (let i = 0; i < line.length; i++) {
                 const point = line[i];
@@ -129,8 +129,18 @@
         const ref = containerRef ?? svgElement;
         if (!ref) return;
         const rect = ref.getBoundingClientRect();
-        mouseX = e.clientX - rect.left;
-        mouseY = e.clientY - rect.top;
+        const localX = e.clientX - rect.left;
+        const localY = e.clientY - rect.top;
+
+        // Only apply repel effect if cursor is within container bounds
+        if (localX >= 0 && localX <= rect.width && localY >= 0 && localY <= rect.height) {
+            mouseX = localX;
+            mouseY = localY;
+        } else {
+            // Move cursor "far away" so no repel effect is applied
+            mouseX = -1000;
+            mouseY = -1000;
+        }
     }
 
     function handleResize() {

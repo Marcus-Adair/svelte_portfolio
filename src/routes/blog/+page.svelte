@@ -15,6 +15,11 @@
 	import Button from "$lib/components/ui/button.svelte";
 
   let showingAllPosts = $state(false);
+  let isSmOrLarger = $state(false);
+
+  const SCRAMBLE_CHARS_SM = "|!i1l.:;'·*0x[]{}()$coffee-blg-alrithms";
+  const SCRAMBLE_CHARS_XS = "|!i1l.:;'·*0x";
+  let scrambleChars = $derived(isSmOrLarger ? SCRAMBLE_CHARS_SM : SCRAMBLE_CHARS_XS);
 
   let coffee: HTMLImageElement;
   let quote: HTMLSpanElement;
@@ -34,22 +39,26 @@
       }
     );
   }
-  function animateQuote() {
-      gsap.timeline({ repeat: -1, repeatDelay: 3 })
+  function animateQuote(chars: string) {
+      gsap.timeline({ repeat: -1, repeatDelay: 6 })
         .to(quote, {
           duration: 3,
-          scrambleText: {text: "- I turn coffee into algorithms", chars: "[]{}||I()01!@#$%&*", tweenLength: false},
+          scrambleText: {text: "- I turn coffee into algorithms", chars, tweenLength: false},
           ease: "elastic.inOut"
         })
         .to(quote, {
           duration: 3,
-          scrambleText: { text: "- Welcome to my blog", chars: "[]{}||I()01!@#$%&*", tweenLength: false},
+          scrambleText: { text: "- Welcome to my blog", chars, tweenLength: false},
           ease: "elastic.inOut",
-          delay: 3
+          delay: 6
         });
     }
   onMount(() => {
     gsap.registerPlugin(ScrambleTextPlugin);
+
+    // Responsive breakpoint detection (sm = 640px)
+    const smQuery = window.matchMedia('(min-width: 640px)');
+    isSmOrLarger = smQuery.matches;
 
     gsap.fromTo(
       ".swipe-in",
@@ -63,7 +72,7 @@
       { x: 0, duration: 0.04, ease: "power1.out", delay: 0.05 }
     );
 
-    animateQuote();
+    animateQuote(scrambleChars);
 
     const postsAnimIn = {
       y: 40,
@@ -89,8 +98,8 @@
 <div class="flex flex-col gap-6">
   <h1 class="text-4xl md:text-5xl md:mt-4 swipe-in">The Marcus Adair Blog.</h1>
 
-  <div class="flex flex-col gap-3.5 font-light">
-    <div class="flex flex-row gap-4 h-5 swipe-in">
+  <div class="flex flex-col gap-6 sm:gap-4 font-light">
+    <div class="flex flex-row gap-2 sm:gap-4 h-5 swipe-in">
       <div class="flex gap-4 quote tracking-wider">
         <span bind:this={quote}>- I turn coffee into algorithms</span>
         <Separator orientation="vertical"/>

@@ -42,6 +42,7 @@
     let heroOffsetX = $derived((gridWidth - heroWidth) / 2);
 
     let isSmOrLarger = $state(false);
+    let isXsOrLarger = $state(false); // 480px+ (larger phones)
     let heroOffsetY = $derived(isSmOrLarger ? 120 : 80);
 
     let activeCells = $state<Set<number>>(new Set());
@@ -104,8 +105,8 @@
         return `left: ${xOffset}px; top: ${yOffset}px;`;
     }
 
-    // Offset content below hero text
-    let CONTENT_OFFSET_Y = $derived(isSmOrLarger ? 370 : 300);
+    // Offset content below hero text (tiered for different screen sizes)
+    let CONTENT_OFFSET_Y = $derived(isSmOrLarger ? 370 : isXsOrLarger ? 340 : 380);
     function getInvertedContentStyle(i: number) {
         const [cellX, cellY] = getCellXY(i);
         const xOffset = (gridWidth / 2) - cellX;
@@ -171,11 +172,15 @@
         // Also add in handleResize: heroWrapperTop = heroWrapper.offsetTop;
         */
 
-        // Responsive breakpoint detection (sm = 640px)
+        // Responsive breakpoint detection (xs = 480px, sm = 640px)
+        const xsQuery = window.matchMedia('(min-width: 480px)');
         const smQuery = window.matchMedia('(min-width: 640px)');
+        isXsOrLarger = xsQuery.matches;
         isSmOrLarger = smQuery.matches;
-        const handleBreakpoint = (e: MediaQueryListEvent) => { isSmOrLarger = e.matches; };
-        smQuery.addEventListener('change', handleBreakpoint);
+        const handleXsBreakpoint = (e: MediaQueryListEvent) => { isXsOrLarger = e.matches; };
+        const handleSmBreakpoint = (e: MediaQueryListEvent) => { isSmOrLarger = e.matches; };
+        xsQuery.addEventListener('change', handleXsBreakpoint);
+        smQuery.addEventListener('change', handleSmBreakpoint);
 
         // Hero text onMount enter animation - each line is already a div, no SplitText needed ----------- //
         const heroDelay = isBootComplete() ? 0 : 0.5;
@@ -193,7 +198,8 @@
             // Clean up
             window.removeEventListener('resize', handleResize);
             // SAVED FOR LATER: window.removeEventListener('scroll', handleScroll);
-            smQuery.removeEventListener('change', handleBreakpoint);
+            xsQuery.removeEventListener('change', handleXsBreakpoint);
+            smQuery.removeEventListener('change', handleSmBreakpoint);
         };
     });
 </script>

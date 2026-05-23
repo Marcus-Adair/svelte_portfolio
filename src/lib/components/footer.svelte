@@ -85,6 +85,6 @@
 
     <Separator class="flex sm:hidden w-72"/>
 
-    <span class="text-xs text-muted-foreground">© {currentYear} <a href={resolve("/")} class="text-primary hover:text-primary active:text-primary/80 underline-offset-2 hover:underline">Marcus Adair.</a> All rights reserved.</span>
+    <span class="text-xs text-muted-foreground">© {currentYear} <a href={resolve("/")} class="text-primary hover:text-primary active:text-primary/80 underline-offset-2 hover:underline">Marcus Adair.</a></span>
   </footer>
   
