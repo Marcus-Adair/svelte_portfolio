@@ -9,9 +9,13 @@
 	import { isBootComplete } from '$lib/stores/boot.svelte';
 	import { SvelteSet } from 'svelte/reactivity';
 	import { mode } from 'mode-watcher';
+	import SvgWavyLines from '$lib/components/SvgWavyLines.svelte';
 
     let heroTextDiv: HTMLDivElement;
     let heroWrapper: HTMLDivElement;
+
+    // Wavy lines paths (shared between normal and inverted)
+    let wavyPaths = $state<string[]>([]);
 
     // Email copy-paste helper logic -------------------------------------- //
     let isCopied = $state(false);
@@ -122,6 +126,16 @@
 
         const xOffset = (gridWidth / 2) - cellViewportX;
         const yOffset = (heroOffsetY + CONTENT_OFFSET_Y) - cellViewportY;
+        return `left: ${xOffset}px; top: ${yOffset}px;`;
+    }
+
+    // Offset wavy lines SVG to align with heroWrapper
+    function getInvertedWavyLinesStyle(i: number) {
+        const [col, row] = getColAndRow(i);
+        const [cellWidth, cellHeight] = getCellWidthHeight();
+        // Wavy lines are drawn relative to heroWrapper, so offset by cell position within grid
+        const xOffset = -(col * cellWidth);
+        const yOffset = -(row * cellHeight);
         return `left: ${xOffset}px; top: ${yOffset}px;`;
     }
     
@@ -302,9 +316,27 @@
                 class="absolute overflow-hidden bg-primary z-[60]"
                 style={getGridCellStyle(i)}
             >
+                <!-- Inverted wavy lines (bottom layer) -->
+                <svg
+                    class="absolute pointer-events-none z-0"
+                    width={gridWidth}
+                    height={gridHeight}
+                    style={getInvertedWavyLinesStyle(i)}
+                >
+                    {#each wavyPaths as d, i (i)}
+                        <path
+                            {d}
+                            fill="none"
+                            class="stroke-foreground"
+                            stroke-width="1.5"
+                        />
+                    {/each}
+                </svg>
+
+                <!-- Inverted hero text -->
                 <div
                     class={cn(
-                        "absolute h-[320px] flex flex-col justify-center",
+                        "absolute z-10 h-[320px] flex flex-col justify-center",
                         "text-3xl sm:text-5xl xl:text-6xl font-[Stardom] tracking-wider text-center text-background"
                     )}
                     style="width: {heroWidth}px; {getInvertedTextStyle(i)} opacity: {heroOpacity};"
@@ -314,7 +346,7 @@
 
                 <!-- Inverted content: social icons, separator, email -->
                 <div
-                    class="absolute flex flex-col gap-5 items-center text-background -translate-x-1/2"
+                    class="absolute z-10 flex flex-col gap-5 items-center text-background -translate-x-1/2"
                     style="{getInvertedContentStyle(i)} opacity: {heroOpacity};"
                 >
                     <div class="flex flex-row gap-6 items-center">
@@ -333,6 +365,11 @@
 <div class="flex flex-col items-center gap-3">
     <!-- Trigger Grid-->
     <div bind:this={heroWrapper} class="relative h-[600px] w-screen">
+        <!-- Wavy lines behind everything -->
+        <div class="absolute inset-0 z-10">
+            <SvgWavyLines bind:paths={wavyPaths} containerRef={heroWrapper} />
+        </div>
+
         <!-- Invisible grid for pointer events -->
         <div class="absolute inset-0 w-full h-full grid grid-cols-[repeat(18,1fr)] grid-rows-[repeat(12,1fr)] z-20">
             <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
