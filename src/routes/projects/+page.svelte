@@ -52,7 +52,7 @@
 </svelte:head>
 
 <div class="flex flex-col gap-6">
-		<h1 class="mr-44 text-4xl md:text-5xl animate-text-in">Projects</h1>
+		<h1 class="mr-44 text-4xl md:text-5xl animate-text-in font-[Disket-Mono] font-bold">Projects</h1>
 
 		<div class="flex flex-col gap-1.25 mt-2">
 			<span class="text-xs text-muted-foreground">NOTABLE PROJECTS</span>

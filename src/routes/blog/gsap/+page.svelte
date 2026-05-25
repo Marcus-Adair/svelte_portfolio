@@ -103,7 +103,7 @@
 
     <Paragraph>
         GSAP provides some plugins for doing clean animations quickly. An example is one is <Link href="https://gsap.com/docs/v3/Plugins/ScrambleTextPlugin/">ScrambleText</Link>; you may
-        have seen this one used in this site (e.g., the front page of the Blog). By tweaking the scrambled text, duration, and easing, this can be a very cool effect. Here is an example:
+        have seen this one used in this site. By tweaking the scrambled text, duration, and easing, this can be a very cool effect. Here is an example:
     </Paragraph>
 
     <div class='flex justify-center'>
@@ -116,12 +116,8 @@
     </Paragraph>
 
     <Signature
-        name="- Marcus,"
+        name="Marcus"
         date="Nov. 30th, 2025"
     />
-
-    <Paragraph>
-        (P.S., Go to the <Link href="/">home page</Link> and try click on the coffee gif... 👀 ☕️)
-    </Paragraph>
 </div>
 

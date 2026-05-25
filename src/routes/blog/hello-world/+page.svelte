@@ -75,7 +75,7 @@
     <Paragraph>Thanks again, cheers!</Paragraph>
 
     <Signature
-        name="- Marcus,"
+        name="Marcus"
         date="Oct. 20th and 21st, 2025"
     />
 </div>

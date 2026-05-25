@@ -213,8 +213,8 @@
         <span class="font-[Britney] text-5xl sm:text-7xl xl:text-8xl">M</span><span>ARCUS</span>&nbsp;
         <span><span class="font-[Britney] text-5xl sm:text-7xl xl:text-8xl mr-0.5 line">A</span><span>DAIR</span></span>
     </p></div>
-    <div class="pointer-events-none"><p>SOFTWARE ENGINEER,</p></div>
-    <div class="pointer-events-none"><p class="font-[Array] text-4xl sm:text-6xl xl:text-7xl">COMPUTER SCIENTIST,</p></div>
+    <div class="pointer-events-none"><p class="font-[Disket-Mono] font-bold my-0.5 tracking-tight">SOFTWARE ENGINEER,</p></div>
+    <div class="pointer-events-none"><p class="font-[Array] tracking-wider mt-0.5 mb-1.5 text-4xl sm:text-6xl xl:text-7xl">COMPUTER SCIENTIST,</p></div>
     <div class="pointer-events-none"><p class="font-[Britney]">AND CREATIVE.</p></div>
     <div class="pointer-events-none"><p class="text-base sm:text-xl xl:text-2xl mt-4">- BASED IN SANDY, UTAH -</p></div>
 {/snippet}

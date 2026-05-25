@@ -83,7 +83,7 @@
 	</Paragraph>
 
 	<Signature
-		name="- Lucy,"
+		name="Lucy"
 		date="Apr. 7th, 2026"
 	/>
 </div>

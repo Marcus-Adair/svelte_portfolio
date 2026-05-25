@@ -75,7 +75,7 @@
 	bind:this={card}
 	{id}
 	{href}
-	class={cn("flex flex-col lg:flex-row gap-4 cursor-pointer p-2 rounded-md hover:bg-accent/30 transition-colors max-w-4xl", props.class)}
+	class={cn("flex flex-col lg:flex-row gap-4 cursor-pointer p-2 rounded-md hover:bg-accent/30 transition-colors]", props.class)}
 	title={hoverTitle}
 	target={openInNewTab ? "_blank" : undefined}
 >
