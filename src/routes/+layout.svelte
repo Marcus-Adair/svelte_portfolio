@@ -5,13 +5,26 @@
 	import HeaderNav from '$lib/components/headerNav.svelte';
 	import Footer from '$lib/components/footer.svelte';
 	import gsap from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	import { ScrollSmoother } from 'gsap/ScrollSmoother';
 	import { cn } from '$lib/utils';
 	import { onMount } from 'svelte';
+	import { afterNavigate } from '$app/navigation';
+
 	import { markBootComplete } from '$lib/stores/boot.svelte';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 
 	let { children } = $props();
+
+	let smoother: ScrollSmoother;
+
+	// Instant scroll to top on navigation
+	afterNavigate(() => {
+		if (smoother) {
+			smoother.scrollTo(0, false);
+		}
+	});
 
 	// Curtain reveal
 	let curtain: HTMLDivElement;
@@ -24,6 +37,14 @@
 	}
 
 	onMount(() => {
+		gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+		smoother = ScrollSmoother.create({
+			wrapper: '#smooth-wrapper',
+			content: '#smooth-content',
+			smooth: 1.1,
+			effects: false
+		});
+
 		// Lift curtain
 		setMask('80%', '0%'); // Initial state - curtain fully visible
 		const obj = { w: 80, h: 0 };
@@ -77,41 +98,43 @@
 	class:hidden={curtainDone}
 ></div>
 
-<div class="flex flex-col min-h-screen">
-	<header
-		bind:this={headerElt}
-		class={cn(
-			"fixed top-0 z-100 h-[64px] w-screen",
-			"bg-header-bg backdrop-blur-xl border-b border-b-border"
-		)}
-		onmouseenter={() => onHeaderEnter()}
-		onmouseleave={() => onHeaderLeave()}
-		role="heading"
-		aria-level={1}
-	>
-		<div class={cn("grid grid-cols-3 ml-7.5 mr-2 gap-2 mb-3 mt-4")}>
-			<div class="justify-self-start">
-				<a href={resolve("/")} class="hidden sm:flex text-xs tracking-wider font-bold text-muted-foreground translate-y-1 hover:text-primary active:text-primary-active hover:underline underline-offset-4 w-fit h-fit">
-					MARCUS ADAIR DIGITAL
-				</a>
-			</div>
-		
-			<div class="justify-self-center"><!-- Put a middle-aligned thing here if want one--></div>
-
-			<div class="justify-self-end gap-2 flex flex-row items-center">
-				<HeaderNav
-					bind:homeDiv={homeDiv!}
-					bind:projectsDiv={projectsDiv!}
-					bind:blogDiv={blogDiv!}
-					bind:resumeDiv={resumeDiv!}
-				/>
-			</div>
+<header
+	bind:this={headerElt}
+	class={cn(
+		"fixed top-0 z-100 h-[64px] w-screen",
+		"bg-header-bg backdrop-blur-xl border-b border-b-border"
+	)}
+	onmouseenter={() => onHeaderEnter()}
+	onmouseleave={() => onHeaderLeave()}
+	role="heading"
+	aria-level={1}
+>
+	<div class={cn("grid grid-cols-3 ml-7.5 mr-2 gap-2 mb-3 mt-4")}>
+		<div class="justify-self-start">
+			<a href={resolve("/")} class="hidden sm:flex text-xs tracking-wider font-bold text-muted-foreground translate-y-1 hover:text-primary active:text-primary-active hover:underline underline-offset-4 w-fit h-fit">
+				MARCUS ADAIR DIGITAL
+			</a>
 		</div>
-	</header>
 
-	<main class={cn("flex-1 flex flex-col px-6 md:px-36", page.url.pathname !== "/" && "mt-27")}>
-		{@render children?.()}
-	</main>
+		<div class="justify-self-center"><!-- Put a middle-aligned thing here if want one--></div>
 
-	<Footer/>
+		<div class="justify-self-end gap-2 flex flex-row items-center">
+			<HeaderNav
+				bind:homeDiv={homeDiv!}
+				bind:projectsDiv={projectsDiv!}
+				bind:blogDiv={blogDiv!}
+				bind:resumeDiv={resumeDiv!}
+			/>
+		</div>
+	</div>
+</header>
+
+<div id="smooth-wrapper">
+	<div id="smooth-content" class="flex flex-col min-h-screen">
+		<main class={cn("flex-1 flex flex-col px-6 md:px-36", page.url.pathname !== "/" && "mt-27")}>
+			{@render children?.()}
+		</main>
+
+		<Footer/>
+	</div>
 </div>

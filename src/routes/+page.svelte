@@ -214,7 +214,7 @@
         <span><span class="font-[Britney] text-5xl sm:text-7xl xl:text-8xl mr-0.5 line">A</span><span>DAIR</span></span>
     </p></div>
     <div class="pointer-events-none"><p class="font-[Disket-Mono] font-bold my-0.5 tracking-tight"><span class="mr-3.5 sm:mr-5">SOFTWARE</span>ENGINEER,</p></div>
-    <div class="pointer-events-none"><p class="font-[Array] tracking-wider mt-0.5 mb-1.5 text-4xl sm:text-6xl xl:text-7xl">COMPUTER SCIENTIST,</p></div>
+    <div class="pointer-events-none"><p class="font-[Array] tracking-wider mt-0.5 mb-1.5 text-4xl sm:text-6xl xl:text-7xl"><span class="mr-3 sm:mr-4.5">COMPUTER</span>SCIENTIST,</p></div>
     <div class="pointer-events-none"><p class="font-[Britney]">AND CREATIVE.</p></div>
     <div class="pointer-events-none"><p class="text-base sm:text-xl xl:text-2xl mt-4">- BASED IN SANDY, UTAH -</p></div>
 {/snippet}
