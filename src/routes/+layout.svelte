@@ -16,19 +16,26 @@
 	// Curtain reveal
 	let curtain: HTMLDivElement;
 	let curtainDone = $state(false);
+
+	function setMask(w: string, h: string) {
+		const mask = `radial-gradient(ellipse ${w} ${h} at 50% 100%, transparent 100%, black 100%)`;
+		curtain.style.maskImage = mask;
+		curtain.style.webkitMaskImage = mask;
+	}
+
 	onMount(() => {
 		// Lift curtain
-		gsap.fromTo(curtain,
-			{ '--mask-h': '0%', '--mask-w': '80%' },
-			{
-				'--mask-h': '150%',
-				'--mask-w': '400%',
-				duration: 0.6,
-				delay: 0.35,
-				ease: 'power1.out',
-				onComplete: () => { markBootComplete(); curtainDone = true; }
-			}
-		);
+		setMask('80%', '0%'); // Initial state - curtain fully visible
+		const obj = { w: 80, h: 0 };
+		gsap.to(obj, {
+			w: 400,
+			h: 150,
+			duration: 0.6,
+			delay: 0.35,
+			ease: 'power1.out',
+			onUpdate: () => setMask(`${obj.w}%`, `${obj.h}%`),
+			onComplete: () => { markBootComplete(); curtainDone = true; }
+		});
 	});
 
 	let headerElt: HTMLElement;
@@ -68,7 +75,6 @@
 	bind:this={curtain}
 	class="fixed inset-0 z-[9999] bg-primary pointer-events-none"
 	class:hidden={curtainDone}
-	style="--mask-w: 80%; --mask-h: 0%; mask-image: radial-gradient(ellipse var(--mask-w) var(--mask-h) at 50% 100%, transparent 100%, black 100%);"
 ></div>
 
 <div class="flex flex-col min-h-screen">
@@ -76,7 +82,7 @@
 		bind:this={headerElt}
 		class={cn(
 			"fixed top-0 z-100 h-[64px] w-screen",
-			"bg-header/70 backdrop-blur-xl border-b border-b-border/60"
+			"bg-header-bg backdrop-blur-xl border-b border-b-border"
 		)}
 		onmouseenter={() => onHeaderEnter()}
 		onmouseleave={() => onHeaderLeave()}
@@ -85,8 +91,8 @@
 	>
 		<div class={cn("grid grid-cols-3 ml-7.5 mr-2 gap-2 mb-3 mt-4")}>
 			<div class="justify-self-start">
-				<a href={resolve("/")} class="hidden sm:flex text-sm tracking-wider font-bold text-muted-foreground translate-y-1 hover:text-primary active:text-primary/80 w-fit h-fit">
-					MARCUS ADAIR
+				<a href={resolve("/")} class="hidden sm:flex text-xs tracking-wider font-bold text-muted-foreground translate-y-1 hover:text-primary active:text-primary-active hover:underline underline-offset-4 w-fit h-fit">
+					MARCUS ADAIR DIGITAL
 				</a>
 			</div>
 		

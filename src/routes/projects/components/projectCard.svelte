@@ -74,7 +74,7 @@
 
 <div bind:this={divElt}>
     <a bind:this={card} href={url} target={url.startsWith("/") ? "" : "_blank"} rel={url.startsWith("/") ? "" : "noreferrer"} class="flex flex-col gap-2 text-center">
-        <Card class='p-1.5 hover:bg-accent/50 transition-colors'>
+        <Card class='p-1.5 hover:bg-accent transition-colors'>
 			{#if srcType === "iframe"}
 				<iframe {title} {src} class="border-card aspect-video w-full cursor-pointer overflow-hidden rounded-md border"></iframe>
 			{:else}

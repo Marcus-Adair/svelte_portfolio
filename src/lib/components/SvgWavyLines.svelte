@@ -177,7 +177,7 @@
         <path
             {d}
             fill="none"
-            class="stroke-muted-foreground/10"
+            class="stroke-muted-foreground-faint"
             stroke-width="1.5"
         />
     {/each}

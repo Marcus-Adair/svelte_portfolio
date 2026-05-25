@@ -53,7 +53,7 @@
                 href={resolve("/")} 
                 title={pageOptions.home.toUpperCase()}
                 class={cn(
-                    "transition-colors duration-300 ease-out hover:text-primary active:text-primary/80",
+                    "transition-colors duration-300 ease-out hover:text-primary active:text-primary-active",
                     isActive("/", true) ? "text-primary" : "text-header-foreground"
                 )}
                 onmouseenter={() => splitTextTLs.home.play()}
@@ -76,7 +76,7 @@
                 href={resolve("/projects")}
                 title={pageOptions.projects.toUpperCase()}
                 class={cn(
-                    "transition-colors duration-300 ease-out hover:text-primary active:text-primary/80",
+                    "transition-colors duration-300 ease-out hover:text-primary active:text-primary-active",
                     isActive("/projects", false) ? "text-primary" : "text-header-foreground"
                 )}
                 onmouseenter={() => splitTextTLs.projects.play()}
@@ -101,7 +101,7 @@
                 target="_blank"
                 title={pageOptions.resume.toUpperCase()}
                 class={cn(
-                    "transition-colors duration-300 ease-out hover:text-primary active:text-primary/80",
+                    "transition-colors duration-300 ease-out hover:text-primary active:text-primary-active",
                     "text-header-foreground"
                 )}
                 onmouseenter={() => splitTextTLs.resume.play()}
@@ -124,7 +124,7 @@
                 href={resolve("/blog")}
                 title={pageOptions.blog.toUpperCase()}
                 class={cn(
-                    "transition-colors duration-300 ease-out hover:text-primary active:text-primary/80",
+                    "transition-colors duration-300 ease-out hover:text-primary active:text-primary-active",
                     isActive("/blog", false) ? "text-primary" : "text-header-foreground"
                 )}
                 onmouseenter={() => splitTextTLs.blog.play()}
