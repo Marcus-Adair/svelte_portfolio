@@ -393,20 +393,23 @@
 		font-family: Satoshi-Medium;
 	}
 
-	/* Scrollbar styling */
-	::-webkit-scrollbar {
-		width: 10px;
+	/* Scrollbar styling - skip on Safari to preserve auto-hide behavior */
+	@supports (not (-webkit-hyphens: none)) {
+		::-webkit-scrollbar {
+			width: 10px;
+		}
+		::-webkit-scrollbar-track {
+			background: var(--background);
+		}
+		::-webkit-scrollbar-thumb {
+			background: var(--primary);
+			border-radius: 5px;
+		}
+		::-webkit-scrollbar-thumb:hover {
+			background: var(--primary-active);
+		}
 	}
-	::-webkit-scrollbar-track {
-		background: var(--background);
-	}
-	::-webkit-scrollbar-thumb {
-		background: var(--primary);
-		border-radius: 5px;
-	}
-	::-webkit-scrollbar-thumb:hover {
-		background: var(--primary-active);
-	}
+
 	/* Firefox */
 	* {
 		scrollbar-width: thin;

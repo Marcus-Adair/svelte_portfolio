@@ -10,6 +10,7 @@
 	import { SvelteSet } from 'svelte/reactivity';
 	import { mode } from 'mode-watcher';
 	import SvgWavyLines from '$lib/components/SvgWavyLines.svelte';
+	import Instagram from '$lib/components/icons/Instagram.svelte';
 
     let heroTextDiv: HTMLDivElement;
     let heroWrapper: HTMLDivElement;
@@ -222,6 +223,7 @@
 {#snippet socialIcons()}
     <CalendarDays class="size-7 pointer-events-none"/>
     <Mail class="size-7 pointer-events-none"/>
+    <Instagram class="size-7 pointer-events-none"/>
     <Github class="size-7 pointer-events-none"/>
     <LinkedIn class="size-7 pointer-events-none"/>
 {/snippet}
@@ -304,6 +306,15 @@
                     rel="external"
                 >
                     <Mail class="size-7"/>
+                </a>
+                <a
+                    class={cn("hover:text-ring transition-colors pointer-events-auto", HOVER_EXPAND_TAILWIND_ANIMATION)}
+                    href="https://www.instagram.com/marcusadairdigital"
+                    title="Instagram"
+                    target="_blank"
+                    rel="external"
+                >
+                    <Instagram class="size-7"/>
                 </a>
                 <a
                     class={cn("hover:text-ring transition-colors pointer-events-auto", HOVER_EXPAND_TAILWIND_ANIMATION)}

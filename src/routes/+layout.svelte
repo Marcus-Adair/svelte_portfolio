@@ -112,7 +112,7 @@
 	<div class={cn("grid grid-cols-3 ml-7.5 mr-2 gap-2 mb-3 mt-4")}>
 		<div class="justify-self-start">
 			<a href={resolve("/")} class="hidden sm:flex text-xs tracking-wider font-bold text-muted-foreground translate-y-1 hover:text-primary active:text-primary-active hover:underline underline-offset-4 w-fit h-fit">
-				MARCUS ADAIR DIGITAL
+				MARCUS ADAIR
 			</a>
 		</div>
 
