@@ -6,10 +6,12 @@
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML" width="50" style="vertical-align: middle; margin-right: 10px;"/>
   <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="CSS" width="35" style="vertical-align: middle;"/>
   <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" alt="Tailwind" width="40" style="vertical-align: middle; margin-right: 10px;"/>
+  <img src="https://cdn.worldvectorlogo.com/logos/gsap-greensock.svg" alt="GSAP" width="40" style="vertical-align: middle; margin-right: 10px;"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Cloudflare_Logo.svg" alt="Cloudflare" width="40" style="vertical-align: middle; margin-right: 10px;"/>
   <img src="https://raw.githubusercontent.com/prettier/prettier-logo/master/images/prettier-icon-light.svg" alt="Prettier" width="40" style="vertical-align: middle;"/>
 </p>
 
-This is my personal portfolio website built from scratch with with Svelte 5, SvelteKit, HTML/CSS, and Tailwind CSS. It showcases my projects, skills, and experience.
+This is my personal portfolio website built from scratch with Svelte 5, SvelteKit, HTML/CSS, Tailwind CSS, and GSAP for animations. Deployed on Cloudflare Pages.
 
 Visit: [marcusadair.com](https://marcusadair.com)
 
