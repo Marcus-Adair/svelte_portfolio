@@ -75,8 +75,8 @@
 				.to(headerElt, { height: 77, duration: 0.1, ease: "power1.out" })
 				.from(homeDiv, { opacity: 0, y: 10, duration: 0.095, ease: "power1.inOut" })
 				.from(projectsDiv, { opacity: 0, y: 10, duration: 0.095, ease: "power1.inOut" }, "-=0.05")
-				.from(blogDiv, { opacity: 0, y: 10, duration: 0.095, ease: "power1.inOut" }, "-=0.05")
-				.from(resumeDiv, { opacity: 0, y: 10, duration: 0.095, ease: "power1.inOut" }, "-=0.05");
+				.from(resumeDiv, { opacity: 0, y: 10, duration: 0.095, ease: "power1.inOut" }, "-=0.05")
+				.from(blogDiv, { opacity: 0, y: 10, duration: 0.095, ease: "power1.inOut" }, "-=0.05");
 		}
 	});
 	function onHeaderEnter() {
@@ -111,7 +111,7 @@
 >
 	<div class={cn("grid grid-cols-3 ml-7.5 mr-2 gap-2 mb-3 mt-4")}>
 		<div class="justify-self-start">
-			<a href={resolve("/")} class="hidden sm:flex text-xs tracking-wider font-bold text-muted-foreground translate-y-1 hover:text-primary active:text-primary-active hover:underline underline-offset-4 w-fit h-fit">
+			<a href={resolve("/")} class="hidden sm:flex text-sm tracking-wider font-bold text-muted-foreground translate-y-1 hover:text-primary active:text-primary-active hover:underline underline-offset-4 w-fit h-fit">
 				MARCUS ADAIR
 			</a>
 		</div>
