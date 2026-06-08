@@ -5,20 +5,22 @@
 	import { cn } from "$lib/utils";
 	import Separator from "./ui/separator.svelte";
 	import { toggleMode, mode } from "mode-watcher";
-  import resume from "$lib/assets/Marcus_Adair_Portfolio_Resume.pdf";
+	import resume from "$lib/assets/Marcus_Adair_Portfolio_Resume.pdf";
+	import { getPendingPath } from "$lib/stores/navigation.svelte";
 
-const currentYear: number = new Date().getFullYear();
+	const currentYear: number = new Date().getFullYear();
+	let currentPath = $derived(getPendingPath() ?? page.url.pathname);
 </script>
 
 <footer class={cn(
   "flex flex-col sm:flex-row justify-between items-center px-16 sm:px-8 gap-2.5 sm:gap-1 border-t border-t-border pt-2 pb-3 sm:pt-4 sm:pb-8 bg-header-bg",
-  page.url.pathname !== "/" && "mt-20"
+  currentPath !== "/" && "mt-20"
 )}>
   <ol class="flex flex-row gap-4 justify-start text-xs">
     <li>
       <a href={resolve("/")} title={pageOptions.home.toUpperCase()} class={cn(
         "transition-all duration-300 ease-out hover:text-primary active:text-primary-active font-light hover:underline underline-offset-2",
-        page.url.pathname === "/"
+        currentPath === "/"
           ? "text-primary font-semibold"
           : "text-muted-foreground"
       )}>
@@ -29,7 +31,7 @@ const currentYear: number = new Date().getFullYear();
     <li>
       <a href={resolve("/projects")} title={pageOptions.projects.toUpperCase()} class={cn(
         "transition-all duration-300 ease-out hover:text-primary active:text-primary-active font-light hover:underline underline-offset-2",
-        page.url.pathname.includes("projects")
+        currentPath.includes("projects")
           ? "text-primary font-semibold"
           : "text-muted-foreground"
       )}>
@@ -56,7 +58,7 @@ const currentYear: number = new Date().getFullYear();
     <li>
       <a href={resolve("/blog")} title="BLOG" class={cn(
         "transition-all duration-300 ease-out hover:text-primary active:text-primary-active font-light hover:underline underline-offset-2",
-        page.url.pathname.includes("blog")
+        currentPath.includes("blog")
           ? "text-primary font-semibold"
           : "text-muted-foreground"
       )}>

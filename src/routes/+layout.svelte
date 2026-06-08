@@ -12,6 +12,7 @@
 	import { afterNavigate, beforeNavigate, goto } from '$app/navigation';
 
 	import { isBootComplete, markBootComplete } from '$lib/stores/boot.svelte';
+	import { setPendingPath } from '$lib/stores/navigation.svelte';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 
@@ -81,6 +82,7 @@
 		// Cancel navigation, animate curtain down, then navigate
 		cancel();
 		isTransitioning = true;
+		setPendingPath(to.url.pathname); // Instantly update nav styling
 		await dropCurtain();
 		// eslint-disable-next-line svelte/no-navigation-without-resolve
 		goto(to.url.pathname + to.url.search + to.url.hash);
@@ -95,6 +97,7 @@
 		if (isTransitioning) {
 			liftCurtain(0.4);
 			isTransitioning = false;
+			setPendingPath(null); // Clear pending path
 		}
 	});
 
