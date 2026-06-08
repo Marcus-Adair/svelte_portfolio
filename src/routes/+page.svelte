@@ -3,11 +3,10 @@
 	import Github from '$lib/components/icons/Github.svelte';
 	import LinkedIn from '$lib/components/icons/LinkedIn.svelte';
 	import { cn } from '$lib/utils';
-	import { HOVER_EXPAND_TAILWIND_ANIMATION } from '$lib/consts/style';
+	import { HOVER_EXPAND_TAILWIND_ANIMATION, PAGE_ENTER_DELAY } from '$lib/consts/style';
     import gsap from "gsap";
 	import { onMount } from 'svelte';
-	import { isBootComplete } from '$lib/stores/boot.svelte';
-	import { SvelteSet } from 'svelte/reactivity';
+		import { SvelteSet } from 'svelte/reactivity';
 	import { mode } from 'mode-watcher';
 	import SvgWavyLines from '$lib/components/SvgWavyLines.svelte';
 	import Instagram from '$lib/components/icons/Instagram.svelte';
@@ -184,10 +183,9 @@
         smQuery.addEventListener('change', handleSmBreakpoint);
 
         // Hero text onMount enter animation - each line is already a div, no SplitText needed ----------- //
-        const heroDelay = isBootComplete() ? 0 : 0.5;
         const heroLines = heroTextDiv.querySelectorAll('div');
         gsap.from(heroLines, {
-            delay: heroDelay,
+            delay: PAGE_ENTER_DELAY,
             y: 30,
             opacity: 0,
             duration: 0.5,

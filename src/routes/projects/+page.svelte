@@ -13,6 +13,7 @@
 	import gsap from "gsap";
 	import AnimatedSeparator from '$lib/components/animatedSeparator.svelte';
 	import { onMount } from 'svelte';
+	import { PAGE_ENTER_DELAY } from '$lib/consts/style';
 
 
 	let easyScrumDiv: HTMLDivElement;
@@ -28,13 +29,13 @@
 		gsap.fromTo(
 			".animate-text-in",
 			{ x: -350},
-			{ x: 0, duration: 0.26, ease: "power1.out" }
+			{ x: 0, duration: 0.26, ease: "power1.out", delay: PAGE_ENTER_DELAY }
 		);
 
 		const ANIM = { y: 40, duration:0.2, opacity: 0,  ease: "power1.out" };
 		const OVERLAP = "-=0.12";
 
-		const tl = gsap.timeline();
+		const tl = gsap.timeline({ delay: PAGE_ENTER_DELAY });
 		tl.from(easyScrumDiv, ANIM);
 		tl.from(tweakcnCloneDiv, ANIM, OVERLAP);
 		tl.from(svelte2048Div, ANIM, OVERLAP);

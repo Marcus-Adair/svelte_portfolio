@@ -6,6 +6,7 @@
 	import { ChevronLeft } from "lucide-svelte";
     import gsap from "gsap";
 	import { onMount } from "svelte";
+	import { PAGE_ENTER_DELAY } from "$lib/consts/style";
 
     interface Props {
         date: Date,
@@ -17,8 +18,8 @@
     let titleSpan: HTMLSpanElement;
     let dateDiv: HTMLDivElement;
     onMount(() => {
-        gsap.from(titleSpan, { x: 600, duration: 0.35, ease: "power2.out"});
-        gsap.from(dateDiv, { opacity: 0, duration: 0.35, ease: "power2.out"});
+        gsap.from(titleSpan, { x: 600, duration: 0.35, ease: "power2.out", delay: PAGE_ENTER_DELAY });
+        gsap.from(dateDiv, { opacity: 0, duration: 0.35, ease: "power2.out", delay: PAGE_ENTER_DELAY });
     });
 </script>
 
