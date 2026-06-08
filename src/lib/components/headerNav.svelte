@@ -8,6 +8,7 @@
     import { onMount } from "svelte";
     import { resolve } from "$app/paths";
 	import SplitText from "gsap/SplitText";
+    import { getPendingPath } from "$lib/stores/navigation.svelte";
 
     interface Props {
         homeDiv: HTMLDivElement;
@@ -15,7 +16,7 @@
         blogDiv: HTMLDivElement;
         resumeDiv: HTMLDivElement;
     }
-    let {   
+    let {
         homeDiv = $bindable(),
         projectsDiv = $bindable(),
         blogDiv = $bindable(),
@@ -23,9 +24,10 @@
     }: Props = $props();
 
     const isActive = (href: string, exactMatch: boolean) => {
-        return exactMatch 
-            ? page.url.pathname === href
-            : page.url.pathname.includes(href.slice(1));
+        const currentPath = getPendingPath() ?? page.url.pathname;
+        return exactMatch
+            ? currentPath === href
+            : currentPath.includes(href.slice(1));
     };
 
     const navOptions = Object.keys(pageOptions);
