@@ -5,6 +5,17 @@
 	import { ChevronLeft } from "lucide-svelte";
     import workflowDiagram from "$lib/assets/odf_workflow_diagram.png"
     import cicdDiagram from "$lib/assets/ci_cd_diagram.png"
+    import gsap from "gsap";
+    import { onMount } from "svelte";
+    import { PAGE_ENTER_DELAY } from "$lib/consts/style";
+
+    let titleSpan: HTMLSpanElement;
+    let subtitleDiv: HTMLDivElement;
+
+    onMount(() => {
+        gsap.from(titleSpan, { x: 600, duration: 0.35, ease: "power2.out", delay: PAGE_ENTER_DELAY });
+        gsap.from(subtitleDiv, { opacity: 0, duration: 0.35, ease: "power2.out", delay: PAGE_ENTER_DELAY });
+    });
 </script>
 
 <svelte:head>
@@ -18,9 +29,9 @@
             <ChevronLeft class="size-8"/>
         </Button>
         <div class="flex flex-col gap-4 sm:gap-2 flex-1">
-            <h1 class="text-3xl sm:text-4xl font-normal">On-Demand Fakequakes</h1>
-    
-            <div class="flex flex-row items-center gap-2 h-4">
+            <h1 bind:this={titleSpan} class="text-3xl sm:text-4xl font-normal">On-Demand Fakequakes</h1>
+
+            <div bind:this={subtitleDiv} class="flex flex-row items-center gap-2 h-4">
                 <Separator orientation="vertical" class="data-[orientation=vertical]:w-[3px]"/>
                 <span class="text-sm text-muted-foreground">MS Project at the University of Utah, and research for work at the SCI Institute</span>
             </div>

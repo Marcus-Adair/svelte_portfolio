@@ -8,6 +8,7 @@
   import ScrambleTextPlugin from "gsap/ScrambleTextPlugin";
 	import { onMount } from 'svelte';
 	import AnimatedSeparator from "$lib/components/animatedSeparator.svelte";
+	import { PAGE_ENTER_DELAY } from '$lib/consts/style';
   import svelte2048pic from '$lib/assets/svelte_2048_pic.png';
   import easyScrumPic from '$lib/assets/easy-scrum_pic.png';
   import lucyPic from '$lib/assets/lucy_pic.png';
@@ -63,16 +64,16 @@
     gsap.fromTo(
       ".swipe-in",
       { x: -350},
-      { x: 0, duration: 0.3, ease: "power1.out" }
+      { x: 0, duration: 0.3, ease: "power1.out", delay: PAGE_ENTER_DELAY }
     );
 
     gsap.fromTo(
       ".animated-card",
       { x: -550},
-      { x: 0, duration: 0.04, ease: "power1.out", delay: 0.05 }
+      { x: 0, duration: 0.04, ease: "power1.out", delay: PAGE_ENTER_DELAY + 0.05 }
     );
 
-    animateQuote(scrambleChars);
+    setTimeout(() => animateQuote(scrambleChars), PAGE_ENTER_DELAY * 1000);
 
     const postsAnimIn = {
       y: 40,
@@ -82,7 +83,7 @@
     };
     const overlap = "-=0.0.8";
 
-    const tl = gsap.timeline();
+    const tl = gsap.timeline({ delay: PAGE_ENTER_DELAY });
     tl.from(post5, postsAnimIn);
     tl.from(post4, postsAnimIn, overlap);
     tl.from(post1, postsAnimIn, overlap);
