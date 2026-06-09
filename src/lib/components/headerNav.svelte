@@ -51,8 +51,8 @@
 <nav class="flex flex-row justify-center">
     <ol class="flex flex-row items-end gap-0 text-[0.85rem] tracking-wider font-bold">
         <li class="min-w-[5rem] flex justify-center">
-            <a 
-                href={resolve("/")} 
+            <a
+                href={resolve("/")}
                 title={pageOptions.home.toUpperCase()}
                 class={cn(
                     "transition-colors duration-300 ease-out hover:text-primary active:text-primary-active",

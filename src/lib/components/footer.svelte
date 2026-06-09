@@ -13,7 +13,7 @@
 </script>
 
 <footer class={cn(
-  "flex flex-col sm:flex-row justify-between items-center px-16 sm:px-8 gap-2.5 sm:gap-1 border-t border-t-border pt-2 pb-3 sm:pt-4 sm:pb-8 bg-header-bg",
+  "flex flex-col sm:flex-row justify-between items-center px-16 sm:px-8 gap-2.5 sm:gap-1 pt-2 pb-3 sm:pt-4 sm:pb-8 bg-header-bg",
   currentPath !== "/" && "mt-20"
 )}>
   <ol class="flex flex-row gap-4 justify-start text-xs">

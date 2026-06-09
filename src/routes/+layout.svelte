@@ -160,7 +160,7 @@
 	bind:this={headerElt}
 	class={cn(
 		"fixed top-0 z-100 h-[64px] w-screen",
-		"bg-header-bg backdrop-blur-xl border-b border-b-border"
+		"bg-header-bg backdrop-blur-xl"
 	)}
 	onmouseenter={() => onHeaderEnter()}
 	onmouseleave={() => onHeaderLeave()}
