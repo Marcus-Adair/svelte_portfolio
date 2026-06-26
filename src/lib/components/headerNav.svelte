@@ -3,7 +3,7 @@
     import { pageOptions } from "$lib/types/pageOptions";
     import { cn } from "$lib/utils";
     import { CodeXml, Coffee, FileText, Laptop } from "lucide-svelte";
-    import resume from "$lib/assets/Marcus_Adair_Portfolio_Resume.pdf";
+    import resume from "$lib/assets/MarcusAdair_General_Resume.pdf";
     import gsap from "gsap";
     import { onMount } from "svelte";
     import { resolve } from "$app/paths";

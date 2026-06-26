@@ -5,7 +5,7 @@
 	import { cn } from "$lib/utils";
 	import Separator from "./ui/separator.svelte";
 	import { toggleMode, mode } from "mode-watcher";
-	import resume from "$lib/assets/Marcus_Adair_Portfolio_Resume.pdf";
+	import resume from "$lib/assets/MarcusAdair_General_Resume.pdf";
 	import { getPendingPath } from "$lib/stores/navigation.svelte";
 
 	const currentYear: number = new Date().getFullYear();
