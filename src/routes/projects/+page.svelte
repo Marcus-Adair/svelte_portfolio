@@ -4,25 +4,29 @@
 	import fqsPaperPic from '$lib/assets/ODF_git_paper_2.png';
 	import sedePic from '$lib/assets/SEDE_screenshot.png';
 	import alpsPic from '$lib/assets/alps_git_repo_screenshot.png';
-	import portfolioPicV2 from '$lib/assets/portfolio_pic_v2.png';
+	import portfolioPicV3 from '$lib/assets/portfolio_pic_v3.png';
+	import portfolioPicV3Dark from '$lib/assets/portfolio_pic_v3_dark.png';
 	import svelte2048pic from '$lib/assets/svelte_2048_pic.png';
 	import tweakcnClonePic from '$lib/assets/tweakcn_clone_pic.png'
 	import easyScrumPic from '$lib/assets/easy-scrum_pic.png';
+	import vvsbPic from '$lib/assets/vvsb_site_screenshot.png';
 	import Link from '$lib/components/link.svelte';
 	import ProjectCard from './components/projectCard.svelte';
 	import gsap from "gsap";
 	import AnimatedSeparator from '$lib/components/animatedSeparator.svelte';
 	import { onMount } from 'svelte';
 	import { PAGE_ENTER_DELAY } from '$lib/consts/style';
+	import { mode } from 'mode-watcher';
 
 
+	let vvsbDiv: HTMLDivElement;
 	let easyScrumDiv: HTMLDivElement;
 	let tweakcnCloneDiv: HTMLDivElement;
 	let svelte2048Div: HTMLDivElement;
 	let portfolioDiv: HTMLDivElement;
 	let odfDiv: HTMLDivElement;
-	let elm2048Div: HTMLDivElement;
 	let alpsDiv: HTMLDivElement;
+	let elm2048Div: HTMLDivElement;
 	let fdwDiv: HTMLDivElement;
 	let sedeDiv: HTMLDivElement;
 	onMount(() => {
@@ -35,14 +39,16 @@
 		const ANIM = { y: 40, duration:0.2, opacity: 0,  ease: "power1.out" };
 		const OVERLAP = "-=0.12";
 
+		// TODO: engineer this better so order is dynamic based on the ProjectCard order
 		const tl = gsap.timeline({ delay: PAGE_ENTER_DELAY });
+		tl.from(vvsbDiv, ANIM);
 		tl.from(easyScrumDiv, ANIM);
+		tl.from(portfolioDiv, ANIM, OVERLAP);
 		tl.from(tweakcnCloneDiv, ANIM, OVERLAP);
 		tl.from(svelte2048Div, ANIM, OVERLAP);
-		tl.from(portfolioDiv, ANIM, OVERLAP);
 		tl.from(odfDiv, ANIM, OVERLAP);
-		tl.from(elm2048Div, ANIM, OVERLAP);
 		tl.from(alpsDiv, ANIM, OVERLAP);
+		tl.from(elm2048Div, ANIM, OVERLAP);
 		tl.from(fdwDiv, ANIM, OVERLAP);
 		tl.from(sedeDiv, ANIM, OVERLAP);
 	});
@@ -61,6 +67,14 @@
 		</div>
 
 		<div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+			<ProjectCard
+				bind:divElt={vvsbDiv}
+				title='VVSB Website'
+				url="https://vvsbsite-production.up.railway.app/"
+				src={vvsbPic}
+				alt="vvsb_site_pic"
+				description="A full-stack, production website for Vs Vbove So Below (VVSB), an SLC-based EDM even company - still in-progress but launching soon. Features a merch storefront, an API and a PostgreSQL database, S3 for photo storage, polished web animations, and more."
+			/>
 
 			<ProjectCard
 				bind:divElt={easyScrumDiv}
@@ -69,6 +83,15 @@
 				src={easyScrumPic}
 				alt="easy_scrum_pic"
 				description="A lightweight scrum board app I built. Create sessions, add color-coded boards and task notes, and collaborate with comments. Built with SvelteKit, Tailwind CSS, Drizzle, and shadcn-svelte. Uses Supabase for a production database and deployed with Railway."
+			/>
+
+			<ProjectCard
+				bind:divElt={portfolioDiv}
+				title='My Portfolio (marcusadair.com)'
+				url="https://github.com/Marcus-Adair/svelte_portfolio"
+				src={mode.current === "light" ? portfolioPicV3Dark : portfolioPicV3}
+				alt="portfolio_visual"
+				description="My evolving personal website and dev portfolio. This site serves to showcase my skills and experience, and to also be a playground for me to program fun stuff. Built with TypeScript, SvelteKit, Tailwind, GSAP, and more."
 			/>
 
 			<ProjectCard
@@ -90,15 +113,6 @@
 			/>
 
 			<ProjectCard
-				bind:divElt={portfolioDiv}
-				title='My Portfolio (marcusadair.com)'
-				url="https://github.com/Marcus-Adair/svelte_portfolio"
-				src={portfolioPicV2}
-				alt="portfolio_visual"
-				description="My evolving personal website and dev portfolio. This site serves to showcase my skills and experience and to also be a playground for me to program fun stuff. Built with TypeScript, SvelteKit, Tailwind, GSAP, and more."
-			/>
-
-			<ProjectCard
 				bind:divElt={odfDiv}
 				title='On-Demand FakeQuakes'
 				url='/projects/odf'
@@ -108,21 +122,21 @@
 			/>
 
 			<ProjectCard
-				bind:divElt={elm2048Div}
-				title='ELM 2048'
-				url='https://marcus-adair.github.io/ELM_2048/'
-				src={elm2048pic}
-				alt='elm_2048_pic'
-				description='For a Functional Programming graduate-level course in Spring 2024, I recreated the classic game 2048 using ELM, a fully-functional programming language (similar to Haskell) that compiles to JavaScript for creating UIs.'
-			/>
-
-			<ProjectCard
 				bind:divElt={alpsDiv}
 				title='ALPS'
 				url='https://github.com/Marcus-Adair/alps_project'
 				src={alpsPic}
 				alt='alps_pic'
 				description='I developed a Python CLI tool called ALPS (Automatic Least-Privilege Policy "Suggester") for a graduate Software & Systems Security course. ALPS parses AWS infrastructure code, identifies insecure IAM policies, and suggests alternatives.'
+			/>
+
+			<ProjectCard
+				bind:divElt={elm2048Div}
+				title='ELM 2048'
+				url='https://marcus-adair.github.io/ELM_2048/'
+				src={elm2048pic}
+				alt='elm_2048_pic'
+				description='For a Functional Programming graduate-level course in Spring 2024, I recreated the classic game 2048 using ELM, a fully-functional programming language (similar to Haskell) that compiles to JavaScript for creating UIs.'
 			/>
 
 			<ProjectCard
