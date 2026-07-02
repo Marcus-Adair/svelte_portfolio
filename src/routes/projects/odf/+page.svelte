@@ -6,6 +6,7 @@
     import workflowDiagram from "$lib/assets/odf_workflow_diagram.png"
     import cicdDiagram from "$lib/assets/ci_cd_diagram.png"
     import gsap from "gsap";
+    import odfScreenshot from "$lib/assets/ODF_dash_pic_2.png";
     import { onMount } from "svelte";
     import { PAGE_ENTER_DELAY } from "$lib/consts/style";
 
@@ -42,7 +43,7 @@
 
     <span>
         For my Master's Project at the University I developed On-Demand Fakequakes, a Python-based 
-        web application for launching earthuake simulation using the Python-based software <Link href={"https://github.com/UO-Geophysics/MudPy"}>MudPy</Link>.
+        web application for launching earthuake simulation using the Python-based software <Link href="https://github.com/UO-Geophysics/MudPy">MudPy</Link>.
         It was an amazing project that spanned a whole year from May 2024 to May 2025. The project included a user interface (UI), a complex Amazon Web Services (AWS) workflow with infrastructure
         built as Python code, automatic resouce deployment and container builds via GitHub Actions, and much more. 
     </span>
@@ -78,8 +79,8 @@
 
 
     <span>Here is a diagram I created using Figma to illustrate the flow and utilized technologies of On-Demand Fakequakes:</span>
-    <div class="flex flex-col items-center gap-8">
-        <enhanced:img src={workflowDiagram} alt="Workflow Diagram" class="w-auto h-auto px-4"/>
+    <div class="flex flex-col items-center gap-3 px-4">
+        <enhanced:img src={workflowDiagram} alt="Workflow Diagram" class="w-auto h-auto"/>
         <span>
             This shows the flow from the front-end, that was deployed through AWS, which could trigger a JSON file (with simulation parameters) to be deposited
             into an S3 bucket and thus the larger workflow.
@@ -89,8 +90,8 @@
 
 
     <span>Here is a diagram that illustrates the high-level parts of the continuous integration/continuous deployment (CI/CD) pipeline for the app:</span>
-    <div class="flex flex-col items-center gap-8">
-        <enhanced:img src={cicdDiagram} alt="CI/CD Diagram" class="max-w-auto h-auto px-4"/>
+    <div class="flex flex-col items-center gap-3 px-4">
+        <enhanced:img src={cicdDiagram} alt="CI/CD Diagram" class="max-w-auto h-auto"/>
         <span>
             Through AWS <Link href="https://aws.amazon.com/cloudformation/">CloudFormation</Link> and <Link href="https://aws.amazon.com/cdk/">Cloud Development Kit</Link> (services that enables you to turn code into AWS infrastructure resources in an automated and secure manner)
             and GitHub Actions, I engineered a CI/CD pipeline. Updates to the Git repo would trigger AWS resource stacks to updated and deployed, Docker images to be rebuilt, the UI to be updated, and more without letting the live website go down.
@@ -104,13 +105,22 @@
 
     <span>
         A cool AWS service I utilized was <Link href="https://docs.aws.amazon.com/step-functions/">Step Functions</Link>. Step Functions allows me to create a DAG-like workflow between step in the workflow, and it provides automatic diagrams
-        to visualize steps and dependencies, catch errors, degug, and more. 
+        to visualize steps and dependencies, catch errors, debug, and more. 
     </span>
+
+    <span>
+        Again, the website is no longer up, but here is a screenshot of the UI to get a sense of what it looked like:
+    </span>
+    
+    <div class="flex flex-col items-center gap-3 px-4">
+        <enhanced:img src={odfScreenshot} alt="ODF Screenshot" class="max-w-auto h-auto"/>
+        <span>
+            In the screenshot above you can see the side-panel for customizing simulation parameters, an interactive map featuring 3 different zones to simulate earthquakes from (Cascadia, Chile, and New Zealand), and a login button at the top where the login system used AWS Cognito.
+        </span>
+    </div>
 
     <span>
         Overall, the project was such a valuable learning experience that allowed me to program so many different features with so many different technologies. 
     </span>
-
-    <!-- TODO: add more -->
 </div>
 
