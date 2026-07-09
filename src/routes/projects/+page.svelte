@@ -44,8 +44,8 @@
 		tl.from(vvsbDiv, ANIM);
 		tl.from(easyScrumDiv, ANIM);
 		tl.from(portfolioDiv, ANIM, OVERLAP);
-		tl.from(tweakcnCloneDiv, ANIM, OVERLAP);
 		tl.from(svelte2048Div, ANIM, OVERLAP);
+		tl.from(tweakcnCloneDiv, ANIM, OVERLAP);
 		tl.from(odfDiv, ANIM, OVERLAP);
 		tl.from(alpsDiv, ANIM, OVERLAP);
 		tl.from(elm2048Div, ANIM, OVERLAP);
@@ -95,6 +95,15 @@
 			/>
 
 			<ProjectCard
+				bind:divElt={svelte2048Div}
+				title='Svelte 2048'
+				url="https://marcus-adair.github.io/svelte_2048/"
+				src={svelte2048pic}
+				alt="svelte_2048_pic"
+				description="I recreated the 2048 sliding tile game using TypeScript, Svelte, Tailwind CSS, and GSAP. The app is fully animated, includes themes, and is deployed using GitHub Pages."
+			/>
+
+			<ProjectCard
 				bind:divElt={tweakcnCloneDiv}
 				title='tweakcn_clone'
 				url="https://marcus-adair.github.io/tweakcn_clone/#theme-presets"
@@ -103,14 +112,6 @@
 				description="I built a clone of the front-end dashboard for tweakcn.com using TypeScript, Svelte, shadcn-svelte, TailWind CSS, and GSAP. Challenges included the various animations and advanced, animated theme switcher. Based on an older version of the website"
 			/>
 
-			<ProjectCard
-				bind:divElt={svelte2048Div}
-				title='Svelte 2048'
-				url="https://marcus-adair.github.io/svelte_2048/"
-				src={svelte2048pic}
-				alt="svelte_2048_pic"
-				description="I recreated the 2048 sliding tile game using TypeScript, Svelte, Tailwind CSS, and GSAP. The app is fully animated, includes themes, and is deployed using GitHub Pages."
-			/>
 
 			<ProjectCard
 				bind:divElt={odfDiv}
