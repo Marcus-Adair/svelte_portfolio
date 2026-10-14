@@ -12,11 +12,19 @@
   import svelte2048pic from '$lib/assets/svelte_2048_pic.png';
   import easyScrumPic from '$lib/assets/easy-scrum_pic.png';
   import lucyPic from '$lib/assets/lucy_pic.png';
+  import starterPic from '$lib/assets/starter_template_svelte_screenshot.png';
 	import { ChevronDown, ChevronUp } from "lucide-svelte";
 	import Button from "$lib/components/ui/button.svelte";
 
   let showingAllPosts = $state(false);
   let isSmOrLarger = $state(false);
+
+  const TAGLINES = [
+    "A collection of my sporadic and genius thoughts on software, some memes, and more.",
+    "My blog: a place where I post cool stuff related to software, computer science, web animations, etc.",
+    "Welcome user, to the online blog for Marcus Adair - this contains the best articles in the world."
+  ];
+  const tagline = TAGLINES[Math.floor(Math.random() * TAGLINES.length)];
 
   const SCRAMBLE_CHARS_SM = "|!i1l.:;'·*0x[]{}()$coffee-blg-alrithms";
   const SCRAMBLE_CHARS_XS = "|!i1l.:;'·*0x";
@@ -29,6 +37,7 @@
   let post3: HTMLDivElement;
   let post4: HTMLDivElement;
   let post5: HTMLDivElement;
+  let post6: HTMLDivElement;
 
   function spinCoffee() {
     gsap.fromTo(
@@ -84,7 +93,8 @@
     const overlap = "-=0.0.8";
 
     const tl = gsap.timeline({ delay: PAGE_ENTER_DELAY });
-    tl.from(post5, postsAnimIn);
+    tl.from(post6, postsAnimIn);
+    tl.from(post5, postsAnimIn, overlap);
     tl.from(post4, postsAnimIn, overlap);
     tl.from(post1, postsAnimIn, overlap);
     tl.from(post2, postsAnimIn, overlap);
@@ -109,11 +119,16 @@
         <img src={coffee_gif} bind:this={coffee} alt="coffee_gif" class="size-12 -translate-y-5.25 -translate-x-1" />
       </button>
     </div>
-    <span class="text-muted-foreground text-sm tracking-widesr font-light">A collection of my sporadic and genius thoughts on software, some memes, and more.</span>
+    <span class="text-muted-foreground text-sm tracking-widesr font-light">{tagline}</span>
   </div>
 
   <div class="flex flex-col gap-1.25 mt-2">
     <span class="text-xs text-muted-foreground">{showingAllPosts ? "ALL" : "HIGHLIGHTED"} POSTS</span>
+    <AnimatedSeparator />
+  </div>
+
+  <div bind:this={post6}>
+    <BlogCard id="starter-template" title="My Starter Template for Creative Dev" date={new Date("2026-10-13T04:10:00.000Z")} about="A starter with responsive UI scaling, Capsize CSS, a Typography system, and more" href="/blog/starter-template" imgSrc={starterPic}/>
     <AnimatedSeparator />
   </div>
 
@@ -134,12 +149,12 @@
     <AnimatedSeparator />
   </div>
 
-  <div bind:this={post2}>
-    <BlogCard id="gsap" title="Web Animations w/ GSAP" date={new Date("2025-12-01T03:51:00Z")} about="GSAP is an awesome library" href="/blog/gsap" imgSrc={gsapPic}/>
-    <AnimatedSeparator />
-  </div>
-
   {#if showingAllPosts}
+    <div bind:this={post2}>
+      <BlogCard id="gsap" title="Web Animations w/ GSAP" date={new Date("2025-12-01T03:51:00Z")} about="GSAP is an awesome library" href="/blog/gsap" imgSrc={gsapPic}/>
+      <AnimatedSeparator />
+    </div>
+
     <div bind:this={post3}>
       <BlogCard id="hello_world" title="Hello world!!" date={new Date("2025-10-21T05:51:55.000Z")} about="My first ever blog post" href="/blog/hello-world" imgSrc={helloWorldPic}/>
       <AnimatedSeparator />

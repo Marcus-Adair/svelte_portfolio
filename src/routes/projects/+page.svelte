@@ -10,6 +10,8 @@
 	import tweakcnClonePic from '$lib/assets/tweakcn_clone_pic.png'
 	import easyScrumPic from '$lib/assets/easy-scrum_pic.png';
 	import vvsbPic from '$lib/assets/vvsb_site_screenshot.png';
+	import starterPic from '$lib/assets/starter_template_svelte_screenshot.png';
+
 	import Link from '$lib/components/link.svelte';
 	import ProjectCard from './components/projectCard.svelte';
 	import gsap from "gsap";
@@ -18,7 +20,7 @@
 	import { PAGE_ENTER_DELAY } from '$lib/consts/style';
 	import { mode } from 'mode-watcher';
 
-
+	let starterDiv: HTMLDivElement;
 	let vvsbDiv: HTMLDivElement;
 	let easyScrumDiv: HTMLDivElement;
 	let tweakcnCloneDiv: HTMLDivElement;
@@ -41,6 +43,7 @@
 
 		// TODO: engineer this better so order is dynamic based on the ProjectCard order
 		const tl = gsap.timeline({ delay: PAGE_ENTER_DELAY });
+		tl.from(starterDiv, ANIM);
 		tl.from(vvsbDiv, ANIM);
 		tl.from(easyScrumDiv, ANIM);
 		tl.from(portfolioDiv, ANIM, OVERLAP);
@@ -67,6 +70,15 @@
 		</div>
 
 		<div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+			<ProjectCard
+				bind:divElt={starterDiv}
+				title='Creative Dev Starter Template'
+				url="https://github.com/Marcus-Adair/starter_template_svelte"
+				src={starterPic}
+				alt="starter_template_pic"
+				description="A front-end-focused starter template (SvelteKit) with a custom-built responsive scaling system (vw-based) and Capsize CSS for precise typography (zero runtime cost - all transforms happen at build time). This template enables pixel-perfect UIs for consistent design-matching across screen sizes. Other advanced features included."
+			/>
+
 			<ProjectCard
 				bind:divElt={vvsbDiv}
 				title='VVSB Website'
